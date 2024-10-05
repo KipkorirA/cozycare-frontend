@@ -59,7 +59,7 @@ const Navbar = () => {
 
             {/* Navigation links */}
             <div className="flex flex-1 items-center justify-center z-20"> {/* Added z-20 here */}
-                <ul className="flex gap-20 list-none m-0 p-0">
+                <ul className="flex gap-5 list-none m-0 p-0">
                     <li>
                         <Link to="/about" className="flex items-center text-white text-[1.5rem] transition-colors duration-300 hover:text-[#f0a500]">
                             <i className="fas fa-home block lg:hidden "></i>
