@@ -1,0 +1,49 @@
+/* subscriptionSuccessfulPage.css */
+
+.subscription-successful-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height of the viewport */
+    background-color: #f0f8ff; /* Light background color */
+    color: #333; /* Text color */
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+}
+
+.subscription-successful-page h1 {
+    font-family: 'Veteran Typewriter', sans-serif; 
+    font-size: 2.5rem; /* Font size for the heading */
+    margin-bottom: 20px; /* Space below the heading */
+    color: #4caf50; /* Green color for success */
+}
+
+.subscription-successful-page img {
+    width: 300px; /* Adjust the width as necessary */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px 0; /* Space around the GIF */
+}
+
+.subscription-successful-page p {
+    font-size: 1.2rem; /* Font size for the paragraph text */
+    line-height: 1.5; /* Spacing between lines */
+    margin: 10px 0; /* Margin for spacing between paragraphs */
+    max-width: 600px; /* Limit width for better readability */
+}
+
+.subscription-successful-page button {
+    background-color: #4caf50; /* Green background for button */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for button */
+    font-size: 1rem; /* Font size for button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Transition effect */
+}
+
+.subscription-successful-page button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

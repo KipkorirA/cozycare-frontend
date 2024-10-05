@@ -1,0 +1,39 @@
+/* notFoundPage.css */
+
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full height of the viewport */
+    background-color: #f9f9f9; /* Light background color */
+    color: #333; /* Text color */
+    text-align: center;
+    padding: 20px;
+}
+
+.not-found-page h1 {
+    font-size: 2.5rem; /* Font size for the heading */
+    color: #e74c3c; /* Red color for error message */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+.not-found-page p {
+    font-size: 1.2rem; /* Font size for paragraph text */
+    margin: 10px 0; /* Margin for spacing between paragraphs */
+}
+
+.not-found-gif {
+    width: 300px; /* Adjust the width as necessary */
+    height: auto; /* Maintain aspect ratio */
+    margin: 20px 0; /* Space around the GIF */
+}
+
+.not-found-page a {
+    color: #3498db; /* Link color */
+    text-decoration: underline; /* Underline for links */
+}
+
+.not-found-page a:hover {
+    text-decoration: none; /* Remove underline on hover */
+}

@@ -1,0 +1,142 @@
+/* src/styles/ServicesPage.css */
+
+
+.care-service-description{
+    padding-left: 3rem;
+    padding-right: 10rem;
+    margin-right: 10rem;
+    font-size: x-large;
+}
+
+.services-page {
+    background-color: #f7f9f8;
+    font-family: 'TT Hoves Pro Trial', Arial, sans-serif;
+    position: relative;
+    padding-top: 0;
+    margin-top: 0;
+
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    padding-top: 8rem;
+    padding-left: 2rem;
+    font-family: 'Veteran Typewriter', monospace;
+    font-weight: 400;
+    color: #333;
+  }
+  
+  .service-page-divider {
+    width: 30rem;
+    margin-bottom: 3rem;
+    padding-left: 4rem;
+    margin-left: 2rem;
+    height: 4px;
+    background-color: #838f83;
+    border-radius: 4px;
+  }
+  
+  /* First image (absolute at the top-right corner) */
+  .top-right-corner {
+    position: absolute;
+    top: 4rem;
+    max-width: 30%; /* Adjust to the desired size */
+    margin-left: 90rem;
+    z-index: 0;
+    padding-left: 3rem;
+  }
+  
+  /* Alternating layout for service blocks */
+  .service-block {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    align-items: center;
+  }
+  
+  .service-block:nth-child(odd) .service-image {
+    order: 2;
+    text-align: right;
+  }
+  
+  .service-block:nth-child(odd) .service-details {
+    order: 1;
+    padding-right: 2rem;
+  }
+  
+  .service-block:nth-child(even) .service-image {
+    order: 1;
+    text-align: left;
+  }
+  
+  .service-block:nth-child(even) .service-details {
+    order: 2;
+    padding-left: 2rem;
+  }
+  
+  /* Image styles for all blocks */
+  .service-image {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .service-image img {
+    max-width: 100%;
+  }
+  
+  .service-details {
+    flex: 1 1 60%;
+  }
+  
+  .service-details h2 {
+    font-size: 3rem;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Veteran Typewriter', monospace;
+    font-weight: 400;
+    color: #4a4a4a;
+  }
+  
+  .service-details p {
+    font-weight: bold;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    line-height: 1.8;
+    color: #000000;
+  }
+  
+  .service-details ul {
+    list-style-type: disc;
+    padding-left: 3rem;
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    color: #555;
+  }
+  
+  .service-details li {
+    margin-bottom: 0.8rem;
+    padding-left: 2rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .service-block {
+      flex-direction: column;
+    }
+  
+    .service-details {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    .top-right-corner {
+      position: relative;
+      max-width: 100%;
+      padding-left: 2rem;
+    }
+  }
+  

@@ -1,0 +1,151 @@
+/* Basic reset for margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Veteran Typewriter';
+    src: url('/fonts/veteran typewriter.ttf') format('truetype'); /* Updated path to lowercase filename */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Styling for the main container */
+.subscribe-page {
+    max-width: 600px; /* Maximum width for the form */
+    margin: 50px auto; /* Center the form with auto margins */
+    padding: 40px; /* Increased padding around the container */
+    padding-top: 10rem; /* Keep the top padding for spacing */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 12px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Deeper shadow for more depth */
+    background-color: #f9f9f9; /* Lighter background for better contrast */
+    background-image: linear-gradient(to right, #b7ffa5, #f9f9f9); /* Gradient background for appeal */
+}
+
+/* Headings */
+.subscribe-page h1 {
+    font-size: 2.5rem; /* Larger font size for the heading */
+    margin-bottom: 30px; /* Space below the heading */
+    color: #222; /* Darker gray for better readability */
+    text-align: center; /* Center the heading */
+    font-family: 'Veteran Typewriter', sans-serif; /* Use the custom font */
+}
+
+/* Paragraph styling */
+.subscribe-page p {
+    margin-bottom: 30px; /* Increased space below the paragraph */
+    color: #555; /* Darker medium gray for better readability */
+    text-align: center; /* Center the paragraph text */
+}
+
+/* Form styling */
+.subscribe-form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+}
+
+/* Label styling */
+.subscribe-form label {
+    margin-bottom: 10px; /* Increased space below the label */
+    color: #333; /* Dark gray color for label */
+    font-weight: bold; /* Bold labels for emphasis */
+}
+
+/* Input field styling */
+.subscribe-form input[type="text"],
+.subscribe-form input[type="email"],
+.subscribe-form input[type="tel"],
+.subscribe-form select {
+    padding: 15px; /* Increased padding for input fields */
+    border: 2px solid #ccc; /* Slightly thicker border for input */
+    border-radius: 6px; /* More rounded corners for input */
+    margin-bottom: 20px; /* Increased space below input */
+    font-size: 1rem; /* Normal font size */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* Input field focus effect */
+.subscribe-form input[type="text"]:focus,
+.subscribe-form input[type="email"]:focus,
+.subscribe-form input[type="tel"]:focus,
+.subscribe-form select:focus {
+    border-color: #007bff; /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle blue shadow on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Error styling */
+.subscribe-form input.error {
+    border-color: red; /* Red border on error */
+}
+
+/* Button styling */
+.subscribe-form button {
+    padding: 15px; /* Increased padding for button */
+    background-color: #007bff; /* Primary blue color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 6px; /* More rounded corners for button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1.2rem; /* Slightly larger font size */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Button hover effect */
+.subscribe-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+}
+
+/* Success message styling */
+.success-message {
+    margin-top: 20px; /* Increased space above success message */
+    color: green; /* Green text color */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Center the success message */
+}
+
+/* Error message styling */
+.error-message {
+    margin-top: 20px; /* Increased space above error message */
+    color: red; /* Red text color */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Center the error message */
+}
+
+/* Checkboxes and Interests styling */
+.interests-checkboxes {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Checkbox styling */
+.interests-checkboxes label {
+    margin-bottom: 10px; /* Space between checkbox options */
+    font-weight: normal; /* Normal weight for checkbox labels */
+    display: flex; /* Use flexbox for checkbox alignment */
+    align-items: center; /* Center align items */
+}
+
+/* Checkbox input styling */
+.interests-checkboxes input[type="checkbox"] {
+    margin-right: 10px; /* Space between checkbox and label text */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .subscribe-page {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .subscribe-page h1 {
+        font-size: 2rem; /* Adjust heading size */
+    }
+
+    .subscribe-form button {
+        font-size: 1rem; /* Adjust button font size */
+    }
+}

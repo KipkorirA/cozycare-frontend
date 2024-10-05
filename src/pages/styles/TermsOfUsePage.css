@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Veteran Typewriter';
+    src: url('/fonts/veteran typewriter.ttf') format('truetype'); /* Updated path to lowercase filename */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves Pro Trial';
+    src: url('/fonts/TT Hoves Pro Trial Regular.ttf') format('truetype'); /* Path to your TT Hoves font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/* TermsOfUse.css */
+.terms-of-use {
+    padding-top: 10rem; /* Space above the content */
+    padding-left: 5rem; /* Space on the left */
+    padding-right: 5rem; /* Space on the right */
+    height: auto; /* Allow height to adjust with content */
+    margin-bottom: 0; /* No margin below */
+    background-color: #a8c2b2; /* Light background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.terms-of-use h1 {
+    font-size: 2rem; /* Large title */
+    margin-bottom: 1rem; /* Space below title */
+    font-family: 'Veteran Typewriter'; /* Specific font for heading */
+    font-weight: 200; /* Light weight for a subtle look */
+}
+
+.terms-of-use h2 {
+    font-size: 1.5rem; /* Section headings */
+    margin-top: 1.5rem; /* Space above headings */
+    font-family: 'Veteran Typewriter'; /* Specific font for sub-headings */
+    font-weight: 100; /* Very light weight for contrast */
+}
+
+.terms-of-use p {
+    font-size: 1rem; /* Normal paragraph size */
+    line-height: 1.6; /* Improve line spacing for readability */
+    margin-bottom: 1rem; /* Space below paragraphs */
+    font-family: 'TT Hoves Pro Trial'; /* Font for paragraphs */
+}
+
+.terms-of-use ul {
+    margin-left: 20px; /* Indent lists */
+    font-family: 'TT Hoves Pro Trial'; /* Font for list items */
+}
+
+.terms-of-use li {
+    margin-bottom: 0.5rem; /* Space between list items */
+    font-family: 'TT Hoves Pro Trial'; /* Font for list items */
+}

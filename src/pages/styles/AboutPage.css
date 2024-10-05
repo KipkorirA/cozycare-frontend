@@ -1,0 +1,307 @@
+/* Font-Face for Custom Fonts */
+@font-face {
+    font-family: 'Veteran Typewriter';
+    src: url('/fonts/veteran typewriter.ttf') format('truetype'); /* Updated path to lowercase filename */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves Pro Trial';
+    src: url('/fonts/TT Hoves Pro Trial Regular.ttf') format('truetype'); /* Path to your TT Hoves font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* General Body Styling */
+body {
+    background-color: #ffffff;
+    font-family: 'TT Hoves Pro Trial', sans-serif; /* Apply TT Hoves to the body */
+}
+
+/* About Page General Styling */
+.about-page {
+    margin-top: 120px; /* Space below the fixed navbar */
+    margin-bottom: 0; /* Ensure no extra margin at the bottom of the about page */
+}
+
+/* About Section Layout */
+.about-section {
+    display: flex;
+    align-items: flex-start; /* Align items at the start */
+    margin: 20px 0;
+    margin-bottom: 40px; /* Reduce bottom margin for all sections */
+}
+
+/* About Section Content */
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Image Styling in About Sections */
+.about-image {
+    margin-top: 100px;
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+/* Text Styling in About Sections */
+.about-text {
+    width: 100%;
+    padding-left: 50px;
+    font-size: 2rem;
+    font-family: 'TT Hoves Pro Trial', sans-serif; /* TT Hoves for text sections */
+}
+
+/* About Section Heading Styling */
+.about-text h2 {
+    font-family: 'Veteran Typewriter', sans-serif; /* Use Veteran Typewriter font for headings */
+    font-size: 3rem;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+/* Divider Between Sections */
+.divider {
+    width: 100%;
+    height: 2px;
+    background-color: #ccc;
+    margin: 1rem 0;
+    border: none;
+}
+
+/* Paragraph Styling in About Sections */
+.about-text p {
+    font-size: 2rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Bullet List Styling */
+.about-bullets {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 1rem 0;
+}
+
+.cozycare-family-contact {
+    padding-left: 2%;
+    font-family: 'Veteran Typewriter', sans-serif; 
+    font-size: 1.5rem;
+}
+
+/* Why Choose CozyCare Section */
+.why-choose-cozycare {
+    background-color: #a8c2b2;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    text-align: center; /* Center-align text */
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    margin-bottom: 10px; /* Reduced bottom margin */
+    padding-bottom: 0; /* Maintain some padding at the bottom */
+    padding-top: 20px;
+    padding-left: 100px;
+}
+
+/* Paragraph Styling in Why Choose CozyCare */
+.why-choose-cozycare p {
+    font-family: 'TT Hoves Pro Trial', sans-serif; /* TT Hoves for paragraphs */
+    padding-left: 300px;
+    padding-right: 300px;
+    font-size: larger;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+
+/* Why Choose CozyCare Main Heading */
+.why-choose-heading {
+    font-family: 'Veteran Typewriter', sans-serif; /* Use Veteran Typewriter font for headings */
+    font-size: 4rem; /* Increase font size */
+    text-transform: uppercase;
+    color: #1a1a1a;
+    text-align: center; /* Center align the heading */
+}
+
+.responsiveness {
+    font-size: smaller;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Small Heading Styling */
+.small-heading {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Image Styling - Center the Images */
+.small-image {
+    width: 20%;
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Ensure block-level display for centering */
+    max-width: 100%; /* Ensure the image does not overflow */
+}
+
+/* Explore Services Link Styling */
+.explore-services {
+    background-color: #e2eee7;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 40%;
+    width: 150px;
+    font-size: 1.5rem;
+    color: #0e0101;
+    text-decoration: none;
+    padding-left: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add transparent black shadow */
+}
+
+.explore-services .text {
+    font-size: 10px;
+}
+
+.explore-services:hover {
+    text-decoration: underline;
+}
+
+.explore-services .arrow {
+    margin-right: 10px;
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 0; /* Remove extra space at the top of the footer */
+    padding-top: 0;
+}
+
+/* Footer Content Styling */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-section {
+    margin: 1rem 0;
+}
+
+.quick-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.quick-links li {
+    margin: 0 1rem;
+}
+
+.quick-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.quick-links a:hover {
+    color: #f0a500;
+}
+
+/* Copyright Section */
+.footer-bottom {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Responsive Media Query */
+@media (max-width: 1000px) {
+    /* Adjust Margins on Mobile */
+    .about-page {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    /* Stack Sections on Mobile */
+    .about-section {
+        flex-direction: column;
+    }
+
+    /* Adjust Image Width and Height on Mobile */
+    .about-image {
+        width: 10%;
+        height: auto;
+        margin: 0 0 20px 0;
+    }
+
+    /* Adjust Text Section on Mobile */
+    .about-text {
+        width: 100%;
+        padding-left: 10px;
+        font-size: 1rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    /* Bullet List Adjustments on Mobile */
+    .about-bullets {
+        padding-left: 15px;
+    }
+
+    /* Stack Columns in "Why Choose CozyCare" Section on Mobile */
+    .why-choose-cozycare {
+        flex-direction: column;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        text-align: center; /* Ensure text remains centered */
+        padding: 3px;
+        margin-bottom: 10px; /* Consistent small margin on mobile */
+    }
+
+    .why-choose-cozycare p {
+        padding-top: 50px;
+        font-size: 10px;
+    }
+
+    .why-choose-heading {
+        font-size: 2rem; /* Adjust heading font size on smaller screens */
+        margin-bottom: 15px; /* Reduce margin below heading on mobile */
+    }
+
+    /* Explore Services Styling on Mobile */
+    .explore-services {
+        margin-left: 0; /* Reset left margin for mobile */
+        width: 100%; /* Full width on mobile */
+        justify-content: center; /* Center the content */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Maintain shadow effect */
+    }
+}
+
+/* Responsive Footer Styling */
+@media (max-width: 768px) {
+    .quick-links ul {
+        flex-direction: column;
+    }
+
+    .quick-links li {
+        margin: 0.5rem 0;
+    }
+}
+
+.about-page section:last-child {
+    margin-bottom: 0 !important; /* Force no margin on the last section */
+}
