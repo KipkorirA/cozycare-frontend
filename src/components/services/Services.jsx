@@ -1,21 +1,22 @@
 // import React from 'react';
 import { Link } from 'react-router-dom';
+import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
 
 const Service = () => {
     return (
-        <section className="p-8">
+        <section className="p-8" style={{ backgroundColor: '#085846' }}> {/* Fixed background color */}
             {/* Section Title */}
-            <h1 className="text-4xl font-bold text-center mb-4">
-                OUR IN-HOME CARE <span className="text-[#f0a500]">SERVICE</span>
+            <h1 className="text-4xl text-[#eeedeb] font-bold text-left mb-4">
+                OUR IN-HOME CARE <br /> <span className="text-[#eeedeb]">SERVICE</span>
             </h1>
-            <hr className="border-b-2 border-[#f0a500] mb-6" />
+            <hr className="border-b-2 border-[#ad9c78] mb-6 w-80" />
 
             {/* Service Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid bg-none text-white grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Service 1 */}
-                <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
+                <div className="rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
                     <img 
-                        src="public/images/Untitled design (2)-Photoroom.png" 
+                        src="/images/Untitled design (2)-Photoroom.png" 
                         alt="Service 1" 
                         className="w-24 h-24 mb-4" 
                     />
@@ -28,9 +29,9 @@ const Service = () => {
                 </div>
 
                 {/* Service 2 */}
-                <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
+                <div className="rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
                     <img 
-                        src="public/images/Untitled design (3)-Photoroom.png" 
+                        src="/images/Untitled design (3)-Photoroom.png"  
                         alt="Service 2" 
                         className="w-24 h-24 mb-4" 
                     />
@@ -43,9 +44,9 @@ const Service = () => {
                 </div>
 
                 {/* Service 3 */}
-                <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
+                <div className="rounded-lg shadow-lg p-6 flex flex-col items-center text-center">
                     <img 
-                        src="public/images/Untitled design (4)-Photoroom.png" 
+                        src="/images/Untitled design (4)-Photoroom.png"  
                         alt="Service 3" 
                         className="w-24 h-24 mb-4" 
                     />
@@ -59,9 +60,9 @@ const Service = () => {
             </div>
 
             {/* Learn More Button Container */}
-            <div className="text-center mt-8">
-                <Link to="/services" className="bg-[#f0a500] text-white rounded-full px-6 py-2 font-semibold transition duration-300 ease-in-out hover:bg-[#b88c00] flex items-center justify-center">
-                    LEARN MORE <i className="fas fa-arrow-right ml-2"></i>
+            <div className="text-center content-center mt-8">
+                <Link to="/services" className="bg-[#0b471523] text-white rounded-full px-6 py-2 font-semibold transition duration-300 ease-in-out hover:bg-[#b88c00] flex items-center w-64 justify-center">
+                    LEARN MORE <i className="fas fa-arrow-right ml-2"></i> {/* Font Awesome arrow icon */}
                 </Link>
             </div>
         </section>
