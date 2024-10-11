@@ -1,5 +1,6 @@
 // import React from 'react';
 import { Link } from 'react-router-dom';
+import './Pricing.css';
 
 const Pricing = () => {
     return (
@@ -27,23 +28,23 @@ const Pricing = () => {
             </div>
 
             {/* Right Side: Image and Additional Info */}
-            <div className="w-full md:w-1/2 lg:w-2/5">
+            <div className="w-full md:w-2/3 lg:w-3/5">
                 {/* Big image with surrounding text */}
                 <div className="relative text-center w-full">
                     <img 
                         src="/images/CozyCare__7_-Photoroom-removebg-preview.png" 
-                        alt="Pricing Visual" 
-                        className="w-full h-auto object-cover rounded-lg mb-4" 
+                        alt="Illustration of pricing plans for CozyCare in-home services" 
+                        className="w-full h-200px object-cover rounded-lg mb-4" 
                     />
                     
                     {/* Text inside the image without background */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-11/12  text-black text-x md:text-sm lg:text-base text-left top-1/4 md:top-52">
-                        <h3 className="font-bold text-xs md:text-sm lg:text-base">Factors that may affect pricing include:</h3>
-                        <ul className="list-disc pl-5 text-xs md:text-sm lg:text-base">
-                            <li className="mb-2">Level of care: The intensity and complexity of the care required.</li>
-                            <li className="mb-2">Frequency of care: The number of hours of care needed per week.</li>
-                            <li className="mb-2">Location: Geographic location may influence pricing.</li>
-                            <li className="mb-2">Additional services: Any additional services requested, such as meal delivery or transportation.</li>
+                    <div className="pt-0 -mt-10 pl-5 pr-9 absolute inset-0 flex flex-col justify-center text-black bg-opacity-50 text-left rounded-lg">
+                        <h3 className="text-[8px] sm:text-sm md:text-base font-bold">Factors that may affect pricing include:</h3>
+                        <ul className="text-[8px] sm:text-xs md:text-sm mt-2 text-left">
+                            <li>Level of care: The intensity and complexity of the care required.</li>
+                            <li>Frequency of care: The number of hours of care needed per week.</li>
+                            <li>Location: Geographic location may influence pricing.</li>
+                            <li>Additional services: Any additional services requested, such as meal delivery or transportation.</li>
                         </ul>
                     </div>
                 </div>
@@ -58,7 +59,7 @@ const Pricing = () => {
                 </p>
 
                 {/* Link to Contact Us Page */}
-                <Link to="/contact" className="inline-block mt-8 px-4 py-2 text-red-500 rounded-full text-lg transition duration-300 ease-in-out hover:bg-[#54810c] hover:text-white">
+                <Link to="/contact" className="inline-block mt-8 px-6 py-3 text-red-500 rounded-full text-lg transition duration-300 ease-in-out hover:bg-[#54810c] hover:text-white">
                     Contact Us
                 </Link>
             </div>
