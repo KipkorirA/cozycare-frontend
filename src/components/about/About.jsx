@@ -31,7 +31,7 @@ const AboutUs = () => {
                 >
                     <SwiperSlide>
                         <Slide 
-                            imageSrc="public/images/CozyCare__6_-removebg-preview.png" 
+                            imageSrc="/images/CozyCare__6_-removebg-preview.png" 
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
@@ -43,7 +43,7 @@ const AboutUs = () => {
                     
                     <SwiperSlide>
                         <Slide 
-                            imageSrc="public/images/CozyCare__5_-removebg-preview.png"
+                            imageSrc="/images/CozyCare__5_-removebg-preview.png"
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
@@ -55,7 +55,7 @@ const AboutUs = () => {
                     
                     <SwiperSlide>
                         <Slide 
-                            imageSrc="public/images/CozyCare__4_-removebg-preview.png"
+                            imageSrc="/images/CozyCare__4_-removebg-preview.png"
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
