@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import the Link component from React Router
 
 const Feedback = () => {
-    const [testimonials, setTestimonials] = useState([]); // Renamed for clarity
+    const [testimonials, setTestimonials] = useState([]); // State for testimonials
+    const [error, setError] = useState(null); // State for error handling
 
     // Fetch testimonials from backend
     useEffect(() => {
@@ -17,17 +18,39 @@ const Feedback = () => {
                 setTestimonials(data); // Set the testimonials data
             } catch (error) {
                 console.error('Error fetching testimonials:', error);
+                setError('Failed to load testimonials. Please try again later.');
             }
         };
 
         fetchTestimonials();
     }, []);
 
+    // Placeholder testimonials (example data)
+    const placeholderTestimonials = [
+        {
+            text: "CozyCare has been a life-saver! The caregivers are professional and very caring. My family is grateful for their help.",
+            author: "Sarah Johnson",
+            image_url: './nicegalsse.webp', // Local image path for the placeholder
+        },
+        {
+            text: "The service was excellent, and the care team was always prompt and attentive to my elderly parents' needs.",
+            author: "John Doe",
+            image_url: './Thumbsup.webp', // Local image path for the placeholder
+        },
+        {
+            text: "I have peace of mind knowing my mom is in good hands. CozyCare provides personalized and compassionate care.",
+            author: "Emily Davis",
+            image_url: './Charimani.webp', // Local image path for the placeholder
+        },
+    ];
+
+    // Use actual testimonials if available, otherwise fallback to placeholders
+    const displayTestimonials = testimonials.length > 0 ? testimonials : placeholderTestimonials;
+
     return (
         <section className="w-full pt-1 px-4 pb-10 bg-[#a8c2b2] text-left">
-            {/* Full-width background image (if needed) */}
+            {/* Full-width background image */}
             <div className="feedback-banner mb-8">
-                {/* You can add a background image here if required */}
                 <img src="/src/components/feedback/Medicine.webp" alt="Feedback Banner" className="w-full max-h-[300px] object-cover" />
             </div>
 
@@ -51,19 +74,19 @@ const Feedback = () => {
 
             {/* Feedback comments */}
             <div className="flex flex-col md:flex-row justify-between gap-8">
-                {testimonials.length > 0 ? (
-                    testimonials.slice(0, 3).map((testimonial, index) => ( // Limit to the first 3 testimonials
+                {error ? (
+                    <p className="text-red-600">{error}</p> // Display error if fetching testimonials fails
+                ) : displayTestimonials.length > 0 ? (
+                    displayTestimonials.slice(0, 3).map((testimonial, index) => ( // Limit to the first 3 testimonials
                         <div className="bg-[#a8c2b2] rounded-lg shadow-md p-6 w-full md:w-1/3 text-left" key={index}>
                             <p className="text-base text-[#1b0202] mb-6">"{testimonial.text}"</p>
                             <div className="flex flex-col items-center">
                                 {/* Display the client's image if available */}
-                                {testimonial.image_url && (
-                                    <img
-                                        src={`http://localhost:5000${testimonial.image_url}`} // Use the API URL
-                                        alt={testimonial.author || "Anonymous"}
-                                        className="w-36 h-36 object-cover rounded-full mb-4"
-                                    />
-                                )}
+                                <img
+                                    src={testimonial.image_url ? `http://localhost:5000${testimonial.image_url}` : testimonial.image_url}
+                                    alt={testimonial.author || "Anonymous"}
+                                    className="w-36 h-36 object-cover rounded-full mb-4"
+                                />
                                 <h6 className="text-lg">{testimonial.author || "Anonymous"}</h6> {/* Default to "Anonymous" if no name provided */}
                                 <hr className="w-4/5 border border-[#161001]" />
                             </div>

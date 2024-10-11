@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-import "./styles/FeedbackPage.css"; // You can remove this line if styles are entirely converted to Tailwind.
+import "./styles/FeedbackPage.css"; // Optional: keep if using specific styles outside Tailwind
 
 const StarRating = ({ rating, setRating }) => {
     const stars = [1, 2, 3, 4, 5];
 
     return (
-        <div className="flex mb-4">
+        <div className="flex mb-4" role="group" aria-label="Rating stars">
             {stars.map((star) => (
                 <span
                     key={star}
@@ -16,6 +16,8 @@ const StarRating = ({ rating, setRating }) => {
                     }`}
                     onClick={() => setRating(star)}
                     role="button"
+                    tabIndex={0} // Make it keyboard accessible
+                    onKeyDown={(e) => e.key === 'Enter' && setRating(star)} // Handle keyboard events
                     aria-label={`${star} star${star > 1 ? 's' : ''}`}
                 >
                     ★
@@ -61,7 +63,7 @@ const FeedbackPage = () => {
     const [message, setMessage] = useState("");
     const [fileName, setFileName] = useState("");
     const [testimonials, setTestimonials] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true); // Start loading as true
     const [currentPage, setCurrentPage] = useState(1);
     const testimonialsPerPage = 6;
 
@@ -70,20 +72,32 @@ const FeedbackPage = () => {
     }, []);
 
     const fetchTestimonials = async () => {
-        setLoading(true);
         try {
             const response = await fetch("http://localhost:5000/api/testimonials");
             if (response.ok) {
                 const data = await response.json();
                 setTestimonials(data);
             } else {
-                setMessage("Failed to load testimonials.");
+                setMessage("Failed to load testimonials. Using placeholder data.");
+                setTestimonials(getPlaceholderTestimonials());
             }
         } catch (error) {
-            setMessage("Error fetching testimonials. Please try again.");
+            setMessage("Error fetching testimonials. Using placeholder data.");
+            setTestimonials(getPlaceholderTestimonials());
         } finally {
-            setLoading(false);
+            setLoading(false); // Set loading to false regardless of API success
         }
+    };
+
+    const getPlaceholderTestimonials = () => {
+        return [
+            { text: "Great service! I felt like part of the family.", author: "John Doe", image_url: "/images/testimonial1.jpg" },
+            { text: "Absolutely amazing experience! Highly recommend.", author: "Jane Smith", image_url: "/images/testimonial2.jpg" },
+            { text: "The staff are so caring and attentive.", author: "Sam Wilson", image_url: "/images/testimonial3.jpg" },
+            { text: "Best care I’ve ever received.", author: "Alice Brown", image_url: "/images/testimonial4.jpg" },
+            { text: "Wonderful experience from start to finish.", author: "Bob Johnson", image_url: "/images/testimonial5.jpg" },
+            { text: "I couldn't be happier with the service!", author: "Carol White", image_url: "/images/testimonial6.jpg" },
+        ];
     };
 
     const handleFileChange = (event) => {
@@ -134,7 +148,7 @@ const FeedbackPage = () => {
                 const data = await response.json();
                 setMessage(data.message);
                 resetForm();
-                fetchTestimonials();
+                fetchTestimonials(); // Refresh testimonials after submitting feedback
             } else {
                 const errorData = await response.json();
                 setMessage(errorData.message);
@@ -193,6 +207,9 @@ const FeedbackPage = () => {
                             key={index}
                             className="flex items-center justify-center bg-gray-300 border border-gray-400 px-4 py-2 mx-1 cursor-pointer transform rotate-45 transition duration-300"
                             onClick={() => handlePageClick(index + 1)}
+                            role="button"
+                            tabIndex={0} // Make it keyboard accessible
+                            onKeyDown={(e) => e.key === 'Enter' && handlePageClick(index + 1)} // Handle keyboard events
                         >
                             <span className="transform -rotate-45">{index + 1}</span>
                         </div>
@@ -202,7 +219,7 @@ const FeedbackPage = () => {
 
             <div className="bg-green-300 p-8 rounded-lg shadow-lg">
                 <h1 className="text-2xl mb-2">We Value Your Feedback</h1>
-                <p className="mb-6">Your feedback helps us improve. Let us know how we can serve you better.</p>
+                <p className="mb-4">Your thoughts help us improve our services!</p>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="name" className="font-bold text-lg">Your Name (optional):</label>
                     <input
@@ -258,11 +275,11 @@ const FeedbackPage = () => {
                         disabled={loading} 
                         className={`bg-green-600 text-white py-2 px-4 rounded-lg ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-700 transition duration-300'}`}
                     >
-                        Submit Feedback
+                        {loading ? "Submitting..." : "Submit Feedback"}
                     </button>
                 </form>
 
-                {message && <p className="text-red-600 mt-4">{message}</p>}
+                {message && <p className={`mt-4 ${message.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>{message}</p>}
             </div>
         </div>
     );

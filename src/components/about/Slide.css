@@ -1,0 +1,88 @@
+.slide1 .description {
+    padding-top: 130px;
+    font-size: 18px; 
+    padding-left: 156px;
+    padding-right: 24px;
+}
+
+.slide1 .link {
+    padding-top: 5px;
+    font-size: 20px; 
+    padding-left: 154px;
+}
+
+.slide2 .description {
+    padding-top: 70px;
+    font-size: 18px; 
+    padding-left: 149px;
+    padding-right: 260px;
+}
+
+.slide2 .link {
+    padding-top: 5px;
+    font-size: 18px; 
+    padding-right: 110px;
+}
+
+.slide3 .description {
+    padding-top: 50px;
+    font-size: 18px; 
+    padding-left: 70px;
+    padding-right: 300px;
+}
+
+.slide3 .link {
+    padding-top: 5px;
+    font-size: 18px; 
+    padding-right: 230px;
+}
+
+/* Mobile Optimization */
+@media (max-width: 640px) {
+
+    .slide1 img, .slide2 img, .slide3 img {
+        height: 260px;
+    }
+
+    .slide1 .description, .slide2 .description, .slide3 .description {
+        padding-top: 24px;
+        font-size: 8px; /* Increased for readability */
+        padding-right: 5px;
+    }
+
+    .slide1 .link, .slide2 .link, .slide3 .link {
+        font-size: 8px;
+    }
+
+    /* Adjusting padding for better centering and scale on smaller screens */
+    .slide1 .description, .slide1 .link {
+        padding-left: 7vw;
+    }
+
+    .slide2 .description {
+        padding-left: 11vw;
+        padding-top: 56vw;
+        font-size: 8px;
+        padding-right: 48vw;
+    }
+
+    .slide2 .link{
+        padding-top: 0;
+        font-size: 8px;
+        padding-left: 5vh;
+        padding-right: 48vw;
+    }
+
+    .slide3 .description{
+        padding-left: 6vw;
+        padding-right: 2;
+    }
+
+    .slide3 .link{
+        padding-top: 0;
+        font-size: 8px;
+        padding-left: 5vw;
+        padding-right: 2vw;
+
+    }
+}

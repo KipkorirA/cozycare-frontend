@@ -15,18 +15,8 @@
     animation-fill-mode: forwards; /* Keep final state after animation */
 }
 
-/* Define the custom font */
-@font-face {
-    font-family: 'TT Hoves Pro';
-    src: url('/fonts/TT Hoves Pro Trial Variable.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
-/* Apply the font globally or to specific elements */
-body, h1, h2 {
-    font-family: 'TT Hoves Pro', sans-serif;
-}
+
 
 /* Additional styles for the text pop-up animation */
 @keyframes popUp {
