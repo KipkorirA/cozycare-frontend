@@ -31,7 +31,7 @@ const Pricing = () => {
                 {/* Big image with surrounding text */}
                 <div className="relative text-center w-full">
                     <img 
-                        src="public/images/CozyCare__7_-Photoroom-removebg-preview.png" 
+                        src="/images/CozyCare__7_-Photoroom-removebg-preview.png" 
                         alt="Pricing Visual" 
                         className="w-full h-auto object-cover rounded-lg mb-4" 
                     />

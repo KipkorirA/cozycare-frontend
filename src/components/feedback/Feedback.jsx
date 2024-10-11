@@ -48,13 +48,13 @@ const Feedback = () => {
     const displayTestimonials = testimonials.length > 0 ? testimonials : placeholderTestimonials;
 
     return (
-        <section className="w-full pt-1 px-4 pb-10 bg-[#a8c2b2] text-left">
+        <section className="w-full pt-1 px-0 pb-10 bg-[#a8c2b2] text-left">
             {/* Full-width background image */}
-            <div className="feedback-banner mb-8">
-                <img src="/src/components/feedback/Medicine.webp" alt="Feedback Banner" className="w-full max-h-[300px] object-cover" />
+            <div className="feedback-banner mb-8 ml-0 p-0">
+                <img src="/images/Medicine.webp" alt="Feedback Banner" className="w-full max-h-[300px] object-cover" />
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between items-start mb-12">
+            <div className="flex flex-col md:flex-row justify-between items-start mb-12 px-4">
                 {/* Left: Main Heading */}
                 <div className="w-full md:w-1/2 mb-4 md:mb-0">
                     <h1 className="text-3xl md:text-4xl text-[#1a0202] pl-5">
