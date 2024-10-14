@@ -66,8 +66,7 @@ const AboutPage = () => {
                             alt={slide.imageAlt} 
                             className="about-image w-full h-auto object-contain rounded-lg" 
                         />
-                        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white text-xl font-bold p-4">
-                            {slide.caption}
+                        <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold p-4">
                         </div>
                     </div>
                     <div className="about-text flex flex-col justify-between px-5 md:w-1/2">

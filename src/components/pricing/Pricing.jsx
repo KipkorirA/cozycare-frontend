@@ -1,4 +1,3 @@
-// import React from 'react';
 import { Link } from 'react-router-dom';
 import './Pricing.css';
 
@@ -34,13 +33,13 @@ const Pricing = () => {
                     <img 
                         src="/images/CozyCare__7_-Photoroom-removebg-preview.png" 
                         alt="Illustration of pricing plans for CozyCare in-home services" 
-                        className="w-full h-200px object-cover rounded-lg mb-4" 
+                        className="w-full h-auto object-cover rounded-lg mb-4" 
                     />
                     
                     {/* Text inside the image without background */}
-                    <div className="pt-0 -mt-10 pl-5 pr-9 absolute inset-0 flex flex-col justify-center text-black bg-opacity-50 text-left rounded-lg">
-                        <h3 className="text-[8px] sm:text-sm md:text-base font-bold">Factors that may affect pricing include:</h3>
-                        <ul className="text-[8px] sm:text-xs md:text-sm mt-2 text-left">
+                    <div className="pt-0 -mt-24 pl-9 pr-9 absolute inset-0 flex flex-col justify-center text-black bg-opacity-50 text-left rounded-lg md:pl-8 md:pt--1">
+                        <h3 className="text-[14px] md:text-[12px] lg:text-[26px] lg:pl-9 lg:pr-9  font-bold">Factors that may affect pricing include:</h3>
+                        <ul className="text-[14px] md:text-[12px] lg:text-[26px] mt-2 text-left lg:pl-9 lg:pr-9 ">
                             <li>Level of care: The intensity and complexity of the care required.</li>
                             <li>Frequency of care: The number of hours of care needed per week.</li>
                             <li>Location: Geographic location may influence pricing.</li>
@@ -52,14 +51,15 @@ const Pricing = () => {
                 {/* Paragraph below the image */}
                 <p className="mt-4 text-lg md:text-xl lg:text-2xl text-gray-800 leading-relaxed">
                     To get a personalized quote, please contact us at 
-                    <a href="tel:+254700697430" className="text-red-500 underline"> [+254 700 697 430]</a> or 
-                    <a href="mailto:support@cozycare.com" className="text-red-500 underline"> support@cozycare.com</a>. 
+                    <a href="tel:+254700697430" className="text-red-500 underline hover:text-red-700"> [+254 700 697 430]</a> or 
+                    <a href="mailto:support@cozycare.com" className="text-red-500 underline hover:text-red-700"> support@cozycare.com</a>. 
                     We are happy to discuss your specific needs and provide you with a tailored pricing estimate.
-                    Note: Prices are subject to change. Please contact us for the most up-to-date pricing information.
+                    <br />
+                    <span className="text-sm text-gray-500">Note: Prices are subject to change. Please contact us for the most up-to-date pricing information.</span>
                 </p>
 
                 {/* Link to Contact Us Page */}
-                <Link to="/contact" className="inline-block mt-8 px-6 py-3 text-red-500 rounded-full text-lg transition duration-300 ease-in-out hover:bg-[#54810c] hover:text-white">
+                <Link to="/contact" className="inline-block mt-8 px-6 py-3 text-red-500 rounded-full text-lg transition duration-300 ease-in-out bg-green-950 text-white hover:bg-[#54810c] hover:text-white">
                     Contact Us
                 </Link>
             </div>
