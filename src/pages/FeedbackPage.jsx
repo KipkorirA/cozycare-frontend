@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
-import "./styles/FeedbackPage.css"; // Optional: keep if using specific styles outside Tailwind
+
 
 const StarRating = ({ rating, setRating }) => {
     const stars = [1, 2, 3, 4, 5];
@@ -73,7 +73,7 @@ const FeedbackPage = () => {
 
     const fetchTestimonials = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/testimonials");
+            const response = await fetch("http://localhost:5000/feedback");
             if (response.ok) {
                 const data = await response.json();
                 setTestimonials(data);
@@ -139,7 +139,7 @@ const FeedbackPage = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/api/feedback", {
+            const response = await fetch("http://localhost:5000/feedback", {
                 method: "POST",
                 body: formData,
             });

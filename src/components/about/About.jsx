@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react'; 
 import 'swiper/swiper-bundle.css'; 
 import Slide from './Slide'; 
-import './Slide.css'; 
+ 
 
 const AboutUs = () => {
     const [progress, setProgress] = useState(0);
@@ -18,11 +18,13 @@ const AboutUs = () => {
     };
 
     return (
-        <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-24 gap-y-0 items-start py-20 px-8 bg-gray-200"> {/* Reduced gap */}
+
+        <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-16 lg:gap-x-32 gap-y-10 items-center sm:items-start py-12 sm:py-24 px-6 sm:px-10 shadow-inner">
             {/* Carousel for displaying slides */}
-            <div className="w-full max-w-3xl relative md:mb-0">
+
+            <div className="w-full sm:max-w-2xl md:max-w-3xl relative mb-10 md:mb-0 shadow-xl rounded-lg overflow-hidden">
                 <Swiper
-                    spaceBetween={50}
+                    spaceBetween={30}
                     slidesPerView={1}
                     loop={true}
                     onSlideChange={updateProgress}
@@ -35,7 +37,7 @@ const AboutUs = () => {
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
-                            textPosition="left-44 top-44 -translate-y-1/2 lg:left-96 lg:right-0 lg:top-96"
+                            textPosition="left-4 sm:left-24 md:left-44 top-32 sm:top-44 lg:left-96 lg:top-96"
                             additionalClasses="slide1" 
                             description="Say goodbye to the hassle of travelling to a clinic or to a hospital"
                         />
@@ -47,7 +49,7 @@ const AboutUs = () => {
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="lg:left-0 lg:right-44 lg:top-96"
+                            textPosition="left-4 sm:left-24 md:left-44 top-32 sm:top-44 lg:left-0 lg:right-44 lg:top-96"
                             additionalClasses="slide2" 
                             description="Seamlessly navigate your healthcare journey with ease."
                         />
@@ -59,7 +61,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="left-1 right-48 top-[66%]"
+                            textPosition="left-4 sm:left-24 md:left-44 top-32 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />
@@ -67,26 +69,36 @@ const AboutUs = () => {
                 </Swiper>
 
                 {/* Progress bar to visually indicate slide progress */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-300 z-10">
-                    <div className="h-full bg-[#f0a500] transition-all duration-500 ease" style={{ width: `${progress}%` }} />
+
+
+                <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gray-300/50 backdrop-blur-sm z-10">
+                    <div className="h-full bg-[#f0a500] transition-all duration-500 ease-in-out shadow-lg" style={{ width: `${progress}%` }} />
                 </div>
             </div>
 
             {/* Section for CozyCare description and contact information */}
-            <div className="w-full md:w-full lg:w-full max-w-xl md:mt-0"> {/* Adjusted width classes */}
-                <h1 className="text-4xl text-gray-800 font-bold text-left pl-0 ml-0" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
-                <hr className="my-4 border-t border-[#f0a500] w-1/2" />
-                <h2 className="text-3xl text-gray-700 mb-4" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '500' }}>Comprehensive Health Services</h2>
-                <p className="text-xl leading-7 text-gray-600" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '400' }}>
+
+
+
+
+
+            <div className="w-full sm:w-4/5 md:w-2/5 lg:w-2/5 max-w-xl mt-8 md:mt-0 px-6 sm:px-0 space-y-4">
+                <h1 className="text-4xl sm:text-5xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
+                <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80" />
+                <h2 className="text-2xl sm:text-3xl text-gray-700 font-semibold tracking-wide" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '500' }}>Comprehensive Health Services</h2>
+                <p className="text-lg sm:text-xl leading-relaxed text-gray-600 tracking-wide" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '400' }}>
                     CozyCare is a holistic health service provider offering tailored care solutions in the comfort of your home.
                     From everyday healthcare needs to specialized services, we ensure you receive the best care at affordable prices.
                 </p>
-                <div className="flex items-center mt-8 ">
-                    <Link to="/contact" className="bg-[#053a09] text-white py-2 pl-10 pr-9 rounded-full text-lg mr-4 hover:bg-[#e69500] text-left" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
+
+
+                <div className="flex items-center mt-8">
+                    <Link to="/contact" className="bg-[#053a09] text-white py-3 pl-10 sm:pl-12 pr-8 sm:pr-10 rounded-full text-base sm:text-lg mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
                         Contact Us
                     </Link>
-                    <div className="bg-[#053a09] rounded-full border-4 border-white p-2 flex items-center justify-center -m-10">
-                        <FontAwesomeIcon icon={faPhone} className="text-xl text-white" aria-label="Phone icon to contact CozyCare" />
+
+                    <div className="bg-[#053a09] rounded-full border-4 border-white p-3 flex items-center justify-center -ml-10 sm:-ml-12 shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 z-10">
+                        <FontAwesomeIcon icon={faPhone} className="text-lg sm:text-xl text-white" aria-label="Phone icon to contact CozyCare" />
                     </div>
                 </div>
             </div>

@@ -1,4 +1,3 @@
-
 import Footer from './components/footer/Footer';
 import Navbar from './components/navbar/Navbar';
 import HomeSection from './components/home/Home';
@@ -16,9 +15,13 @@ import FeedbackPage from './pages/FeedbackPage';
 import ContactPage from './pages/ContactPage';
 import SubscribePage from './pages/SubscribePage';
 import TermsOfUsePage from './pages/TermsOfUsePage';
-import SubscriptionSuccessfulPage from './pages/SubscriptionSucccessfulPage';
+import SubscriptionSuccessfulPage from './pages/SubscriptionSuccessfulPage';
 import NotFoundPage from './pages/NotFoundPage'; // Import the NotFoundPage
 import PrivacyAndCookiePolicyPage from './pages/PrivacyAndCookiePolicyPage'; // Import Privacy Policy Page
+import CareerManage from './pages/manage/CareerManage'; // Import CareerManage
+import FeedbackManage from './pages/manage/FeedbackManage'; // Import FeedbackManage
+import SubscriptionManage from './pages/manage/SubscriptionManage'; // Import SubscriptionManage
+import Manage from './pages/manage/Manage'; // Import Manage component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -52,6 +55,12 @@ const App = () => {
             <Route path="/terms-of-use" element={<TermsOfUsePage />} />
             <Route path="/privacy-policy" element={<PrivacyAndCookiePolicyPage />} />
             <Route path="/subscription-successful" element={<SubscriptionSuccessfulPage />} />
+            
+            {/* Management routes */}
+            <Route path="/manage" element={<Manage />} />  {/* Added route for Manage component */}
+            <Route path="/manage/careers" element={<CareerManage />} />
+            <Route path="/manage/feedback" element={<FeedbackManage />} />
+            <Route path="/manage/subscriptions" element={<SubscriptionManage />} />
 
             {/* Catch all unmatched routes and render the NotFoundPage */}
             <Route path="*" element={<NotFoundPage />} />

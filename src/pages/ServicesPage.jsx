@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import "./styles/ServicesPage.css"; // You can remove this import if you are not using any custom CSS anymore
 
 // Data for services to avoid repetition and make it easier to manage
 const servicesData = [
@@ -18,7 +17,7 @@ const servicesData = [
   },
   {
     title: "Chronic Disease Management",
-    imgSrc: "/images/3-removebg-preview.png",
+    imgSrc: "/images/3-removebg-preview (1).png",
     description: "Helping manage long-term illnesses for a better quality of life.",
     services: [
       "Diabetes Management: Assisting with blood sugar monitoring, insulin administration, and dietary planning.",
@@ -53,17 +52,19 @@ const servicesData = [
 ];
 
 // Reusable service block component
-const ServiceBlock = ({ title, imgSrc, description, services }) => (
-  <section className="flex flex-wrap mb-16">
-    <div className="flex-1 flex justify-center items-center">
-      <img src={imgSrc} alt={`${title} illustration`} className="max-w-full" />
+
+const ServiceBlock = ({ title, imgSrc, description, services, index }) => (
+  <section className={`flex flex-wrap mb-16 p-8 hover:bg-gray-50 transition-all duration-300 rounded-xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+    <div className="flex-1 flex justify-center items-center p-4">
+      <img src={imgSrc} alt={`${title} illustration`} className="max-w-full h-auto transform hover:scale-105 transition-transform duration-300" />
     </div>
-    <div className="flex-1 pl-8">
-      <h2 className="text-3xl font-monospace mb-4 text-gray-700">{title}</h2>
-      <p className="font-bold line-height-8 text-black">{description}</p>
-      <ul className="list-disc pl-6 text-gray-600 mt-4">
+
+    <div className="flex-1 px-8">
+      <h2 className="text-3xl font-monospace mb-4 text-gray-700 hover:text-gray-900 transition-colors duration-300">{title}</h2>
+      <p className="font-bold text-lg leading-relaxed text-black">{description}</p>
+      <ul className="list-disc pl-6 text-gray-600 mt-6 space-y-3">
         {services.map((service, index) => (
-          <li key={index} className="mb-2 text-lg">{service}</li>
+          <li key={index} className="text-lg hover:text-gray-900 transition-colors duration-200">{service}</li>
         ))}
       </ul>
     </div>
@@ -72,30 +73,32 @@ const ServiceBlock = ({ title, imgSrc, description, services }) => (
 
 const ServicesPage = () => {
   return (
-    <div className="bg-gray-100 font-sans pt-0 mt-0">
-      <h1 className="text-5xl pt-32 pb-4 pl-8 font-monospace text-gray-800">Our In-Home Care Services</h1>
-      <div className="w-72 h-1 bg-gray-600 rounded mb-12 pl-8" />
-      <div className="pl-8 pr-10 mr-10">
-        <p className="text-xl">
-          <strong>Care Where You Reside</strong>
-          <br />
-          Cozycare offers a wide range of personalized in-home care services designed to meet your unique needs and preferences. Our goal is to help you maintain your independence and quality of life while receiving the support you require.
-        </p>
-        <p className="text-xl mt-4"><strong>Our Services Include:</strong></p>
-        <div>
-          <img src="/public/images/1-removebg-preview.png" alt="Care" className="absolute top-16 right-8 w-1/3" />
+    <div className="bg-gray-100 font-sans min-h-screen w-full">
+      <div className="relative w-full">
+        <img src="/public/images/1-removebg-preview.png" alt="Care" className="absolute right-0 top-8 w-48 z-10" />
+        <div className="w-full">
+          <h1 className="text-5xl pt-32 pb-4 font-monospace text-gray-800 text-center">Our In-Home Care Services</h1>
+          <div className="w-72 h-1 bg-gray-600 rounded mb-12 mx-auto" />
+          <div className="max-w-6xl mx-auto mb-16 px-4">
+            <p className="text-xl text-center">
+              <strong className="text-2xl block mb-4">Care Where You Reside</strong>
+              Cozycare offers a wide range of personalized in-home care services designed to meet your unique needs and preferences. Our goal is to help you maintain your independence and quality of life while receiving the support you require.
+            </p>
+            <p className="text-xl mt-8 text-center"><strong>Our Services Include:</strong></p>
+          </div>
+
+          {servicesData.map((service, index) => (
+            <ServiceBlock
+              key={index}
+              index={index}
+              title={service.title}
+              imgSrc={service.imgSrc}
+              description={service.description}
+              services={service.services}
+            />
+          ))}
         </div>
       </div>
-
-      {servicesData.map((service, index) => (
-        <ServiceBlock
-          key={index}
-          title={service.title}
-          imgSrc={service.imgSrc}
-          description={service.description}
-          services={service.services}
-        />
-      ))}
     </div>
   );
 };

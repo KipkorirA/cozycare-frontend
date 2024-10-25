@@ -57,17 +57,17 @@ const ContactForm = () => {
     };
 
     return (
-        <section className="flex justify-center items-center p-16 bg-[#085846]">
-            <form className="w-full max-w-lg bg-[#085846] p-8 rounded-lg shadow-lg" onSubmit={handleSubmit}>
+        <section className="flex justify-center items-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#085846]">
+            <form className="w-full max-w-lg bg-[#085846] p-8 rounded-xl shadow-2xl space-y-8" onSubmit={handleSubmit}>
                 {/* First Name and Last Name */}
-                <div className="flex justify-between mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input 
                         type="text" 
                         name="firstName" 
                         placeholder="First Name" 
                         value={formData.firstName} 
                         onChange={handleChange} 
-                        className="w-1/2 p-3 border border-[#00a879] bg-[#00a879] text-white rounded focus:outline-none focus:border-white focus:bg-[#004d45] placeholder:text-white placeholder:opacity-50" 
+                        className="w-full p-3 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out" 
                         required 
                     />
                     <input 
@@ -76,20 +76,20 @@ const ContactForm = () => {
                         placeholder="Last Name" 
                         value={formData.lastName} 
                         onChange={handleChange} 
-                        className="w-1/2 p-3 border border-[#00a879] bg-[#00a879] text-white rounded focus:outline-none focus:border-white focus:bg-[#004d45] placeholder:text-white placeholder:opacity-50" 
+                        className="w-full p-3 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out" 
                         required 
                     />
                 </div>
 
                 {/* Phone and Email */}
-                <div className="flex justify-between mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input 
                         type="tel" 
                         name="phone" 
                         placeholder="Phone" 
                         value={formData.phone} 
                         onChange={handleChange} 
-                        className="w-1/2 p-3 border border-[#00a879] bg-[#00a879] text-white rounded focus:outline-none focus:border-white focus:bg-[#004d45] placeholder:text-white placeholder:opacity-50" 
+                        className="w-full p-3 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out" 
                         required 
                     />
                     <input 
@@ -98,38 +98,39 @@ const ContactForm = () => {
                         placeholder="Email" 
                         value={formData.email} 
                         onChange={handleChange} 
-                        className="w-1/2 p-3 border border-[#00a879] bg-[#00a879] text-white rounded focus:outline-none focus:border-white focus:bg-[#004d45] placeholder:text-white placeholder:opacity-50" 
+                        className="w-full p-3 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out" 
                         required 
                     />
                 </div>
 
                 {/* Message */}
-                <div className="mb-6">
+                <div>
                     <textarea
                         name="message"
                         placeholder="Your Message"
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full p-3 border border-[#00a879] bg-[#00a879] text-white rounded focus:outline-none focus:border-white focus:bg-[#004d45] placeholder:text-white placeholder:opacity-50 h-32" 
+                        className="w-full p-4 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out resize-none h-40" 
                         required
                     ></textarea>
                 </div>
 
                 {/* reCAPTCHA */}
-                <div className="flex justify-center items-center mb-6">
+                <div className="flex justify-center items-center">
                     <ReCAPTCHA
                         sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"
                         onChange={handleCaptcha}
+                        className="transform scale-100 hover:scale-105 transition-transform duration-300"
                     />
                 </div>
 
                 {/* Error Message */}
-                {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+                {errorMessage && <p className="text-red-400 text-center font-medium animate-pulse">{errorMessage}</p>}
 
                 {/* Submit Button */}
                 <button 
                     type="submit" 
-                    className={`w-full py-3 text-lg text-white bg-[#00a879] rounded transition-all duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#e69500]'}`} 
+                    className={`w-full py-4 text-lg font-semibold text-white bg-[#00a879] rounded-lg shadow-lg transform transition-all duration-300 ease-in-out ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#e69500] hover:scale-[1.02] active:scale-[0.98] hover:shadow-xl'}`} 
                     disabled={isLoading}
                 >
                     {isLoading ? 'Submitting...' : 'Submit'}

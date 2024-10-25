@@ -4,8 +4,8 @@ const Careers = () => {
     return (
         <section className="flex flex-col md:flex-row items-start p-16 bg-[#a8c2b2]">
             {/* Left Division: Title and Earth Image */}
-            <div className="w-full md:w-1/3 text-left">
-                <h1 className="font-bold text-6xl text-[#333] mb-4">CAREERS</h1>
+            <div className="w-full md:w-1/3 -mt-3  text-left">
+                <h1 className="text-6xl text-[#333] mb-4 -ml-16">CAREERS</h1>
                 <hr className="w-20 border-2 border-[#f0a500] mb-6" />
                 <img
                     src="/images/Pirateship.webp"
