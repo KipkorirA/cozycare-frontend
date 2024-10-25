@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useCallback } from "react";
+import PropTypes from 'prop-types';
 
 const StarRating = ({ rating, setRating }) => {
     const stars = [1, 2, 3, 4, 5];
@@ -16,8 +14,8 @@ const StarRating = ({ rating, setRating }) => {
                     }`}
                     onClick={() => setRating(star)}
                     role="button"
-                    tabIndex={0} // Make it keyboard accessible
-                    onKeyDown={(e) => e.key === 'Enter' && setRating(star)} // Handle keyboard events
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && setRating(star)}
                     aria-label={`${star} star${star > 1 ? 's' : ''}`}
                 >
                     ★
@@ -25,6 +23,11 @@ const StarRating = ({ rating, setRating }) => {
             ))}
         </div>
     );
+};
+
+StarRating.propTypes = {
+    rating: PropTypes.number.isRequired,
+    setRating: PropTypes.func.isRequired
 };
 
 const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage }) => {
@@ -54,6 +57,17 @@ const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage 
     );
 };
 
+Testimonials.propTypes = {
+    testimonials: PropTypes.arrayOf(PropTypes.shape({
+        text: PropTypes.string,
+        author: PropTypes.string,
+        image_url: PropTypes.string
+    })).isRequired,
+    loading: PropTypes.bool.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    testimonialsPerPage: PropTypes.number.isRequired
+};
+
 const FeedbackPage = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -63,15 +77,22 @@ const FeedbackPage = () => {
     const [message, setMessage] = useState("");
     const [fileName, setFileName] = useState("");
     const [testimonials, setTestimonials] = useState([]);
-    const [loading, setLoading] = useState(true); // Start loading as true
+    const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const testimonialsPerPage = 6;
 
-    useEffect(() => {
-        fetchTestimonials();
-    }, []);
+    const getPlaceholderTestimonials = () => {
+        return [
+            { text: "Great service! I felt like part of the family.", author: "John Doe", image_url: "/images/testimonial1.jpg" },
+            { text: "Absolutely amazing experience! Highly recommend.", author: "Jane Smith", image_url: "/images/testimonial2.jpg" },
+            { text: "The staff are so caring and attentive.", author: "Sam Wilson", image_url: "/images/testimonial3.jpg" },
+            { text: "Best care I've ever received.", author: "Alice Brown", image_url: "/images/testimonial4.jpg" },
+            { text: "Wonderful experience from start to finish.", author: "Bob Johnson", image_url: "/images/testimonial5.jpg" },
+            { text: "I couldn't be happier with the service!", author: "Carol White", image_url: "/images/testimonial6.jpg" },
+        ];
+    };
 
-    const fetchTestimonials = async () => {
+    const fetchTestimonials = useCallback(async () => {
         try {
             const response = await fetch("http://localhost:5000/feedback");
             if (response.ok) {
@@ -85,20 +106,13 @@ const FeedbackPage = () => {
             setMessage("Error fetching testimonials. Using placeholder data.");
             setTestimonials(getPlaceholderTestimonials());
         } finally {
-            setLoading(false); // Set loading to false regardless of API success
+            setLoading(false);
         }
-    };
+    }, []);
 
-    const getPlaceholderTestimonials = () => {
-        return [
-            { text: "Great service! I felt like part of the family.", author: "John Doe", image_url: "/images/testimonial1.jpg" },
-            { text: "Absolutely amazing experience! Highly recommend.", author: "Jane Smith", image_url: "/images/testimonial2.jpg" },
-            { text: "The staff are so caring and attentive.", author: "Sam Wilson", image_url: "/images/testimonial3.jpg" },
-            { text: "Best care I’ve ever received.", author: "Alice Brown", image_url: "/images/testimonial4.jpg" },
-            { text: "Wonderful experience from start to finish.", author: "Bob Johnson", image_url: "/images/testimonial5.jpg" },
-            { text: "I couldn't be happier with the service!", author: "Carol White", image_url: "/images/testimonial6.jpg" },
-        ];
-    };
+    useEffect(() => {
+        fetchTestimonials();
+    }, [fetchTestimonials]);
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
@@ -148,7 +162,7 @@ const FeedbackPage = () => {
                 const data = await response.json();
                 setMessage(data.message);
                 resetForm();
-                fetchTestimonials(); // Refresh testimonials after submitting feedback
+                fetchTestimonials();
             } else {
                 const errorData = await response.json();
                 setMessage(errorData.message);
@@ -182,7 +196,7 @@ const FeedbackPage = () => {
                 <div className="h-1 w-60 bg-green-700 mb-4"></div>
                 <div className="flex justify-between items-start mb-12">
                     <div className="pr-4">
-                        <h1 className="text-4xl mb-4 text-green-800 uppercase">“Hear What Our Clients Have to Say”</h1>
+                        <h1 className="text-4xl mb-4 text-green-800 uppercase">"Hear What Our Clients Have to Say"</h1>
                         <p className="text-lg mb-6"><b>Our Mission:</b> Caring for Your Family, Just Like Our Own</p>
                     </div>
                     <div>
@@ -208,8 +222,8 @@ const FeedbackPage = () => {
                             className="flex items-center justify-center bg-gray-300 border border-gray-400 px-4 py-2 mx-1 cursor-pointer transform rotate-45 transition duration-300"
                             onClick={() => handlePageClick(index + 1)}
                             role="button"
-                            tabIndex={0} // Make it keyboard accessible
-                            onKeyDown={(e) => e.key === 'Enter' && handlePageClick(index + 1)} // Handle keyboard events
+                            tabIndex={0}
+                            onKeyDown={(e) => e.key === 'Enter' && handlePageClick(index + 1)}
                         >
                             <span className="transform -rotate-45">{index + 1}</span>
                         </div>
