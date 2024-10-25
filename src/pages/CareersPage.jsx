@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -9,9 +8,10 @@ const CareersPage = () => {
 
   // Fetch careers from Flask API
   useEffect(() => {
-    axios.get('http://localhost:5000/api/careers')
-      .then((response) => {
-        setCareers(response.data);
+    fetch('http://localhost:5000/api/careers')
+      .then((response) => response.json())
+      .then((data) => {
+        setCareers(data);
         setLoading(false);
       })
       .catch((error) => {
@@ -31,7 +31,7 @@ const CareersPage = () => {
           </h2>
           <p className="text-sm">
             Caring for others starts with caring for our employees. Join a team that <br />
-            makes people’s lives better.
+            makes people's lives better.
           </p>
         </div>
         <div className="w-2/5 pl-24">
@@ -98,7 +98,7 @@ const CareersPage = () => {
 
       <div className="bg-green-100 p-8 mt-8 rounded-lg text-center">
         <h3 className="text-2xl font-bold mb-4">Get to know us better</h3>
-        <p className="text-gray-700 italic mb-4">CozyCare is the region’s largest home care network revolutionizing how society cares for older adults and Care Professionals. Learn why and how we’re changing aging.</p>
+        <p className="text-gray-700 italic mb-4">CozyCare is the region's largest home care network revolutionizing how society cares for older adults and Care Professionals. Learn why and how we're changing aging.</p>
         <button className="bg-teal-800 text-white py-2 px-8 rounded-full">Read our story</button>
       </div>
     </div>
