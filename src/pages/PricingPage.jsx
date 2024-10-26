@@ -2,9 +2,9 @@ const PricingPage = () => {
   return (
     <div className="w-full bg-[#f4f1ec] mt-4">
       {/* Top Section */}
-      <div className="px-24 mt-4 mb-8">
-        <h1 className="pt-40 text-4xl mb-4">Our Pricing</h1>
-        <div className="w-1/3 h-px bg-gray-300"></div>
+      <div className="px-4 sm:px-8 md:px-16 lg:px-24 mt-4 mb-8">
+        <h1 className="pt-40 text-4xl font-bold text-gray-800 mb-6">Our Pricing</h1>
+        <div className="w-full h-0.5 bg-gray-300 shadow-sm"></div>
 
         {/* Pricing Section */}
         <div className="w-full text-left">
@@ -63,7 +63,7 @@ const PricingPage = () => {
       </div>
 
       {/* Contact Section */}
-      <div className="bg-[#a8c2b2] px-8 py-12 w-full box-border">
+      <div className="bg-[#a8c2b2] px-4 sm:px-8 md:px-16 lg:px-24 py-12 w-full box-border">
         <h1 className="text-3xl mb-6">FIND HOME CARE TODAY</h1>
         <p className="text-lg mb-6 text-[#1d0303]">
           Get Started with Primary Care at Home
@@ -82,14 +82,14 @@ const PricingPage = () => {
         </h6>
 
         {/* Contact Form */}
-        <form className="max-w-2xl mx-auto flex flex-col">
-          <div className="flex justify-between mb-4">
-            <input type="text" name="firstName" placeholder="First Name" required className="w-[48%] p-3 border border-gray-300 rounded-md" />
-            <input type="text" name="lastName" placeholder="Last Name" required className="w-[48%] p-3 border border-gray-300 rounded-md" />
+        <form className="w-full max-w-2xl mx-auto flex flex-col">
+          <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
+            <input type="text" name="firstName" placeholder="First Name" required className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md" />
+            <input type="text" name="lastName" placeholder="Last Name" required className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md" />
           </div>
-          <div className="flex justify-between mb-4">
-            <input type="tel" name="phone" placeholder="Phone" required className="w-[48%] p-3 border border-gray-300 rounded-md" />
-            <input type="email" name="email" placeholder="Email" required className="w-[48%] p-3 border border-gray-300 rounded-md" />
+          <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
+            <input type="tel" name="phone" placeholder="Phone" required className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md" />
+            <input type="email" name="email" placeholder="Email" required className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md" />
           </div>
           <textarea className="message p-3 border border-gray-300 rounded-md mb-4" name="message" placeholder="Message" rows="4" required></textarea>
           
@@ -99,7 +99,7 @@ const PricingPage = () => {
             <label htmlFor="not-a-robot" className="text-sm ml-2">I am not a robot</label>
           </div>
 
-          <button type="submit" className="py-3 px-6 w-80 bg-[#f2f7f2] rounded-md text-lg hover:bg-green-600">
+          <button type="submit" className="py-3 px-6 w-full sm:w-80 bg-[#f2f7f2] rounded-md text-lg hover:bg-green-600">
             Submit
           </button>
         </form>
