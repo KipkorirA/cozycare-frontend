@@ -106,7 +106,7 @@ const AboutPage = () => {
                 </p>
             </div>
 
-            <section className="about-section why-choose-cozycare bg-green-200 mb-0 pb-4 sm:pb-5 pt-4 sm:pt-5">
+            <section className="about-section why-choose-cozycare bg-green-200 mb-0 pb-4  sm:pb-5 pt-4 sm:pt-5">
                 <div className="about-content flex flex-col md:flex-row gap-6">
                     <div className="left-column flex-1 px-3 sm:px-5">
                         <h2 className="why-choose-heading text-3xl sm:text-4xl font-bold">Why Choose CozyCare</h2>

@@ -1,6 +1,6 @@
 const PricingPage = () => {
   return (
-    <div className="w-full bg-[#f4f1ec] mt-4">
+    <div className="w-full bg-[#f4f1ec] ">
       {/* Top Section */}
       <div className="px-4 sm:px-8 md:px-16 lg:px-24 mt-4 mb-8">
         <h1 className="pt-40 text-4xl font-bold text-gray-800 mb-6">Our Pricing</h1>
