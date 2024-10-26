@@ -45,7 +45,7 @@ const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage 
                     <p>{testimonial.text}</p>
                     {testimonial.image_url && (
                         <img
-                            src={`http://localhost:5000${testimonial.image_url}`}
+                            src={testimonial.image_url.startsWith('http') ? testimonial.image_url : `http://localhost:5000${testimonial.image_url}`}
                             alt={`Image of ${testimonial.author}`}
                             className="w-20 h-20 rounded-full mx-auto object-cover mb-2"
                         />
@@ -83,12 +83,12 @@ const FeedbackPage = () => {
 
     const getPlaceholderTestimonials = () => {
         return [
-            { text: "Great service! I felt like part of the family.", author: "John Doe", image_url: "/images/testimonial1.jpg" },
-            { text: "Absolutely amazing experience! Highly recommend.", author: "Jane Smith", image_url: "/images/testimonial2.jpg" },
-            { text: "The staff are so caring and attentive.", author: "Sam Wilson", image_url: "/images/testimonial3.jpg" },
-            { text: "Best care I've ever received.", author: "Alice Brown", image_url: "/images/testimonial4.jpg" },
-            { text: "Wonderful experience from start to finish.", author: "Bob Johnson", image_url: "/images/testimonial5.jpg" },
-            { text: "I couldn't be happier with the service!", author: "Carol White", image_url: "/images/testimonial6.jpg" },
+            { text: "Great service! I felt like part of the family.", author: "Joy Wairimu", image_url: "https://img.freepik.com/free-photo/front-view-smiley-black-woman_23-2149742288.jpg" },
+            { text: "Absolutely amazing experience! Highly recommend.", author: "Jane Smith", image_url: "https://naacp.org/sites/default/files/styles/hero_desktop/public/images/iStock-1045045764.jpg.webp?itok=VZrKt0Zg" },
+            { text: "The staff are so caring and attentive.", author: "Sam Wilson", image_url: "https://media.istockphoto.com/id/1413583706/photo/happy-african-american-senior-at-nursing-home-looking-at-camera.jpg?s=612x612&w=0&k=20&c=1UfiRA6NS3ED438KxiEN1xZjk7Z0Tt70VDyQ5tjvC5s=" },
+            { text: "Best care I've ever received.", author: "Alice Brown", image_url: "https://t3.ftcdn.net/jpg/05/70/02/62/360_F_570026237_Ey6tSBVByUXCn608rmX65VuAhkuqtQQw.jpg" },
+            { text: "Wonderful experience from start to finish.", author: "Bob Johnson", image_url: "https://pics.craiyon.com/2023-06-15/6d4271fc0acb418d98679240d9f7902c.webp" },
+            { text: "I couldn't be happier with the service!", author: "Carol White", image_url: "https://www.shutterstock.com/image-photo/portrait-smiling-african-american-senior-600nw-2180795511.jpg" },
         ];
     };
 
