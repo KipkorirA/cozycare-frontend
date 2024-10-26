@@ -41,8 +41,8 @@ const Pricing = () => {
                     
                     {/* Text inside the image without background */}
                     <div className="pt-0 -mt-16 pl-10 pr-9 absolute inset-0 flex flex-col  justify-center text-black bg-opacity-50 text-left rounded-lg md:pl-8 md:pt--1">
-                        <h3 className="text-[10px] md:text-[10px] lg:text-[20px] lg:pl-9 lg:pr-9  font-bold">Factors that may affect pricing include:</h3>
-                        <ul className="text-[9px] md:text-[10px] lg:text-[20px] mt-2 text-left lg:pl-9 lg:pr-9 ">
+                        <h3 className="text-[9px] md:text-[10px] lg:text-[20px] lg:pl-9 lg:pr-9  font-bold">Factors that may affect pricing include:</h3>
+                        <ul className="text-[9px] md:text-[10px] lg:text-[20px] text-left lg:pl-9 lg:pr-9 ">
                             <li>Level of care: The intensity and complexity of the care required.</li>
                             <li>Frequency of care: The number of hours of care needed per week.</li>
                             <li>Location: Geographic location may influence pricing.</li>
