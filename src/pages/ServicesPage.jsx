@@ -75,7 +75,7 @@ const ServicesPage = () => {
   return (
     <div className="bg-gray-100 font-sans min-h-screen w-full">
       <div className="relative w-full">
-        <img src="/public/images/1-removebg-preview.png" alt="Care" className="absolute -right-5 -top-8 w-48 z-10" />
+        <img src="/images/1-removebg-preview.png" alt="Care" className="absolute -right-5 -top-8 w-48 z-10" />
         <div className="w-full">
           <h1 className="text-3xl pt-3  pb-4 pr-16 text-left font-monospace text-gray-800  ">Our In-Home Care Services</h1>
           <div className="w-72 h-1 bg-gray-600 rounded mb-12 mx-auto" />
