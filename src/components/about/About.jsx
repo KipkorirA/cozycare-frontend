@@ -37,9 +37,10 @@ const AboutUs = () => {
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
-                            textPosition="left-4 sm:left-24 md:left-44 top-32 sm:top-44 lg:left-96 lg:top-96"
+                            textPosition="left-64 txt-sm sm:left-24 md:left-44 top-44 sm:top-44 lg:left-96 lg:top-96"
                             additionalClasses="slide1" 
                             description="Say goodbye to the hassle of travelling to a clinic or to a hospital"
+                            
                         />
                     </SwiperSlide>
                     
@@ -49,7 +50,7 @@ const AboutUs = () => {
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="left-4 sm:left-24 md:left-44 top-32 sm:top-44 lg:left-0 lg:right-44 lg:top-96"
+                            textPosition="right-48 left-12 sm:left-24 md:left-44 top-52 sm:top-44 lg:left-0 lg:right-44 lg:top-96"
                             additionalClasses="slide2" 
                             description="Seamlessly navigate your healthcare journey with ease."
                         />
@@ -61,7 +62,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="left-4 sm:left-24 md:left-44 top-32 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
+                            textPosition="left-4 right-56 sm:left-24 md:left-44 top-52 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />
@@ -77,10 +78,6 @@ const AboutUs = () => {
             </div>
 
             {/* Section for CozyCare description and contact information */}
-
-
-
-
 
             <div className="w-full sm:w-4/5 md:w-2/5 lg:w-2/5 max-w-xl mt-8 md:mt-0 px-6 sm:px-0 space-y-4">
                 <h1 className="text-4xl sm:text-5xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: 'Veteran Typewriter', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
