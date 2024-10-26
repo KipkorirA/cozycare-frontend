@@ -23,7 +23,7 @@ const CareersPage = () => {
     <div className="min-h-screen py-20 md:py-40 px-4 md:px-8 bg-gray-50">
       <div className="flex flex-col md:flex-row justify-between items-center md:items-start max-w-6xl mx-auto mb-12">
         <div className="w-full md:w-3/5 text-center md:text-left mb-8 md:mb-0 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Current Openings at CozyMore</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Current Openings at CozyCare</h1>
           <hr className="w-full md:w-4/5 border-2 border-yellow-500 my-6" />
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
             <b>CozyCare exists to expand <br className="hidden md:block" /> the world's capacity to care</b>

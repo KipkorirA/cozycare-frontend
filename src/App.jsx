@@ -23,6 +23,7 @@ import FeedbackManage from './pages/manage/FeedbackManage'; // Import FeedbackMa
 import SubscriptionManage from './pages/manage/SubscriptionManage'; // Import SubscriptionManage
 import Manage from './pages/manage/Manage'; // Import Manage component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RealTimeChat from './components/RealTimeChat';
 
 const App = () => {
   return (
@@ -66,6 +67,8 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </main>
+
+        <RealTimeChat />
 
         {/* Footer at the bottom */}
         <Footer />
