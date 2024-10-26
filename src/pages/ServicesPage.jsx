@@ -54,12 +54,12 @@ const servicesData = [
 // Reusable service block component
 
 const ServiceBlock = ({ title, imgSrc, description, services, index }) => (
-  <section className={`flex flex-wrap mb-16 p-8 hover:bg-gray-50 transition-all duration-300 rounded-xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-    <div className="flex-1 flex justify-center items-center p-4">
+  <section className={`flex flex-wrap mb-16 p-8 hover:bg-gray-50 transition-all duration-300 rounded-xl md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+    <div className="w-full md:flex-1 flex justify-center items-center p-4">
       <img src={imgSrc} alt={`${title} illustration`} className="max-w-full h-auto transform hover:scale-105 transition-transform duration-300" />
     </div>
 
-    <div className="flex-1 px-8">
+    <div className="w-full md:flex-1 px-8">
       <h2 className="text-3xl font-monospace mb-4 text-gray-700 hover:text-gray-900 transition-colors duration-300">{title}</h2>
       <p className="font-bold text-lg leading-relaxed text-black">{description}</p>
       <ul className="list-disc pl-6 text-gray-600 mt-6 space-y-3">
@@ -75,9 +75,9 @@ const ServicesPage = () => {
   return (
     <div className="bg-gray-100 font-sans min-h-screen w-full">
       <div className="relative w-full">
-        <img src="/public/images/1-removebg-preview.png" alt="Care" className="absolute right-0 top-8 w-48 z-10" />
+        <img src="/public/images/1-removebg-preview.png" alt="Care" className="absolute -right-5 -top-8 w-48 z-10" />
         <div className="w-full">
-          <h1 className="text-5xl pt-32 pb-4 font-monospace text-gray-800 text-center">Our In-Home Care Services</h1>
+          <h1 className="text-3xl pt-3  pb-4 pr-16 text-left font-monospace text-gray-800  ">Our In-Home Care Services</h1>
           <div className="w-72 h-1 bg-gray-600 rounded mb-12 mx-auto" />
           <div className="max-w-6xl mx-auto mb-16 px-4">
             <p className="text-xl text-center">
