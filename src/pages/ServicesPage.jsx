@@ -52,19 +52,32 @@ const servicesData = [
 ];
 
 // Reusable service block component
-
 const ServiceBlock = ({ title, imgSrc, description, services, index }) => (
-  <section className={`flex flex-wrap mb-16 p-8 hover:bg-gray-50 transition-all duration-300 rounded-xl md:flex-row ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-    <div className="w-full md:flex-1 flex justify-center items-center p-4">
-      <img src={imgSrc} alt={`${title} illustration`} className="max-w-full h-auto transform hover:scale-105 transition-transform duration-300" />
+  <section 
+    className={`flex flex-wrap mb-8 sm:mb-16 p-4 sm:p-8 hover:bg-gray-50 transition-all duration-300 rounded-xl shadow-lg ${
+      index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+    }`}
+  >
+    <div className="w-full md:w-1/2 flex justify-center items-center p-2 sm:p-4">
+      <img 
+        src={imgSrc} 
+        alt={`${title} illustration`} 
+        className="max-w-[80%] sm:max-w-full h-auto transform hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      />
     </div>
 
-    <div className="w-full md:flex-1 px-8">
-      <h2 className="text-3xl font-monospace mb-4 text-gray-700 hover:text-gray-900 transition-colors duration-300">{title}</h2>
-      <p className="font-bold text-lg leading-relaxed text-black">{description}</p>
-      <ul className="list-disc pl-6 text-gray-600 mt-6 space-y-3">
+    <div className="w-full md:w-1/2 px-4 sm:px-8 mt-4 md:mt-0">
+      <h2 className="text-2xl sm:text-3xl font-monospace mb-3 sm:mb-4 text-gray-700 hover:text-gray-900 transition-colors duration-300">{title}</h2>
+      <p className="font-bold text-base sm:text-lg leading-relaxed text-black">{description}</p>
+      <ul className="list-disc pl-4 sm:pl-6 text-gray-600 mt-4 sm:mt-6 space-y-2 sm:space-y-3">
         {services.map((service, index) => (
-          <li key={index} className="text-lg hover:text-gray-900 transition-colors duration-200">{service}</li>
+          <li 
+            key={index} 
+            className="text-base sm:text-lg hover:text-gray-900 transition-colors duration-200 cursor-pointer"
+          >
+            {service}
+          </li>
         ))}
       </ul>
     </div>
@@ -74,29 +87,38 @@ const ServiceBlock = ({ title, imgSrc, description, services, index }) => (
 const ServicesPage = () => {
   return (
     <div className="bg-gray-100 font-sans min-h-screen w-full">
-      <div className="relative w-full">
-        <img src="/images/1-removebg-preview.png" alt="Care" className="absolute -right-5 -top-8 w-48 z-10" />
+      <div className="relative w-full px-4 sm:px-6 max-w-7xl mx-auto">
+        <img 
+          src="/images/1-removebg-preview.png" 
+          alt="Care" 
+          className="absolute -right-5 -top-4 w-32 sm:w-48 z-10"
+          loading="lazy"
+        />
         <div className="w-full">
-          <h1 className="text-3xl pt-3  pb-4 pr-16 text-left font-monospace text-gray-800  ">Our In-Home Care Services</h1>
-          <div className="w-72 h-1 bg-gray-600 rounded mb-12 mx-auto" />
-          <div className="max-w-6xl mx-auto mb-16 px-4">
-            <p className="text-xl text-center">
-              <strong className="text-2xl block mb-4">Care Where You Reside</strong>
+          <h1 className="text-3xl sm:text-4xl pt-3 pb-4 pr-12 sm:pr-16 text-left font-monospace text-gray-800 font-bold">
+            Our In-Home <br />Care Services
+          </h1>
+          <div className="w-48 sm:w-72 h-1 bg-yellow-600 rounded ml-0 mb-8 sm:mb-12 mx-auto" />
+          <div className="max-w-6xl mx-auto mb-8 sm:mb-16 px-4">
+            <p className="text-lg sm:text-xl text-center leading-relaxed">
+              <strong className="text-xl sm:text-2xl block mb-3 sm:mb-4">Care Where You Reside</strong>
               Cozycare offers a wide range of personalized in-home care services designed to meet your unique needs and preferences. Our goal is to help you maintain your independence and quality of life while receiving the support you require.
             </p>
-            <p className="text-xl mt-8 text-center"><strong>Our Services Include:</strong></p>
+            <p className="text-lg sm:text-xl mt-6 sm:mt-8 text-center font-semibold">Our Services Include:</p>
           </div>
 
-          {servicesData.map((service, index) => (
-            <ServiceBlock
-              key={index}
-              index={index}
-              title={service.title}
-              imgSrc={service.imgSrc}
-              description={service.description}
-              services={service.services}
-            />
-          ))}
+          <div className="space-y-8 sm:space-y-16">
+            {servicesData.map((service, index) => (
+              <ServiceBlock
+                key={index}
+                index={index}
+                title={service.title}
+                imgSrc={service.imgSrc}
+                description={service.description}
+                services={service.services}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
