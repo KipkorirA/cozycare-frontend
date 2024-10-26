@@ -62,7 +62,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="left-1 right-52 sm:left-24 md:left-44 top-48 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
+                            textPosition="left-1 right-48 sm:left-24 md:left-44 top-48 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />
