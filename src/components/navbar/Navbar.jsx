@@ -25,6 +25,11 @@ const Navbar = () => {
         };
     }, [lastScrollY]);
 
+    useEffect(() => {
+        setIsMenuOpen(false);
+        window.scrollTo(0, 0);
+    }, [location]);
+
     const getNavbarClass = () => {
         let navbarClass = 'fixed top-0 left-0 w-full z-50 transition-transform duration-300';
         return navbarClass;
