@@ -10,8 +10,8 @@ const PricingPage = () => {
         <div className="w-full text-left">
 
           {/* First Block - Text Left, Image Right */}
-          <div className="flex items-center justify-between mb-8 gap-4">
-            <div className="w-1/2">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between mb-8 gap-4">
+            <div className="w-full md:w-1/2">
               <h3 className="text-2xl mt-6 mb-2">Care Where You Reside</h3>
               <p className="text-base mb-4">
                 CozyCare offers flexible pricing options to suit your budget and needs. Our rates are based on the specific
@@ -25,13 +25,13 @@ const PricingPage = () => {
                 <li>Yearly Plans: Benefit from significant savings with annual subscriptions.</li>
               </ul>
             </div>
-            <img className="w-1/4 rounded-lg object-cover" src="/images/pricing1.png" alt="Pricing details for subscription plans" />
+            <img className="w-full md:w-1/4 rounded-lg object-cover" src="/images/pricing1.png" alt="Pricing details for subscription plans" />
           </div>
 
           {/* Second Block - Image Left, Text Right */}
-          <div className="flex items-center justify-between mb-8">
-            <img className="w-1/4 rounded-lg object-cover" src="/images/pricing2.png" alt="Pay per service details" />
-            <div className="w-1/2">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-8">
+            <img className="w-full md:w-1/4 rounded-lg object-cover" src="/images/pricing2.png" alt="Pay per service details" />
+            <div className="w-full md:w-1/2">
               <h3 className="text-2xl mb-2">Pay-Per-Service</h3>
               <ul className="list-disc ml-6 text-lg mb-4">
                 <li>One-Time Payments: Pay for specific services as needed, such as occasional respite care or transportation.</li>
@@ -40,8 +40,8 @@ const PricingPage = () => {
           </div>
 
           {/* Third Block - Text Left, Image Right */}
-          <div className="flex items-center justify-between mb-8">
-            <div className="w-1/2">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between mb-8">
+            <div className="w-full md:w-1/2">
               <h3 className="text-2xl mb-2">Factors that may affect our pricing include:</h3>
               <ul className="list-disc ml-6 text-lg mb-4">
                 <li>The frequency of care you need.</li>
@@ -56,7 +56,7 @@ const PricingPage = () => {
                 information.
               </p>
             </div>
-            <img className="w-1/4 rounded-lg object-cover" src="/images/pricing3.png" alt="Factors that affect pricing" />
+            <img className="w-full md:w-1/4 rounded-lg object-cover" src="/images/pricing3.png" alt="Factors that affect pricing" />
           </div>
 
         </div>
@@ -74,7 +74,7 @@ const PricingPage = () => {
           toward receiving the high-quality care you deserve.
           <br />
           <br />
-          Don’t wait – let us show you how we can support your health and well-being today!
+          Don't wait – let us show you how we can support your health and well-being today!
         </p>
 
         <h6 className="text-base mb-6 text-white">
