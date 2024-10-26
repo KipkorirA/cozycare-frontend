@@ -37,7 +37,7 @@ const AboutUs = () => {
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
-                            textPosition="left-64 txt-sm sm:left-24 md:left-44 top-44 sm:top-44 lg:left-96 lg:top-96"
+                            textPosition="left-48 -right-2  sm:left-24 md:left-44 top-40 pt-6m sm:top-44 lg:left-96 lg:top-96"
                             additionalClasses="slide1" 
                             description="Say goodbye to the hassle of travelling to a clinic or to a hospital"
                             
@@ -50,7 +50,7 @@ const AboutUs = () => {
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="right-48 left-12 sm:left-24 md:left-44 top-52 sm:top-44 lg:left-0 lg:right-44 lg:top-96"
+                            textPosition="right-40 left-5 sm:left-24 md:left-44 top-52 sm:top-44 lg:left-0 lg:right-44 lg:top-96"
                             additionalClasses="slide2" 
                             description="Seamlessly navigate your healthcare journey with ease."
                         />
@@ -62,7 +62,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="left-4 right-56 sm:left-24 md:left-44 top-52 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
+                            textPosition="left-1 right-52 sm:left-24 md:left-44 top-48 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />
