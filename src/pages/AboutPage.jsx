@@ -60,7 +60,8 @@ const AboutPage = () => {
         <div className="about-page w-full px-4 sm:px-6 lg:px-8">
             {slides.map((slide) => (
                 <section key={slide.id} className={`about-section flex flex-col md:flex-row ${slide.reverse ? 'md:flex-row-reverse' : ''} items-center justify-between gap-4 sm:gap-8 py-8 sm:py-12`}>
-                    <div className="relative w-full md:w-1/2 flex justify-center items-center">
+
+                    <div className="relative w-full flex justify-center items-center md:w-1/2 order-1 md:order-none">
                         <img 
                             src={slide.image} 
                             alt={slide.imageAlt} 
@@ -69,7 +70,8 @@ const AboutPage = () => {
                         <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold p-4">
                         </div>
                     </div>
-                    <div className="about-text flex flex-col space-y-4 sm:space-y-6 w-full md:w-1/2">
+
+                    <div className="about-text flex flex-col space-y-4 sm:space-y-6 w-full md:w-1/2 order-2 md:order-none">
                         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">{slide.title}</h2>
                         <div className="divider w-full h-0.5 bg-gradient-to-r from-green-500 to-blue-500 rounded-full shadow-md"></div>
                         <p className="text-base sm:text-lg md:text-xl text-gray-800 leading-relaxed">
