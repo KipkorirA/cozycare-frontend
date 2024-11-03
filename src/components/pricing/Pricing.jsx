@@ -37,9 +37,9 @@ const Pricing = () => {
                     />
                     
                     {/* Text inside the image without background */}
-                    <div className="-mt-20 md:-mt-32 ml-11 md:ml-16 mr-20 md:pr-16 absolute inset-0 flex flex-col justify-center text-black text-left rounded-lg md:pl-8 md:pt--1 lg:pl-16 lg:pr-16 lg:-mt-40">    
-                        <h3 className="text-[16px] md:text-[14px] lg:text-[24px] lg:pl-9 lg:pr-9 font-bold text-gray-800 mb-1 md:mb-2">Factors that may affect pricing include:</h3>
-                        <ul className="text-[13px] md:text-[12px] lg:text-[24px] text-left lg:pl-16 lg:pr-9 text-gray-700 space-y-0.5 md:space-y-1 list-disc">
+                    <div className="-mt-16 md:-mt-32 ml-9 md:ml-16 mr-11 md:pr-16 absolute inset-0 flex flex-col justify-center text-black text-left rounded-lg md:pl-8 md:pt--1 lg:pl-16 lg:pr-16 lg:-mt-40">    
+                        <h3 className="text-[10px] md:text-[14px] lg:text-[24px] lg:pl-9 lg:pr-9 font-bold text-gray-800 md:mb-2">Factors that may affect pricing include:</h3>
+                        <ul className="text-[9px] md:text-[12px] lg:text-[24px] text-left lg:pl-16 lg:pr-9 text-gray-700 md:space-y-1 list-disc">
                             <li>Level of care: The intensity and complexity of the care required.</li>
                             <li>Frequency of care: The number of hours of care needed per week.</li>
                             <li>Location: Geographic location may influence pricing.</li>
