@@ -1,6 +1,29 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Careers = () => {
+    const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
+    const [isHovering, setIsHovering] = useState(false);
+
+    const handleMouseMove = (e) => {
+        const element = e.currentTarget;
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const rotateX = ((y - rect.height / 2) / rect.height) * 30;
+        const rotateY = ((x - rect.width / 2) / rect.width) * 30;
+        const rotateZ = ((x - rect.width / 2) / rect.width) * 10;
+
+        setRotation({ x: rotateX, y: rotateY, z: rotateZ });
+    };
+
+    const handleMouseEnter = () => setIsHovering(true);
+    const handleMouseLeave = () => {
+        setIsHovering(false);
+        setRotation({ x: 0, y: 0, z: 0 });
+    };
+
     return (
         <section className="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row items-start bg-gradient-to-br from-[#a8c2b2] via-[#85a791] to-[#567d63] min-h-screen p-4 md:p-8 overflow-hidden relative">
             {/* Enhanced Animated Background Elements */}
@@ -14,12 +37,24 @@ const Careers = () => {
             <div className="w-full md:w-2/5 lg:w-1/3 xl:w-1/3 2xl:w-1/3 text-left md:sticky top-0 z-10">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl 2xl:text-6xl font-bold text-[#333] mb-4 md:mb-6 pl-2 md:pl-4 mt-4 md:mt-6 tracking-tight animate-[fadeIn_1s_ease-in-out] md:[text-shadow:_2px_2px_4px_rgb(0_0_0_/_20%)] hover:scale-105 transition-transform">CAREERS</h1>
                 <hr className="w-24 md:w-32 border-3 border-[#f0a500] mb-6 md:mb-8 transition-all duration-500 ease-in-out hover:w-56 animate-[pulse_2s_infinite]" />
-                <img
-                    src="/images/Pirateship.webp"
-                    alt="A pirate ship representing adventure and teamwork"
-
-                    className="w-full max-w-[400px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px] h-auto object-contain mt-4 md:mt-6 mb-4 ml-0 md:ml-4 hover:scale-110 transition-transform duration-500 rounded-lg filter hover:brightness-110 animate-[float_6s_ease-in-out_infinite] hover:rotate-6"
-                />
+                <div 
+                    className="perspective-[2000px]"
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <img
+                        src="/images/Pirateship.webp"
+                        alt="A pirate ship representing adventure and teamwork"
+                        className={`w-full max-w-[400px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px] h-auto object-contain mt-4 md:mt-6 mb-4 ml-0 md:ml-4 transition-all duration-300 rounded-lg filter ${isHovering ? 'brightness-125 contrast-125 saturate-150' : ''} animate-[float_6s_ease-in-out_infinite]`}
+                        style={{
+                            transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) rotateZ(${rotation.z}deg) ${isHovering ? 'scale(1.1)' : 'scale(1)'}`,
+                            transition: 'transform 0.3s ease-out, filter 0.3s ease-out',
+                            transformStyle: 'preserve-3d',
+                            boxShadow: isHovering ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)' : 'none'
+                        }}
+                    />
+                </div>
             </div>
 
             {/* Right Division: Information and Links with Enhanced Interactivity */}
