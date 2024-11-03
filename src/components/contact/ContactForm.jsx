@@ -57,8 +57,8 @@ const ContactForm = () => {
     };
 
     return (
-        <section className="flex justify-center items-center min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#085846]">
-            <form className="w-full max-w-lg bg-[#085846] p-8 rounded-xl shadow-2xl space-y-8" onSubmit={handleSubmit}>
+        <section className="flex justify-center items-center min-h-screen w-full py-12 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 bg-[#085846]">
+            <form className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-8xl bg-[#085846] p-8 lg:p-12 rounded-xl shadow-2xl space-y-8" onSubmit={handleSubmit}>
                 {/* First Name and Last Name */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input 
@@ -110,7 +110,7 @@ const ContactForm = () => {
                         placeholder="Your Message"
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full p-4 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out resize-none h-40" 
+                        className="w-full p-4 border-2 border-[#00a879] bg-[#00a879] text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-white focus:bg-[#004d45] placeholder:text-white/70 transition-all duration-300 ease-in-out resize-none h-60" 
                         required
                     ></textarea>
                 </div>
