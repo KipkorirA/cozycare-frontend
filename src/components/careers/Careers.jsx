@@ -1,27 +1,31 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Careers = () => {
     const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
     const [isHovering, setIsHovering] = useState(false);
 
-    const handleMouseMove = (e) => {
-        const element = e.currentTarget;
-        const rect = element.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const rotateX = ((y - rect.height / 2) / rect.height) * 30;
-        const rotateY = ((x - rect.width / 2) / rect.width) * 30;
-        const rotateZ = ((x - rect.width / 2) / rect.width) * 10;
+    useEffect(() => {
+        let animationFrame;
+        let angle = 0;
 
-        setRotation({ x: rotateX, y: rotateY, z: rotateZ });
-    };
+        const animate = () => {
+            angle += 0.005;
+            const rotateX = Math.sin(angle) * 20;
+            const rotateY = Math.cos(angle) * 20;
+            const rotateZ = Math.sin(angle * 0.5) * 10;
+
+            setRotation({ x: rotateX, y: rotateY, z: rotateZ });
+            animationFrame = requestAnimationFrame(animate);
+        };
+
+        animate();
+        return () => cancelAnimationFrame(animationFrame);
+    }, []);
 
     const handleMouseEnter = () => setIsHovering(true);
     const handleMouseLeave = () => {
         setIsHovering(false);
-        setRotation({ x: 0, y: 0, z: 0 });
     };
 
     return (
@@ -39,7 +43,6 @@ const Careers = () => {
                 <hr className="w-24 md:w-32 border-3 border-[#f0a500] mb-6 md:mb-8 transition-all duration-500 ease-in-out hover:w-56 animate-[pulse_2s_infinite]" />
                 <div 
                     className="perspective-[2000px]"
-                    onMouseMove={handleMouseMove}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                 >
@@ -48,10 +51,13 @@ const Careers = () => {
                         alt="A pirate ship representing adventure and teamwork"
                         className={`w-full max-w-[400px] sm:max-w-[500px] md:max-w-[700px] lg:max-w-[800px] xl:max-w-[1000px] 2xl:max-w-[1200px] h-auto object-contain mt-4 md:mt-6 mb-4 ml-0 md:ml-4 transition-all duration-300 rounded-lg filter ${isHovering ? 'brightness-125 contrast-125 saturate-150' : ''} animate-[float_6s_ease-in-out_infinite]`}
                         style={{
-                            transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) rotateZ(${rotation.z}deg) ${isHovering ? 'scale(1.1)' : 'scale(1)'}`,
-                            transition: 'transform 0.3s ease-out, filter 0.3s ease-out',
+                            transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) rotateZ(${rotation.z}deg) ${isHovering ? 'scale(1.1)' : 'scale(1)'} translateZ(50px)`,
+                            transition: 'filter 0.3s ease-out',
                             transformStyle: 'preserve-3d',
-                            boxShadow: isHovering ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)' : 'none'
+                            borderRadius: '50%/30%',
+                            boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+                                      inset 0 -20px 30px -10px rgba(0, 0, 0, 0.3)`,
+                            background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.2) 100%)'
                         }}
                     />
                 </div>
