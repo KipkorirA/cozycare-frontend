@@ -55,7 +55,7 @@ const Feedback = () => {
                     <div className="w-full md:w-1/2">
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#085846] leading-tight tracking-tighter">
                             HEAR WHAT<br /> 
-                            <span className="text-[#085846] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#085846] via-[#2c7561] to-[#a8c2b2]">OUR PATIENTS</span> 
+                            <span className="text-[#085846] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#085846] via-[#2c7561] to-[#3c4204]">OUR PATIENTS</span> 
                             <br />HAVE TO SAY ABOUT US
                         </h1>
                         <hr className="w-2/3 my-6 lg:my-8 border-3 border-[#085846] rounded-full shadow-lg opacity-80" />
