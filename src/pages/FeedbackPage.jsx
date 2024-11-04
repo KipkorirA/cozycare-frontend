@@ -190,22 +190,34 @@ const FeedbackPage = () => {
     };
 
     return (
-        <div className="pt-40 mx-auto bg-gray-200 rounded-lg shadow-lg transition duration-300">
-            <div className="px-12">
-                <h3 className="text-lg">COZYCARE NEWS</h3>
-                <div className="h-1 w-60 bg-green-700 mb-4"></div>
-                <div className="flex justify-between items-start mb-12">
-                    <div className="pr-4">
-                        <h1 className="text-4xl mb-4 text-green-800 uppercase">"Hear What Our Clients Have to Say"</h1>
-                        <p className="text-lg mb-6"><b>Our Mission:</b> Caring for Your Family, Just Like Our Own</p>
+        <div className="pt-4 sm:pt-4 md:pt-4 mx-auto bg-gradient-to-br from-gray-200 to-gray-100 rounded-lg shadow-2xl transition-all duration-300 hover:shadow-xl">
+            <div className="px-4 sm:px-8 md:px-12">
+                <div className="relative">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-700 tracking-wider">COZYCARE NEWS</h3>
+                    <div className="h-1 w-32 sm:w-48 md:w-60 bg-gradient-to-r from-green-600 to-green-800 mb-4 transform hover:scale-x-110 transition-transform duration-300"></div>
+                </div>
+                
+                <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-8 md:mb-12 gap-6">
+                    <div className="md:pr-4">
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 text-green-800 uppercase font-extrabold animate-fade-in">
+                            “Hear What Our Clients Have to Say”
+                        </h1>
+                        <p className="text-base sm:text-lg mb-6 transform hover:scale-105 transition-transform duration-300">
+                            <span className="font-bold text-green-700">Our Mission:</span> 
+                            <span className="italic">Caring for Your Family, Just Like Our Own</span>
+                        </p>
                     </div>
-                    <div>
-                        <img src="/images/quote-feedback.png" alt="Client feedback quote illustration" className="w-40 pr-8" />
+                    <div className="transform hover:rotate-6 transition-transform duration-300">
+                        <img 
+                            src="/images/quote-feedback.png" 
+                            alt="Client feedback quote illustration" 
+                            className="w-32 sm:w-36 md:w-40 lg:w-48 pr-4 md:pr-8 animate-float"
+                        />
                     </div>
                 </div>
 
-                <div className="bg-white rounded-lg mb-8 p-4">
-                    <div className="feedback-container">
+                <div className="bg-white rounded-lg mb-8 p-4 shadow-inner hover:shadow-lg transition-shadow duration-300">
+                    <div className="feedback-container overflow-hidden">
                         <Testimonials 
                             testimonials={testimonials} 
                             loading={loading} 
@@ -215,85 +227,110 @@ const FeedbackPage = () => {
                     </div>
                 </div>
 
-                <div className="flex justify-center my-4">
+                <div className="flex flex-wrap justify-center gap-2 my-4 pb-6">
                     {[...Array(totalPages)].map((_, index) => (
                         <div
                             key={index}
-                            className="flex items-center justify-center bg-gray-300 border border-gray-400 px-4 py-2 mx-1 cursor-pointer transform rotate-45 transition duration-300"
+                            className={`flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300 border border-gray-400 
+                                      px-3 sm:px-4 py-2 cursor-pointer transform rotate-45 transition-all duration-300
+                                      hover:from-green-500 hover:to-green-600 hover:text-white hover:scale-110 hover:shadow-lg
+                                      ${currentPage === index + 1 ? 'from-green-600 to-green-700 text-white' : ''}`}
                             onClick={() => handlePageClick(index + 1)}
                             role="button"
                             tabIndex={0}
                             onKeyDown={(e) => e.key === 'Enter' && handlePageClick(index + 1)}
                         >
-                            <span className="transform -rotate-45">{index + 1}</span>
+                            <span className="transform -rotate-45 text-sm sm:text-base">{index + 1}</span>
                         </div>
                     ))}
                 </div>
             </div>
 
-            <div className="bg-green-300 p-8 rounded-lg shadow-lg">
-                <h1 className="text-2xl mb-2">We Value Your Feedback</h1>
-                <p className="mb-4">Your thoughts help us improve our services!</p>
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="name" className="font-bold text-lg">Your Name (optional):</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg p-2 mt-1 mb-4"
-                    />
+            <div className="bg-gradient-to-br from-green-300 to-green-200 p-8 rounded-lg shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+                <h1 className="text-3xl mb-4 text-green-800 font-bold animate-fade-in">We Value Your Feedback</h1>
+                <p className="mb-6 text-lg text-green-700 animate-slide-in">Your thoughts help us improve our services!</p>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="transform hover:translate-x-2 transition-transform duration-300">
+                        <label htmlFor="name" className="font-bold text-lg text-green-800 block">Your Name (optional):</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="w-full border-2 border-green-400 rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-300"
+                        />
+                    </div>
 
-                    <label htmlFor="email" className="font-bold text-lg">Your Email (optional):</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg p-2 mt-1 mb-4"
-                    />
+                    <div className="transform hover:translate-x-2 transition-transform duration-300">
+                        <label htmlFor="email" className="font-bold text-lg text-green-800 block">Your Email (optional):</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="w-full border-2 border-green-400 rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-300"
+                        />
+                    </div>
 
-                    <label htmlFor="rating" className="font-bold text-lg">Rate Your Experience:</label>
-                    <StarRating rating={rating} setRating={setRating} />
+                    <div className="transform hover:translate-x-2 transition-transform duration-300">
+                        <label htmlFor="rating" className="font-bold text-lg text-green-800 block">Rate Your Experience:</label>
+                        <StarRating rating={rating} setRating={setRating} />
+                    </div>
 
-                    <label htmlFor="feedback" className="font-bold text-lg">Your Feedback:</label>
-                    <textarea
-                        id="feedback"
-                        name="feedback"
-                        rows="4"
-                        placeholder="Write your feedback here..."
-                        value={feedback}
-                        onChange={(e) => setFeedback(e.target.value)}
-                        className="w-full border border-gray-300 rounded-lg p-2 mt-1 mb-4"
-                    ></textarea>
+                    <div className="transform hover:translate-x-2 transition-transform duration-300">
+                        <label htmlFor="feedback" className="font-bold text-lg text-green-800 block">Your Feedback:</label>
+                        <textarea
+                            id="feedback"
+                            name="feedback"
+                            rows="4"
+                            placeholder="Write your feedback here..."
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
+                            className="w-full border-2 border-green-400 rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-300"
+                        ></textarea>
+                    </div>
 
-                    <label htmlFor="file" className="custom-file-upload font-bold text-lg">
-                        Upload a file (optional):
-                    </label>
-                    <input
-                        type="file"
-                        id="file"
-                        name="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        className="border border-gray-300 rounded-lg p-2 mt-1 mb-4"
-                    />
-                    {fileName && <p className="text-green-600 mb-4">Selected file: {fileName}</p>}
+                    <div className="transform hover:translate-x-2 transition-transform duration-300">
+                        <label htmlFor="file" className="custom-file-upload font-bold text-lg text-green-800 block">
+                            Upload a file (optional):
+                        </label>
+                        <input
+                            type="file"
+                            id="file"
+                            name="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            className="w-full border-2 border-green-400 rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition-all duration-300"
+                        />
+                        {fileName && <p className="text-green-600 mt-2 animate-pulse">Selected file: {fileName}</p>}
+                    </div>
                     
                     <button 
                         type="submit" 
                         disabled={loading} 
-                        className={`bg-green-600 text-white py-2 px-4 rounded-lg ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-green-700 transition duration-300'}`}
+                        className={`w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 px-6 rounded-lg text-lg font-bold shadow-lg transform hover:translate-y-[-2px] hover:shadow-xl active:translate-y-[1px] ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:from-green-700 hover:to-green-800'} transition-all duration-300`}
                     >
-                        {loading ? "Submitting..." : "Submit Feedback"}
+                        {loading ? (
+                            <span className="flex items-center justify-center">
+                                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+                                </svg>
+                                Submitting...
+                            </span>
+                        ) : "Submit Feedback"}
                     </button>
                 </form>
 
-                {message && <p className={`mt-4 ${message.includes('Error') ? 'text-red-600' : 'text-green-600'}`}>{message}</p>}
+                {message && (
+                    <div className={`mt-6 p-4 rounded-lg ${message.includes('Error') ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'} animate-fade-in`}>
+                        {message}
+                    </div>
+                )}
             </div>
         </div>
     );
