@@ -37,7 +37,7 @@ const AboutUs = () => {
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
-                            textPosition="left-48 -right-2  sm:left-24 md:left-44 top-40 pt-6m sm:top-44 lg:left-96 lg:top-96"
+                            textPosition="left-48 -right-2  sm:left-2 md:left-96 top-40 pt-6m sm:top-80 md:top-96 lg:left-96 lg:top-96"
                             additionalClasses="slide1" 
                             description="Say goodbye to the hassle of travelling to a clinic or to a hospital"
                             
@@ -50,7 +50,7 @@ const AboutUs = () => {
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="right-40 left-5 sm:left-24 md:left-44 top-52 sm:top-44 lg:left-0 lg:right-44 lg:top-96"
+                            textPosition="right-40 left-5 sm:left-24 md:right-80 md:pt-36 md:left-0 top-52 sm:top-44  md:top-96 lg:left-0 lg:right-44 lg:top-96"
                             additionalClasses="slide2" 
                             description="Seamlessly navigate your healthcare journey with ease."
                         />
@@ -62,7 +62,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition=" right-48 sm:left-24 md:left-44 top-48 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
+                            textPosition=" right-48 sm:left-24 md:pr-11 md:mr-36 md:pt-80 md:-ml-24 top-48 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />

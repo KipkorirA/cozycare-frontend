@@ -12,11 +12,10 @@ const Slide = ({ imageSrc, altText, linkText, linkTo, textPosition, additionalCl
                 className="absolute inset-0 w-full h-full object-contain object-center"
                 loading="lazy"
             />
-            <div className={`absolute ${textPosition} z-10 text-center text-white p-5 sm:p-6 md:p-8`}>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 md:mb-4">{title}</h2>
-                <p className="description text-[8px] max-w-[90%] mx-auto  sm:mb-4">{description}</p>
-                <p className="link -mt-2 sm:mt-3 md:mt-4">
-                    <Link to={linkTo} className='text-yellow-400 text-[8px] underline sm:text-base md:text-lg hover:text-yellow-300 transition-colors' aria-label={`Learn more about ${linkText}`}>
+            <div className={`absolute ${textPosition} z-10 text-center text-white p-5 sm:p-6 md:-mt-10`}>                
+                <p className="description text-[8px] sm:text-[14px] max-w-[90%] mx-auto  sm:mb-4">{description}</p>
+                <p className="link -mt-2  md:-mt-5 ">
+                    <Link to={linkTo} className='text-yellow-400 text-[8px] underline  sm:text-base md:text-[13px] hover:text-yellow-300  transition-colors' aria-label={`Learn more about ${linkText}`}>
                         {linkText}
                     </Link>
                 </p>
