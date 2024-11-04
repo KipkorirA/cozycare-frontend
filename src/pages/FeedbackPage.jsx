@@ -246,7 +246,7 @@ const FeedbackPage = () => {
                 </div>
             </div>
 
-            <div className="bg-gradient-to-br from-green-300 to-green-200 p-8 rounded-lg shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+            <div className="bg-gradient-to-br from-green-300 to-green-200 p-8 rounded-lg shadow-2xl ">
                 <h1 className="text-3xl mb-4 text-green-800 font-bold animate-fade-in">We Value Your Feedback</h1>
                 <p className="mb-6 text-lg text-green-700 animate-slide-in">Your thoughts help us improve our services!</p>
                 <form onSubmit={handleSubmit} className="space-y-6">
