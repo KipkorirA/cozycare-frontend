@@ -13,9 +13,9 @@ const Slide = ({ imageSrc, altText, linkText, linkTo, textPosition, additionalCl
                 loading="lazy"
             />
             <div className={`absolute ${textPosition} z-10 text-center text-white p-5 sm:p-6 md:-mt-10`}>                
-                <p className="description text-[8px] sm:text-[14px] max-w-[90%] mx-auto  sm:mb-4">{description}</p>
+                <p className="description text-[8px] lg:text-[20px] sm:text-[14px] max-w-[90%] mx-auto  sm:mb-4">{description}</p>
                 <p className="link -mt-2  md:-mt-5 ">
-                    <Link to={linkTo} className='text-yellow-400 text-[8px] underline  sm:text-base md:text-[13px] hover:text-yellow-300  transition-colors' aria-label={`Learn more about ${linkText}`}>
+                    <Link to={linkTo} className='text-yellow-400 text-[8px] underline  sm:text-base md:text-[13px]  hover:text-yellow-300  transition-colors' aria-label={`Learn more about ${linkText}`}>
                         {linkText}
                     </Link>
                 </p>

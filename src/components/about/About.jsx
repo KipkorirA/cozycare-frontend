@@ -37,7 +37,7 @@ const AboutUs = () => {
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
-                            textPosition="left-48 -right-2  sm:left-2 md:left-96 top-40 pt-6m sm:top-80 md:top-96 lg:left-96 lg:top-96"
+                            textPosition="left-48 -right-2  sm:left-2 md:left-96 top-40 pt-6m sm:top-80 md:top-96 lg:pl-36 lg:pt-36"
                             additionalClasses="slide1" 
                             description="Say goodbye to the hassle of travelling to a clinic or to a hospital"
                             
@@ -50,7 +50,7 @@ const AboutUs = () => {
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="right-40 left-5 sm:left-24 md:right-80 md:pt-36 md:left-0 top-52 sm:top-44  md:top-96 lg:left-0 lg:right-44 lg:top-96"
+                            textPosition="right-40 left-5 sm:left-24 md:right-80 md:pt-36 md:left-0 top-52 sm:top-44  md:top-96 lg:left-0 lg:pr-40 lg:pl-16 lg:pt-72"
                             additionalClasses="slide2" 
                             description="Seamlessly navigate your healthcare journey with ease."
                         />
@@ -62,7 +62,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition=" right-48 sm:left-24 md:pr-11 md:mr-36 md:pt-80 md:-ml-24 top-48 sm:top-44 lg:left-1 lg:right-48 lg:top-[66%]"
+                            textPosition=" right-48 sm:left-24 md:pr-11 md:mr-36 md:pt-80 md:-ml-24 top-48 sm:top-44 lg:left-1 lg:pl-32 lg:pr-44 lg:top-80"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />
@@ -80,22 +80,22 @@ const AboutUs = () => {
             {/* Section for CozyCare description and contact information */}
 
             <div className="w-full sm:w-4/5 md:w-2/5 lg:w-2/5 max-w-xl mt-8 md:mt-0 px-6 sm:px-0 space-y-4">
-                <h1 className="text-4xl sm:text-5xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
                 <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80" />
-                <h2 className="text-2xl sm:text-3xl text-gray-700 font-semibold tracking-wide" style={{ fontFamily: '', fontWeight: '500' }}>Comprehensive Health Services</h2>
-                <p className="text-lg sm:text-xl leading-relaxed text-gray-600 tracking-wide" style={{ fontFamily: '', fontWeight: '400' }}>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-700 font-semibold tracking-wide" style={{ fontFamily: '', fontWeight: '500' }}>Comprehensive Health Services</h2>
+                <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-gray-600 tracking-wide" style={{ fontFamily: '', fontWeight: '400' }}>
                     CozyCare is a holistic health service provider offering tailored care solutions in the comfort of your home.
                     From everyday healthcare needs to specialized services, we ensure you receive the best care at affordable prices.
                 </p>
 
 
-                <div className="flex items-center mt-8">
-                    <Link to="/contact" className="bg-[#053a09] text-white py-3 pl-10 sm:pl-12 pr-8 sm:pr-10 rounded-full text-base sm:text-lg mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
+                <div className="flex items-center mt-22 ">
+                    <Link to="/contact" className="bg-[#053a09] text-white py-3 pl-10 sm:pl-12 pr-8 sm:pr-10 rounded-full text-base sm:text-lg lg:text-xl mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
                         Contact Us
                     </Link>
 
                     <div className="bg-[#053a09] rounded-full border-4 border-white p-3 flex items-center justify-center -ml-10 sm:-ml-12 shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 z-10">
-                        <FontAwesomeIcon icon={faPhone} className="text-lg sm:text-xl text-white" aria-label="Phone icon to contact CozyCare" />
+                        <FontAwesomeIcon icon={faPhone} className="text-lg sm:text-xl lg:text-2xl text-white" aria-label="Phone icon to contact CozyCare" />
                     </div>
                 </div>
             </div>
