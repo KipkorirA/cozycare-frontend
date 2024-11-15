@@ -42,7 +42,7 @@ const Navbar = () => {
 
             <div className="flex-1 z-20 px-6"> 
                 <Link to="/" className="block hover:opacity-80 transition-all duration-300 transform hover:scale-105">
-                    <img src="/images/logo.png" alt="CozyCare Logo" className="w-[200px] h-auto drop-shadow-lg" />
+                    <img src="/images/logo.png" alt="CozyCare Logo" className="w-[200px] h-auto lg:w-[300px] drop-shadow-lg" />
                 </Link>
             </div>
 
