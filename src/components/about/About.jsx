@@ -37,7 +37,7 @@ const AboutUs = () => {
                             altText="Woman receiving care at home through CozyCare services"
                             linkText="Learn more"
                             linkTo="/about"
-                            textPosition="left-48 -right-2  sm:left-2 md:pl-96 top-40 pt-6m sm:top-80 md:top-96 lg:pl-36 lg:pt-36"
+                            textPosition="left-48 -right-2  sm:left-2 md:pl-96 top-40 pt-6m sm:top-80 md:top-96 lg:left-36 lg:pt-40"
                             additionalClasses="slide1" 
                             description="Say goodbye to the hassle of travelling to a clinic or to a hospital"
                             
