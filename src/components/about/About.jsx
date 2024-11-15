@@ -89,7 +89,7 @@ const AboutUs = () => {
                 </p>               
                </div>
 
-                <div className="flex items-center mt-22 lg:pt-40 lg:right-44 ">
+                <div className="flex items-center mt-22  lg:right-44 ">
                     <Link to="/contact" className="bg-[#053a09] text-white py-3 pl-10 sm:pl-12 pr-8 sm:pr-10 rounded-full text-base sm:text-lg lg:text-xl mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
                         Contact Us
                     </Link>
