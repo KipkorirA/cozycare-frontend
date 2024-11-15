@@ -19,7 +19,7 @@ const AboutUs = () => {
 
     return (
 
-        <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-16 lg:gap-x-32 gap-y-10 items-center sm:items-start py-12 sm:py-24 px-6 sm:px-10 shadow-inner">
+        <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-16 lg:gap-x-32 gap-y-10 items-center sm:items-start py-12 sm:py-24 px-6 sm:px-10 shadow-inner bg-[#f4f1ec]">
             {/* Carousel for displaying slides */}
 
             <div className="w-full sm:max-w-2xl md:max-w-3xl relative mb-10 md:mb-0 shadow-xl rounded-lg overflow-hidden">
