@@ -4,7 +4,7 @@ import { FaFileAlt, FaShieldAlt, FaSitemap } from 'react-icons/fa';
 
 const Footer = () => {
     return (
-        <footer className="bg-teal-800 text-white flex flex-col md:flex-row justify-between items-center p-4 md:p-6">
+        <footer className="bg-[#085846] text-white flex flex-col md:flex-row justify-between items-center p-4 md:p-6">
             {/* Copyright Section */}
             <p className="text-sm m-0 text-center md:text-left mb-4 md:mb-0">© 2024 CozyCare</p>
 
