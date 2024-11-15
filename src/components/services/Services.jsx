@@ -7,7 +7,7 @@ const Service = () => {
         <section className="p-8 md:p-16 lg:p-24" style={{ backgroundColor: '#085846' }}>
             {/* Section Title */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl text-[#eeedeb] font-bold text-left mb-6 tracking-tight leading-tight">
-                OUR IN-HOME CARE <br /> <span className="text-[#eeedeb] hover:text-[#ad9c78] transition-colors duration-500">SERVICE</span>
+                OUR IN-HOME CARE <br /> <span className="text-[#eeedeb] hover:text-[#ad9c78] transition-colors duration-500">SERVICES</span>
             </h1>
             <hr className="border-b-3 border-[#ad9c78] mb-12 w-80 md:w-96 transition-all duration-500 hover:w-full" />
 
@@ -20,11 +20,11 @@ const Service = () => {
                         alt="Service 1" 
                         className="w-[40%] md:w-[45%] lg:w-[50%] aspect-square mb-6 hover:scale-125 transition-transform duration-500" 
                     />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6 hover:text-[#ad9c78] transition-colors duration-500">Personal Care</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 hover:text-[#ad9c78] transition-colors duration-500">Nursing Care</h2>
                     <ul className="list-disc pl-8 text-left space-y-3 text-lg">
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Assistance with bathing</li>
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Grooming and dressing</li>
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Medication reminders</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Providing medical care, such as wound care, medication administration, and vital sign monitoring.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Chronic Disease Management: Assisting with managing chronic conditions like diabetes, heart disease, and respiratory disorders.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Post-Hospital Care: Supporting individuals during their recovery from hospital stays.</li>
                     </ul>
                 </div>
 
@@ -35,11 +35,11 @@ const Service = () => {
                         alt="Service 2" 
                         className="w-[40%] md:w-[45%] lg:w-[50%] aspect-square mb-6 hover:scale-125 transition-transform duration-500" 
                     />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6 hover:text-[#ad9c78] transition-colors duration-500">Skilled Nursing</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 hover:text-[#ad9c78] transition-colors duration-500">Care Assistance</h2>
                     <ul className="list-disc pl-8 text-left space-y-3 text-lg">
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Medication administration</li>
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Wound care</li>
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Post-operative care</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Non-Medical Care: Assisting with daily living activities like bathing, dressing, meal preparation, and light housekeeping.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Transportation Services: Accompanying clients on appointments, errands, or social outings.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Companionship: Providing social interaction and emotional support.</li>
                     </ul>
                 </div>
 
@@ -50,11 +50,12 @@ const Service = () => {
                         alt="Service 3" 
                         className="w-[40%] md:w-[45%] lg:w-[50%] aspect-square mb-6 hover:scale-125 transition-transform duration-500" 
                     />
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6 hover:text-[#ad9c78] transition-colors duration-500">Therapy Services</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 hover:text-[#ad9c78] transition-colors duration-500">Specialized Care</h2>
                     <ul className="list-disc pl-8 text-left space-y-3 text-lg">
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Physical therapy</li>
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Occupational therapy</li>
-                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Speech therapy</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Dementia Care: Providing specialized care for individuals with dementia.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Alzheimer's Care: Assisting individuals with Alzheimer's disease.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Post-Surgery Recovery: Supporting individuals during their recovery from surgery.</li>
+                        <li className="hover:text-[#ad9c78] transition-colors duration-500">Prenatal/Postnatal Care: Assisting pregnant women and new mothers.</li>
                     </ul>
                 </div>
             </div>
