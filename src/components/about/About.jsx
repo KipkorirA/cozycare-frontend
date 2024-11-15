@@ -80,16 +80,17 @@ const AboutUs = () => {
             {/* Section for CozyCare description and contact information */}
 
             <div className="w-full sm:w-4/5 md:w-2/5 lg:w-2/5 max-w-xl mt-8 md:mt-0 px-6 sm:px-0 space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
-                <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80" />
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl text-gray-700 font-semibold tracking-wide" style={{ fontFamily: '', fontWeight: '500' }}>Comprehensive Health Services</h2>
+               <div className='lg:pb-60'>
+               <h1 className="text-4xl sm:text-5xl lg:text-6xl  text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
+                <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80 pb-11" />
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl lg:pb-11 text-gray-700 font-semibold tracking-wide" style={{ fontFamily: '', fontWeight: '500' }}>Comprehensive Health Services</h2>
                 <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-gray-600 tracking-wide" style={{ fontFamily: '', fontWeight: '400' }}>
                     CozyCare is a holistic health service provider offering tailored care solutions in the comfort of your home.
                     From everyday healthcare needs to specialized services, we ensure you receive the best care at affordable prices.
-                </p>
+                </p>               
+               </div>
 
-
-                <div className="flex items-center mt-22 ">
+                <div className="flex items-center mt-22 lg:pt-40 lg:right-44 ">
                     <Link to="/contact" className="bg-[#053a09] text-white py-3 pl-10 sm:pl-12 pr-8 sm:pr-10 rounded-full text-base sm:text-lg lg:text-xl mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
                         Contact Us
                     </Link>
