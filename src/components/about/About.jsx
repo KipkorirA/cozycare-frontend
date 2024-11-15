@@ -50,7 +50,7 @@ const AboutUs = () => {
                             altText="Healthcare professional assisting a patient at home with CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition="right-44 left-8 sm:left-24 md:right-80 md:pt-36 md:left-0 top-52 sm:top-44  md:top-96 lg:left-0 lg:pr-40 lg:pl-16 lg:pt-72"
+                            textPosition="right-48 left-9 sm:left-24 md:right-80 md:pt-36 md:left-0 top-52 sm:top-44  md:top-96 lg:left-0 lg:pr-40 lg:pl-16 lg:pt-72"
                             additionalClasses="slide2" 
                             description="Seamlessly navigate your healthcare journey with ease."
                         />
@@ -62,7 +62,7 @@ const AboutUs = () => {
                             altText="Elderly person receiving home care service by CozyCare"
                             linkText="Learn more"
                             linkTo="/learn-more"
-                            textPosition=" right-52 sm:left-24 md:pr-11 md:mr-36 md:pt-80 md:-ml-24 top-52 sm:top-44 lg:left-1 lg:pl-32 lg:pr-44 lg:top-80"
+                            textPosition=" right-56 left-4 sm:left-24 md:pr-11 md:mr-36 md:pt-80 md:-ml-24 top-52 sm:top-44 lg:left-1 lg:pl-32 lg:pr-44 lg:top-80"
                             additionalClasses="slide3" 
                             description="Compassionate providers directly to your doorstep"
                         />
