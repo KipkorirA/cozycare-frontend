@@ -41,8 +41,8 @@ const Navbar = () => {
             <div className="absolute inset-0 w-full h-full z-[-1] opacity-70 bg-[url('/images/Navbar-background.png')] bg-cover bg-center bg-no-repeat mix-blend-overlay" />
 
             <div className="flex-1 z-20 px-6"> 
-                <Link to="/" className="block hover:opacity-80 transition-all duration-300 transform hover:scale-105">
-                    <img src="/images/logo.png" alt="CozyCare Logo" className="w-[200px] h-auto lg:w-[300px] drop-shadow-lg" />
+                <Link to="/" className="block hover:opacity-80 transition-all duration-300 transform hover:scale-105 -mb-20 -mt-20">
+                    <img src="/images/logo.png" alt="CozyCare Logo" className="w-[350px] h-auto lg:w-[450px] drop-shadow-lg" />
                 </Link>
             </div>
 
