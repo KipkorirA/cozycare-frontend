@@ -106,7 +106,7 @@ const ContactPage = () => {
             <h2 className="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#032b03] to-[#98FB98] animate-gradient">Questions about care?</h2>
             <p className="text-gray-700 mb-6 hover:text-gray-900 transition-colors duration-300">We're here to help with any questions about our services, scheduling, or the CozyCare App.</p>
             <div className='flex flex-col sm:flex-row gap-4 sm:gap-8'>
-              <a href="tel:+1234567890" className='bg-[rgb(3,43,3)] text-white py-3 px-6 rounded-lg hover:bg-[#98FB98] hover:text-[rgb(3,43,3)] transition-all duration-300 transform hover:scale-110 text-center hover:shadow-xl flex items-center justify-center gap-2'>
+              <a href="tel:+254735358125" className='bg-[rgb(3,43,3)] text-white py-3 px-6 rounded-lg hover:bg-[#98FB98] hover:text-[rgb(3,43,3)] transition-all duration-300 transform hover:scale-110 text-center hover:shadow-xl flex items-center justify-center gap-2'>
                 <span>Contact Us</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
               </a>
@@ -119,7 +119,6 @@ const ContactPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  );};
 
 export default ContactPage;

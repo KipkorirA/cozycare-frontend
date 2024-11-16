@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 const Pricing = () => {
     return (
         <section className="flex flex-col md:flex-row justify-between items-start p-4 md:p-16 bg-[#dad4d47e] w-full">
@@ -51,8 +50,8 @@ const Pricing = () => {
                 {/* Paragraph below the image */}
                 <p className="mt-4 md:mt-6 text-base md:text-xl lg:text-3xl text-gray-800 leading-relaxed">
                     To get a personalized quote, please contact us at 
-                    <a href="tel:+254700697430" className="text-[#f0a500] font-bold hover:text-[#54810c] transition-colors duration-300 transform hover:scale-105 inline-block"> +254 700 697 430</a> or via email at
-                    <a href="mailto:support@cozycare.com" className="text-[#f0a500] font-bold hover:text-[#54810c] transition-colors duration-300 transform hover:scale-105 inline-block"> support@cozycare.com</a>. 
+                    <a href="tel:+254735358125" className="text-[#f0a500] font-bold hover:text-[#54810c] transition-colors duration-300 transform hover:scale-105 inline-block"> +254 735 358 125</a> or via email at
+                    <a href="mailto:support@cozycare.com" className="text-[#f0a500] font-bold hover:text-[#54810c] transition-colors duration-300 transform hover:scale-105 inline-block"> support@cozycare.com</a>.  
                     Our team is ready to discuss your specific needs and provide a tailored pricing solution that works for you.
                     <br />
                     <span className="text-sm md:text-lg lg:text-2xl text-gray-600 mt-3 md:mt-5 block font-medium italic">* Pricing may vary based on service requirements and location. Contact us for current rates and available discounts.</span>
