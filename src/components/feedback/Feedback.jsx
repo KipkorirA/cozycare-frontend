@@ -75,7 +75,7 @@ const Feedback = () => {
                                 <div className="flex flex-col items-center w-full">
                                     <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-44 lg:h-44 rounded-full overflow-hidden ring-4 ring-[#085846] ring-offset-4 mb-6 lg:mb-8 shadow-xl hover:shadow-2xl transition-all duration-500">
                                         <img
-                                            src={testimonial.image_url.startsWith('http') ? testimonial.image_url : `http://localhost:5000${testimonial.image_url}`}
+                                            src={testimonial.image_url?.startsWith('http') ? testimonial.image_url : `http://localhost:5000${testimonial.image_url}`}
                                             alt={testimonial.author || "Anonymous"}
                                             className="w-full h-full object-cover transform hover:scale-120 transition-transform duration-500"
                                         />

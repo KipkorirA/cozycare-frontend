@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const CareersPage = () => {
   const [careers, setCareers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/careers')
+    fetch('http://localhost:5000/careers')
       .then((response) => response.json())
       .then((data) => {
         setCareers(data);
@@ -81,7 +82,7 @@ const CareersPage = () => {
                 <h4 className="text-xl font-bold mb-2 text-gray-800">{career.title}</h4>
                 <p className="text-gray-600">{career.description.substring(0, 100)}...</p>
               </div>
-              <a href={career.apply_link} className="w-full md:w-auto text-center bg-teal-800 text-white py-3 px-6 rounded-full hover:bg-teal-700 transform hover:scale-105 transition duration-200">Apply Now</a>
+              <Link to={`/application/${career.id}`} className="w-full md:w-auto text-center bg-teal-800 text-white py-3 px-6 rounded-full hover:bg-teal-700 transform hover:scale-105 transition duration-200">Apply Now</Link>
             </div>
           ))
         )}

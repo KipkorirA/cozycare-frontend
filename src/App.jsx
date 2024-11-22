@@ -24,6 +24,7 @@ import SubscriptionManage from './pages/manage/SubscriptionManage'; // Import Su
 import Manage from './pages/manage/Manage'; // Import Manage component
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RealTimeChat from './components/RealTimeChat';
+import ApplicationPage from './pages/ApplicationPage';
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
             <Route path="/terms-of-use" element={<TermsOfUsePage />} />
             <Route path="/privacy-policy" element={<PrivacyAndCookiePolicyPage />} />
             <Route path="/subscription-successful" element={<SubscriptionSuccessfulPage />} />
+            <Route path="/application/:id" element={<ApplicationPage />} />
             
             {/* Management routes */}
             <Route path="/manage" element={<Manage />} />  {/* Added route for Manage component */}

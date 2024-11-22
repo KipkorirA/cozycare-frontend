@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { FaComments } from 'react-icons/fa';
 
-const socket = io('http://127.0.0.1:5000'); // Replace with your server URL
+const socket = io('https://cozycare-backend-g56w.onrender.com'); 
 
 const RealTimeChat = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    const [isChatOpen, setIsChatOpen] = useState(false); // State to manage chat window visibility
+    const [isChatOpen, setIsChatOpen] = useState(false); 
 
     useEffect(() => {
         // Clear messages on component mount (reload)
