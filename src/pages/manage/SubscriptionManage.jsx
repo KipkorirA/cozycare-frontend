@@ -29,36 +29,96 @@ const SubscriptionManage = () => {
     const fetchSubscriptions = async () => {
         setLoading(true);
         try {
+            // Optimistically keep the current subscriptions visible until the fetch is complete
             const response = await axios.get('https://cozycare-backend-g56w.onrender.com/subscriptions');
             const subscriptionData = Array.isArray(response.data) ? response.data : [];
+            
+            // Update the local state with the latest subscriptions
             setSubscriptions(subscriptionData);
             setFilteredSubscriptions(subscriptionData);
+    
         } catch (error) {
             setError('Failed to fetch subscriptions');
         } finally {
             setLoading(false);
         }
     };
+    
 
-    // Handle form submission for creating/updating subscription
+   
     const handleSubscriptionSubmit = async (e) => {
         e.preventDefault();
         try {
+            setLoading(true);
+    
+            // Optimistically update state before API call for both update and create actions
             if (editSubscriptionId) {
-                await axios.put(`https://cozycare-backend-g56w.onrender.com/subscriptions/${editSubscriptionId}`, subscriptionForm);
+                // Optimistically update the subscription in the state
+                setSubscriptions((prevSubscriptions) =>
+                    prevSubscriptions.map((sub) =>
+                        sub.id === editSubscriptionId ? { ...sub, ...subscriptionForm } : sub
+                    )
+                );
+                setFilteredSubscriptions((prevSubscriptions) =>
+                    prevSubscriptions.map((sub) =>
+                        sub.id === editSubscriptionId ? { ...sub, ...subscriptionForm } : sub
+                    )
+                );
+                
+                // API call to update subscription
+                const response = await axios.put(
+                    `https://cozycare-backend-g56w.onrender.com/subscriptions/${editSubscriptionId}`,
+                    subscriptionForm
+                );
+    
+                // Confirmation after successful update
                 setSuccessMessage('Subscription updated successfully!');
             } else {
-                await axios.post('https://cozycare-backend-g56w.onrender.com/subscriptions', subscriptionForm);
+                // Optimistically add new subscription to the beginning of the list
+                setSubscriptions((prevSubscriptions) => [
+                    { ...subscriptionForm, id: Date.now() }, // Temporarily assigning a new ID for the optimistic update
+                    ...prevSubscriptions,
+                ]);
+                setFilteredSubscriptions((prevSubscriptions) => [
+                    { ...subscriptionForm, id: Date.now() },
+                    ...prevSubscriptions,
+                ]);
+                
+                // API call to create new subscription
+                const response = await axios.post(
+                    'https://cozycare-backend-g56w.onrender.com/subscriptions',
+                    subscriptionForm
+                );
+    
+                // Assign the correct ID received from the API after the response
+                setSubscriptions((prevSubscriptions) =>
+                    prevSubscriptions.map((sub) =>
+                        sub.id === Date.now() ? { ...sub, id: response.data.id } : sub
+                    )
+                );
+                setFilteredSubscriptions((prevSubscriptions) =>
+                    prevSubscriptions.map((sub) =>
+                        sub.id === Date.now() ? { ...sub, id: response.data.id } : sub
+                    )
+                );
+    
                 setSuccessMessage('Subscription created successfully!');
             }
-
+    
+            // Reset form after submission
             setSubscriptionForm({ first_name: '', last_name: '', email: '', phone_number: '', preferred_contact: '', interests: '' });
             setEditSubscriptionId(null);
-            fetchSubscriptions();
         } catch (error) {
             setError('Error submitting subscription');
+        } finally {
+            setLoading(false);
         }
     };
+    
+
+    
+    
+    
 
     // Handle subscription editing
     const handleEditSubscription = (subscription) => {
@@ -69,13 +129,35 @@ const SubscriptionManage = () => {
     // Handle subscription deletion
     const handleDeleteSubscription = async (id) => {
         try {
-            await axios.delete(`https://cozycare-backend-g56w.onrender.com/subscriptions/${id}`);
+            // Optimistically update the UI by removing the subscription locally
+            setSubscriptions((prevSubscriptions) =>
+                prevSubscriptions.filter((subscription) => subscription.id !== id)
+            );
+            setFilteredSubscriptions((prevSubscriptions) =>
+                prevSubscriptions.filter((subscription) => subscription.id !== id)
+            );
+    
+            // Immediately show success message
             setSuccessMessage('Subscription deleted successfully!');
-            fetchSubscriptions();
+    
+            // API call to delete the subscription
+            await axios.delete(`https://cozycare-backend-g56w.onrender.com/subscriptions/${id}`);
         } catch (error) {
+            // If there's an error, revert the optimistic update by adding the subscription back
+            setSubscriptions((prevSubscriptions) => [
+                ...prevSubscriptions,
+                { id, /* other fields if available */ } // You may need to restore other fields if required
+            ]);
+            setFilteredSubscriptions((prevSubscriptions) => [
+                ...prevSubscriptions,
+                { id, /* other fields if available */ }
+            ]);
+    
             setError('Error deleting subscription');
         }
     };
+    
+    
 
     // Handle search functionality
     const handleSearch = (e) => {

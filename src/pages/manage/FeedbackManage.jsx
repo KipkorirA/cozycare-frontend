@@ -26,19 +26,20 @@ const FeedbackManage = () => {
     }, []);
 
     // Fetch feedbacks from the server
-    const fetchFeedbacks = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.get('https://cozycare-backend-g56w.onrender.com/feedbacks');
-            const feedbackData = Array.isArray(response.data) ? response.data : [];
-            setFeedbacks(feedbackData);
-            setFilteredFeedbacks(feedbackData); // Initially, show all feedbacks
-        } catch (error) {
-            setError('Failed to fetch feedback');
-        } finally {
-            setLoading(false);
-        }
-    };
+    const fetchFeedbacks = async (page = 1) => {
+    setLoading(true);
+    try {
+        const response = await axios.get(`https://cozycare-backend-g56w.onrender.com/feedbacks?page=${page}&per_page=10`);
+        const feedbackData = Array.isArray(response.data.feedbacks) ? response.data.feedbacks : [];
+        setFeedbacks(feedbackData);
+        setFilteredFeedbacks(feedbackData); // Initially, show all feedbacks
+    } catch (error) {
+        setError('Failed to fetch feedback');
+    } finally {
+        setLoading(false);
+    }
+};
+
 
     // Handle form submission for creating or updating feedback
     const handleFeedbackSubmit = async (e) => {
