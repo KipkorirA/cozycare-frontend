@@ -29,34 +29,79 @@ const CareerManage = () => {
         setLoading(true);
         try {
             const response = await axios.get('https://cozycare-backend-g56w.onrender.com/careers');
-            const careerData = Array.isArray(response.data) ? response.data : [];
-            setCareers(careerData);
-            setFilteredCareers(careerData);
+            
+            if (response.status === 200) {
+                const careerData = Array.isArray(response.data) ? response.data : [];
+                
+                // Only update state if the data has changed to avoid unnecessary re-renders
+                if (careerData.length !== careers.length) {
+                    setCareers(careerData);
+                    setFilteredCareers(careerData);
+                }
+            } else {
+                setError('Failed to fetch careers');
+            }
         } catch (error) {
-            setError('Failed to fetch careers');
+            // Handle network or unexpected errors
+            setError(error.response ? error.response.data.message : 'Failed to fetch careers');
         } finally {
             setLoading(false);
         }
     };
+    
+    
 
     const handleCareerSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+    
+        // Optimistically add the new career to the frontend
+        const newCareer = { ...careerForm, id: Date.now() }; // Temporarily assigning a unique ID
+        setFilteredCareers((prev) => [...prev, newCareer]);
+        setCareers((prev) => [...prev, newCareer]);
+    
         try {
+            let response;
             if (editCareerId) {
-                await axios.put(`https://cozycare-backend-g56w.onrender.com/careers/${editCareerId}`, careerForm);
+                response = await axios.put(
+                    `https://cozycare-backend-g56w.onrender.com/careers/${editCareerId}`,
+                    careerForm
+                );
                 setSuccessMessage('Career updated successfully!');
+                
+                // Optimistically update the career in the list
+                const updatedCareers = filteredCareers.map(career =>
+                    career.id === editCareerId ? response.data : career
+                );
+                setFilteredCareers(updatedCareers);
             } else {
-                await axios.post('https://cozycare-backend-g56w.onrender.com/careers', careerForm);
+                response = await axios.post(
+                    'https://cozycare-backend-g56w.onrender.com/careers',
+                    careerForm
+                );
                 setSuccessMessage('Career created successfully!');
             }
-
+    
+            // Replace the optimistic career with the real one from the backend (if any)
+            const updatedCareer = response.data;
+            setFilteredCareers((prev) =>
+                prev.map((career) => (career.id === newCareer.id ? updatedCareer : career))
+            );
+            setCareers((prev) =>
+                prev.map((career) => (career.id === newCareer.id ? updatedCareer : career))
+            );
+    
             setCareerForm({ title: '', location: '', department: '', description: '', remote: false, apply_link: '' });
             setEditCareerId(null);
-            fetchCareers();
         } catch (error) {
             setError('Error submitting career');
+            setFilteredCareers((prev) => prev.filter((career) => career.id !== newCareer.id));
+            setCareers((prev) => prev.filter((career) => career.id !== newCareer.id));
+        } finally {
+            setLoading(false);
         }
     };
+    
 
     const handleEditCareer = (career) => {
         setCareerForm(career);
@@ -64,14 +109,20 @@ const CareerManage = () => {
     };
 
     const handleDeleteCareer = async (id) => {
+        // Optimistically remove the career from the UI
+        const updatedCareers = filteredCareers.filter(career => career.id !== id);
+        setFilteredCareers(updatedCareers);
+        
         try {
             await axios.delete(`https://cozycare-backend-g56w.onrender.com/careers/${id}`);
             setSuccessMessage('Career deleted successfully!');
-            fetchCareers();
         } catch (error) {
             setError('Error deleting career');
+            // Rollback the UI change if deletion fails
+            setFilteredCareers(careers);
         }
     };
+    
 
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
