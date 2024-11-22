@@ -27,18 +27,25 @@ const FeedbackManage = () => {
 
     // Fetch feedbacks from the server
     const fetchFeedbacks = async (page = 1) => {
-    setLoading(true);
-    try {
-        const response = await axios.get(`https://cozycare-backend-g56w.onrender.com/feedbacks?page=${page}&per_page=10`);
-        const feedbackData = Array.isArray(response.data.feedbacks) ? response.data.feedbacks : [];
-        setFeedbacks(feedbackData);
-        setFilteredFeedbacks(feedbackData); // Initially, show all feedbacks
-    } catch (error) {
-        setError('Failed to fetch feedback');
-    } finally {
-        setLoading(false);
-    }
-};
+        setLoading(true);
+        try {
+            const response = await axios.get(`http://127.0.0.1:5000/feedbacks`, {
+                params: { page, per_page: 10 }, // Use `params` for query parameters
+            });
+    
+            // Ensure response data is structured properly
+            const feedbackData = Array.isArray(response.data) ? response.data : response.data.feedbacks || [];
+            
+            setFeedbacks(feedbackData); // Update state with feedback data
+            setFilteredFeedbacks(feedbackData); // Set filtered feedbacks to show all initially
+        } catch (error) {
+            console.error('Error fetching feedbacks:', error);
+            setError('Failed to fetch feedback. Please try again.');
+        } finally {
+            setLoading(false);
+        }
+    };
+    
 
 
     // Handle form submission for creating or updating feedback
@@ -52,29 +59,51 @@ const FeedbackManage = () => {
         if (feedbackForm.feedback_file) {
             formData.append('feedback_file', feedbackForm.feedback_file);
         }
-        
+    
         try {
+            setLoading(true); // Ensure loading state is set before making the request
             if (editFeedbackId) {
-                // Update existing feedback
-                await axios.put(`https://cozycare-backend-g56w.onrender.com/feedbacks/${editFeedbackId}`, formData, {
+                // Optimistic UI update for edit
+                setFeedbacks((prevFeedbacks) =>
+                    prevFeedbacks.map((feedback) =>
+                        feedback.id === editFeedbackId
+                            ? { ...feedback, ...feedbackForm }  // Update feedback in the list
+                            : feedback
+                    )
+                );
+                setFilteredFeedbacks((prevFeedbacks) =>
+                    prevFeedbacks.map((feedback) =>
+                        feedback.id === editFeedbackId
+                            ? { ...feedback, ...feedbackForm }
+                            : feedback
+                    )
+                );
+                await axios.put(`http://127.0.0.1:5000/feedbacks/${editFeedbackId}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
                 setSuccessMessage('Feedback updated successfully!');
             } else {
-                // Create new feedback
-                await axios.post('https://cozycare-backend-g56w.onrender.com/feedbacks', formData, {
+                // Optimistic UI update for new feedback
+                setFeedbacks((prevFeedbacks) => [feedbackForm, ...prevFeedbacks]);
+                setFilteredFeedbacks((prevFeedbacks) => [feedbackForm, ...prevFeedbacks]);
+                await axios.post('http://127.0.0.1:5000/feedbacks', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
                 setSuccessMessage('Feedback submitted successfully!');
             }
-
             setFeedbackForm({ name: '', email: '', rating: 0, feedback_text: '', feedback_file: '', image_url: '' });
             setEditFeedbackId(null); // Reset after update
-            fetchFeedbacks();
         } catch (error) {
-            setError('Error submitting feedback');
+            console.error('Error submitting feedback:', error);
+            setError('Error submitting feedback. Please try again.');
+            // Optionally, revert optimistic updates on failure
+            fetchFeedbacks();
+        } finally {
+            setLoading(false);
         }
     };
+    
+    
 
     // Handle feedback editing
     const handleEditFeedback = (feedback) => {
@@ -84,14 +113,42 @@ const FeedbackManage = () => {
 
     // Handle feedback deletion
     const handleDeleteFeedback = async (id) => {
+        if (!id) {
+            console.error('Feedback ID is not defined');
+            return;  // Exit early if id is not defined
+        }
+    
         try {
-            await axios.delete(`https://cozycare-backend-g56w.onrender.com/feedbacks/${id}`);
+            setLoading(true);  // Start loading
+    
+            // Optimistically remove the feedback from the UI
+            setFeedbacks((prevFeedbacks) =>
+                prevFeedbacks.filter((feedback) => feedback.id !== id)
+            );
+            setFilteredFeedbacks((prevFeedbacks) =>
+                prevFeedbacks.filter((feedback) => feedback.id !== id)
+            );
+    
+            // Delete the feedback from the backend
+            await axios.delete(`http://127.0.0.1:5000/feedbacks/${id}`);
+    
             setSuccessMessage('Feedback deleted successfully!');
-            fetchFeedbacks();
         } catch (error) {
-            setError('Error deleting feedback');
+            console.error('Error deleting feedback:', error);
+            setError('Error deleting feedback. Please try again.');
+    
+            // Revert UI changes if delete fails
+            fetchFeedbacks();
+        } finally {
+            setLoading(false);  // End loading
         }
     };
+    
+    
+    
+    
+    
+
 
     // Handle search functionality
     const handleSearch = (e) => {
