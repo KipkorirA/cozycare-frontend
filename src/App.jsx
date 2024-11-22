@@ -22,6 +22,7 @@ import CareerManage from './pages/manage/CareerManage'; // Import CareerManage
 import FeedbackManage from './pages/manage/FeedbackManage'; // Import FeedbackManage
 import SubscriptionManage from './pages/manage/SubscriptionManage'; // Import SubscriptionManage
 import Manage from './pages/manage/Manage'; // Import Manage component
+import BlogPage from './pages/BlogPage'; // Import BlogPage
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyAndCookiePolicyPage />} />
             <Route path="/subscription-successful" element={<SubscriptionSuccessfulPage />} />
             <Route path="/application/:id" element={<ApplicationPage />} />
+            <Route path="/blog" element={<BlogPage />} />
             
             {/* Management routes */}
             <Route path="/manage" element={<Manage />} />  {/* Added route for Manage component */}
