@@ -45,7 +45,7 @@ const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage 
                     <p>{testimonial.text}</p>
                     {testimonial.image_url && (
                         <img
-                            src={testimonial.image_url.startsWith('http') ? testimonial.image_url : `http://localhost:5000${testimonial.image_url}`}
+                            src={testimonial.image_url.startsWith('http') ? testimonial.image_url : `https://cozycare-backend-g56w.onrender.com${testimonial.image_url}`}
                             alt={`Image of ${testimonial.author}`}
                             className="w-20 h-20 rounded-full mx-auto object-cover mb-2"
                         />
@@ -94,7 +94,7 @@ const FeedbackPage = () => {
 
     const fetchTestimonials = useCallback(async () => {
         try {
-            const response = await fetch("http://localhost:5000/feedback");
+            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedbacks");
             if (response.ok) {
                 const data = await response.json();
                 setTestimonials(data);
@@ -153,7 +153,7 @@ const FeedbackPage = () => {
         }
 
         try {
-            const response = await fetch("http://localhost:5000/feedback", {
+            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedbacks", {
                 method: "POST",
                 body: formData,
             });

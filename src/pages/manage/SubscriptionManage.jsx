@@ -29,7 +29,7 @@ const SubscriptionManage = () => {
     const fetchSubscriptions = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://127.0.0.1:5000/subscriptions');
+            const response = await axios.get('https://cozycare-backend-g56w.onrender.com/subscriptions');
             const subscriptionData = Array.isArray(response.data) ? response.data : [];
             setSubscriptions(subscriptionData);
             setFilteredSubscriptions(subscriptionData);
@@ -45,10 +45,10 @@ const SubscriptionManage = () => {
         e.preventDefault();
         try {
             if (editSubscriptionId) {
-                await axios.put(`http://127.0.0.1:5000/subscriptions/${editSubscriptionId}`, subscriptionForm);
+                await axios.put(`https://cozycare-backend-g56w.onrender.com/subscriptions/${editSubscriptionId}`, subscriptionForm);
                 setSuccessMessage('Subscription updated successfully!');
             } else {
-                await axios.post('http://127.0.0.1:5000/subscriptions', subscriptionForm);
+                await axios.post('https://cozycare-backend-g56w.onrender.com/subscriptions', subscriptionForm);
                 setSuccessMessage('Subscription created successfully!');
             }
 
@@ -69,7 +69,7 @@ const SubscriptionManage = () => {
     // Handle subscription deletion
     const handleDeleteSubscription = async (id) => {
         try {
-            await axios.delete(`http://127.0.0.1:5000/subscriptions/${id}`);
+            await axios.delete(`https://cozycare-backend-g56w.onrender.com/subscriptions/${id}`);
             setSuccessMessage('Subscription deleted successfully!');
             fetchSubscriptions();
         } catch (error) {

@@ -7,7 +7,7 @@ const CareersPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/careers')
+    fetch('https://cozycare-backend-g56w.onrender.com/api/careers')
       .then((response) => response.json())
       .then((data) => {
         setCareers(data);
