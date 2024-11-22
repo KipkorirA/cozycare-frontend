@@ -94,7 +94,7 @@ const FeedbackPage = () => {
 
     const fetchTestimonials = useCallback(async () => {
         try {
-            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedbacks");
+            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedback");
             if (response.ok) {
                 const data = await response.json();
                 setTestimonials(data);
@@ -153,7 +153,7 @@ const FeedbackPage = () => {
         }
 
         try {
-            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedbacks", {
+            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedback", {
                 method: "POST",
                 body: formData,
             });

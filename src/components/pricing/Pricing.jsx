@@ -37,8 +37,8 @@ const Pricing = () => {
                     
                     {/* Text inside the image without background */}
                     <div className="-mt-16 md:-mt-20 ml-9 md:ml-10 mr-11 md:pr-11 absolute inset-0 flex flex-col justify-center text-black text-left rounded-lg md:pl-8 md:pt--1 lg:pl-16 lg:pr-16 lg:-mt-40">    
-                        <h3 className="text-[10px] md:text-[14px] lg:text-[24px] lg:pl-9 lg:pr-9 font-bold text-gray-800 md:mb-2">Factors that may affect pricing include:</h3>
-                        <ul className="text-[9px] md:text-[12px] lg:text-[24px] text-left lg:pl-16 lg:pr-9 text-gray-700 md:space-y-1 list-disc">
+                        <h3 className="text-[8px] sm:text-[10px] md:text-[14px] lg:text-[24px] xl:text-[28px] 2xl:text-[32px] lg:pl-9 lg:pr-9 font-bold text-gray-800 md:mb-2">Factors that may affect pricing include:</h3>
+                        <ul className="text-[7px] sm:text-[9px] md:text-[12px] lg:text-[20px] xl:text-[24px] 2xl:text-[28px] text-left lg:pl-16 lg:pr-9 text-gray-700 md:space-y-1 list-disc">
                             <li>Level of care: The intensity and complexity of the care required.</li>
                             <li>Frequency of care: The number of hours of care needed per week.</li>
                             <li>Location: Geographic location may influence pricing.</li>
@@ -67,6 +67,5 @@ const Pricing = () => {
         </section>
     );
 };
-
 
 export default Pricing;

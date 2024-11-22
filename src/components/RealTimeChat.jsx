@@ -7,7 +7,7 @@ const socket = io('https://cozycare-backend-g56w.onrender.com'); // Replace with
 const RealTimeChat = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    const [isChatOpen, setIsChatOpen] = useState(false); // State to manage chat window visibility
+    const [isChatOpen, setIsChatOpen] = useState(false); 
 
     useEffect(() => {
         // Clear messages on component mount (reload)
