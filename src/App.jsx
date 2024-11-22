@@ -23,6 +23,7 @@ import FeedbackManage from './pages/manage/FeedbackManage'; // Import FeedbackMa
 import SubscriptionManage from './pages/manage/SubscriptionManage'; // Import SubscriptionManage
 import Manage from './pages/manage/Manage'; // Import Manage component
 import BlogPage from './pages/BlogPage'; // Import BlogPage
+import BlogManage from './pages/manage/BlogManage'; // Import BlogManage
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
@@ -66,6 +67,7 @@ const App = () => {
             <Route path="/manage/careers" element={<CareerManage />} />
             <Route path="/manage/feedback" element={<FeedbackManage />} />
             <Route path="/manage/subscriptions" element={<SubscriptionManage />} />
+            <Route path="/manage/blog" element={<BlogManage />} />
 
             {/* Catch all unmatched routes and render the NotFoundPage */}
             <Route path="*" element={<NotFoundPage />} />

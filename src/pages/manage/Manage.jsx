@@ -55,9 +55,16 @@ const Manage = () => {
                         </button>
                         <button 
                             onClick={() => navigate('/manage/careers')} 
-                            className="p-2 bg-blue-600 text-white rounded-md"
+
+                            className="p-2 bg-blue-600 text-white rounded-md mr-2"
                         >
                             Manage Careers
+                        </button>
+                        <button 
+                            onClick={() => navigate('/manage/blog')} 
+                            className="p-2 bg-blue-600 text-white rounded-md"
+                        >
+                            Manage Blog
                         </button>
                     </div>
                 </>
@@ -65,5 +72,6 @@ const Manage = () => {
         </div>
     );
 };
+
 
 export default Manage;
