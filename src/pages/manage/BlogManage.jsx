@@ -16,7 +16,7 @@ const BlogManage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/blogs');
+      const response = await axios.get('https://cozycare-backend-g56w.onrender.com/blogs');
       setBlogs(response.data);
     } catch (error) {
       message.error('Failed to fetch blogs');
@@ -37,7 +37,7 @@ const BlogManage = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/blogs/${id}`);
+      await axios.delete(`https://cozycare-backend-g56w.onrender.com/blogs/${id}`);
       message.success('Blog deleted successfully');
       fetchBlogs();
     } catch (error) {
@@ -48,10 +48,10 @@ const BlogManage = () => {
   const handleSubmit = async (values) => {
     try {
       if (editingId) {
-        await axios.put(`http://localhost:3000/api/blogs/${editingId}`, values);
+        await axios.put(`https://cozycare-backend-g56w.onrender.com/blogs/${editingId}`, values);
         message.success('Blog updated successfully');
       } else {
-        await axios.post('http://localhost:3000/api/blogs', values);
+        await axios.post('https://cozycare-backend-g56w.onrender.com/blogs', values);
         message.success('Blog added successfully');
       }
       setIsModalVisible(false);
