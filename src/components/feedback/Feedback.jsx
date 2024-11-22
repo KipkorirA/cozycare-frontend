@@ -26,7 +26,7 @@ const Feedback = () => {
     useEffect(() => {
         const fetchTestimonials = async () => {
             try {
-                const response = await fetch('http://localhost:5000/feedback');
+                const response = await fetch('https://cozycare-backend-g56w.onrender.com/feedbacks');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

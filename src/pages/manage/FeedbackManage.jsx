@@ -29,7 +29,7 @@ const FeedbackManage = () => {
     const fetchFeedbacks = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://127.0.0.1:5000/feedback');
+            const response = await axios.get('https://cozycare-backend-g56w.onrender.com/feedbacks');
             const feedbackData = Array.isArray(response.data) ? response.data : [];
             setFeedbacks(feedbackData);
             setFilteredFeedbacks(feedbackData); // Initially, show all feedbacks
@@ -55,13 +55,13 @@ const FeedbackManage = () => {
         try {
             if (editFeedbackId) {
                 // Update existing feedback
-                await axios.put(`http://127.0.0.1:5000/feedback/${editFeedbackId}`, formData, {
+                await axios.put(`https://cozycare-backend-g56w.onrender.com/feedbacks/${editFeedbackId}`, formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
                 setSuccessMessage('Feedback updated successfully!');
             } else {
                 // Create new feedback
-                await axios.post('http://127.0.0.1:5000/feedback', formData, {
+                await axios.post('https://cozycare-backend-g56w.onrender.com/feedbacks', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' },
                 });
                 setSuccessMessage('Feedback submitted successfully!');
@@ -84,7 +84,7 @@ const FeedbackManage = () => {
     // Handle feedback deletion
     const handleDeleteFeedback = async (id) => {
         try {
-            await axios.delete(`http://127.0.0.1:5000/feedback/${id}`);
+            await axios.delete(`https://cozycare-backend-g56w.onrender.com/feedbacks/${id}`);
             setSuccessMessage('Feedback deleted successfully!');
             fetchFeedbacks();
         } catch (error) {

@@ -28,7 +28,7 @@ const CareerManage = () => {
     const fetchCareers = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://127.0.0.1:5000/careers');
+            const response = await axios.get('https://cozycare-backend-g56w.onrender.com/careers');
             const careerData = Array.isArray(response.data) ? response.data : [];
             setCareers(careerData);
             setFilteredCareers(careerData);
@@ -43,10 +43,10 @@ const CareerManage = () => {
         e.preventDefault();
         try {
             if (editCareerId) {
-                await axios.put(`http://127.0.0.1:5000/careers/${editCareerId}`, careerForm);
+                await axios.put(`https://cozycare-backend-g56w.onrender.com/careers/${editCareerId}`, careerForm);
                 setSuccessMessage('Career updated successfully!');
             } else {
-                await axios.post('http://127.0.0.1:5000/careers', careerForm);
+                await axios.post('https://cozycare-backend-g56w.onrender.com/careers', careerForm);
                 setSuccessMessage('Career created successfully!');
             }
 
@@ -65,7 +65,7 @@ const CareerManage = () => {
 
     const handleDeleteCareer = async (id) => {
         try {
-            await axios.delete(`http://127.0.0.1:5000/careers/${id}`);
+            await axios.delete(`https://cozycare-backend-g56w.onrender.com/careers/${id}`);
             setSuccessMessage('Career deleted successfully!');
             fetchCareers();
         } catch (error) {

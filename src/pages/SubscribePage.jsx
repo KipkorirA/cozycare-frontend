@@ -15,7 +15,7 @@ const SubscribePage = () => {
   const navigate = useNavigate();
 
   // Define the API base URL using environment variable
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://cozycare-backend-g56w.onrender.com';
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,41 +57,40 @@ const SubscribePage = () => {
 
   const handleSubscription = async (e) => {
     e.preventDefault();
-
+  
     if (validateForm()) {
       try {
-        setIsLoading(true); // Start loading
-        const response = await fetch(`${API_BASE_URL}/subscribe`, {
+        const response = await fetch(`${API_BASE_URL}/subscriptions`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            firstName,
-            lastName,
+            first_name: firstName,  
+            last_name: lastName,    
             email,
-            phoneNumber,
-            preferredContact,
+            phone_number: phoneNumber,  
+            preferred_contact: preferredContact,  
             interests,
           }),
         });
-
+  
         const data = await response.json();
-
         if (response.ok) {
-          resetForm(); // Clear the form fields
-          navigate('/subscription-successful'); // Redirect to the subscription successful page
+          resetForm();
+          navigate('/subscription-successful');
         } else {
           setErrorMessage(data.message || 'Something went wrong.');
         }
       } catch (error) {
-        console.error('Error:', error);
+        console.error('Network error:', error);
         setErrorMessage('Failed to subscribe. Please try again later.');
       } finally {
-        setIsLoading(false); // End loading
+        setIsLoading(false);
       }
     }
   };
+  
 
   return (
     <div className="max-w-md mx-auto my-12 p-10 border border-gray-300 rounded-lg shadow-md bg-gradient-to-r from-green-300 to-gray-100">
