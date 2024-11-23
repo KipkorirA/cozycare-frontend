@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import ReCAPTCHA from "react-google-recaptcha";
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -10,7 +9,6 @@ const ContactForm = () => {
         message: '',
     });
 
-    const [captchaValue, setCaptchaValue] = useState(null);
     const [isCaptchaValid, setIsCaptchaValid] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -19,10 +17,8 @@ const ContactForm = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleCaptcha = (value) => {
-        setCaptchaValue(value);
-        setIsCaptchaValid(true);
-        console.log("Captcha value:", value);
+    const handleCaptchaChange = (e) => {
+        setIsCaptchaValid(e.target.checked); // When checkbox is checked, the value will be true
     };
 
     const handleSubmit = async (e) => {
@@ -30,12 +26,12 @@ const ContactForm = () => {
         if (isCaptchaValid) {
             setIsLoading(true);
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch('http://127.0.0.1:5000/contacts', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ ...formData, captchaValue }),
+                    body: JSON.stringify(formData),
                 });
 
                 if (!response.ok) {
@@ -45,14 +41,13 @@ const ContactForm = () => {
                 alert("Your message has been sent successfully!");
                 setFormData({ firstName: '', lastName: '', phone: '', email: '', message: '' });
                 setIsCaptchaValid(false);
-                setCaptchaValue(null);
             } catch (error) {
                 setErrorMessage("There was a problem sending your message: " + error.message);
             } finally {
                 setIsLoading(false);
             }
         } else {
-            alert("Please complete the reCAPTCHA.");
+            setErrorMessage("Please complete the captcha.");
         }
     };
 
@@ -115,13 +110,24 @@ const ContactForm = () => {
                     ></textarea>
                 </div>
 
-                {/* reCAPTCHA */}
-                <div className="flex justify-center items-center">
-                    <ReCAPTCHA
-                        sitekey="YOUR_GOOGLE_RECAPTCHA_SITE_KEY"
-                        onChange={handleCaptcha}
-                        className="transform scale-100 hover:scale-105 transition-transform duration-300"
-                    />
+                {/* Simple Checkbox (acting as CAPTCHA) with Logo */}
+                <div className="flex items-center justify-center mt-4">
+                    <div className="border-2 border-[#00a879] p-4 rounded-lg flex items-center space-x-4">
+                        <input 
+                            type="checkbox" 
+                            id="captcha" 
+                            checked={isCaptchaValid} 
+                            onChange={handleCaptchaChange}
+                            className="mr-2"
+                        />
+                        <label htmlFor="captcha" className="text-white">I am not a robot</label>
+                        {/* reCAPTCHA Logo */}
+                        <img 
+                            src="https://www.gstatic.com/recaptcha/api2/logo_48.png" 
+                            alt="reCAPTCHA Logo" 
+                            className="w-6 h-6"
+                        />
+                    </div>
                 </div>
 
                 {/* Error Message */}
