@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
 import { FaComments, FaPaperPlane, FaTimes } from 'react-icons/fa';
-
-const socket = io('https://cozycare-backend-g56w.onrender.com'); 
 
 const RealTimeChat = () => {
     const [messages, setMessages] = useState([]);
@@ -10,31 +7,33 @@ const RealTimeChat = () => {
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [isTyping, setIsTyping] = useState(false);
 
-    useEffect(() => {
-        setMessages([]);
-
-        socket.on('chat message', (msg) => {
-            setMessages((prevMessages) => [...prevMessages, { ...msg, isSent: false }]);
-            // Add subtle notification sound
-            new Audio('/message-sound.mp3').play().catch(() => {});
-        });
-
-        return () => {
-            socket.off('chat message');
-        };
-    }, []);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (message.trim()) {
-            const msg = { username: 'Guest', message: message.trim(), isSent: true, timestamp: new Date().toLocaleTimeString() };
-            socket.emit('chat message', msg);
+            const msg = { 
+                username: 'Guest', 
+                message: message.trim(), 
+                isSent: true, 
+                timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) 
+            };
             setMessages((prevMessages) => [...prevMessages, msg]);
             setMessage('');
             // Add send animation effect here
             const sendBtn = document.getElementById('sendBtn');
             sendBtn.classList.add('animate-ping');
             setTimeout(() => sendBtn.classList.remove('animate-ping'), 200);
+
+            // Simulate received message after a short delay
+            setTimeout(() => {
+                const response = {
+                    username: 'Bot',
+                    message: 'Thanks for your message! This is a demo response.',
+                    isSent: false,
+                    timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+                };
+                setMessages(prev => [...prev, response]);
+                new Audio('/message-sound.mp3').play().catch(() => {});
+            }, 1000);
         }
     };
 
