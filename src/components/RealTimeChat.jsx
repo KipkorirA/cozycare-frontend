@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FaComments } from 'react-icons/fa';
+import Fuse from 'fuse.js';
+
 
 const RealTimeChat = () => {
     const [messages, setMessages] = useState([]);
@@ -64,11 +66,27 @@ const RealTimeChat = () => {
     };
 
     // Handle message submission
+    const fuse = new Fuse(Object.keys(auto_responses), {
+        includeScore: true,
+        threshold: 0.3, // Adjust this to control sensitivity (lower is more strict)
+    });
+
+    // Function to find the closest matching response
+    const getAutoResponse = (input) => {
+        const results = fuse.search(input);
+        if (results.length > 0) {
+            return auto_responses[results[0].item];
+        } else {
+            return "Sorry, I didn't understand that. Can you rephrase?";
+        }
+    };
+
+    // Handle message submission
     const handleSubmit = (e) => {
         e.preventDefault();
         if (message.trim()) {
             const userMessage = message.trim();
-            const responseMessage = auto_responses[userMessage.toLowerCase()] || "Sorry, I didn't understand that. Can you rephrase?";
+            const responseMessage = getAutoResponse(userMessage.toLowerCase());
 
             // Add user's message to chat
             const userMsg = { username: 'Guest', message: userMessage, isSent: true };
@@ -82,6 +100,7 @@ const RealTimeChat = () => {
             setMessage('');
         }
     };
+    
 
     // Toggle chat window visibility
     const toggleChat = () => {
