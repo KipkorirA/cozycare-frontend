@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { FaComments, FaPaperPlane, FaTimes } from 'react-icons/fa';
 
 const RealTimeChat = () => {
@@ -6,33 +6,74 @@ const RealTimeChat = () => {
     const [message, setMessage] = useState('');
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [isTyping, setIsTyping] = useState(false);
+    const messagesEndRef = useRef(null);
 
-    const handleSubmit = (e) => {
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setMessages([]);
+        }, 1800000); // Clear messages every 30 minutes
+
+        return () => clearInterval(intervalId);
+    }, []);
+
+    useEffect(() => {
+        const typingTimer = setTimeout(() => setIsTyping(false), 1000);
+        return () => clearTimeout(typingTimer);
+    }, [message]);
+
+    const getDefaultResponse = (userMessage) => {
+        const responses = [
+            "Welcome to CozyCare! We bring primary care, palliative care, and hospice care directly to you.",
+            "At CozyCare, our location is your location. We provide care at your home, senior residency community, or long-term care facility.",
+            "No need to worry about transportation or mobility - we come to you!",
+            "Hello! How can CozyCare assist you today?",
+            "We're here to make healthcare accessible and convenient for you.",
+            "CozyCare brings professional healthcare services right to your doorstep.",
+            "Welcome! We specialize in bringing quality healthcare to your location.",
+            "Our team of healthcare professionals is dedicated to providing personalized care in your comfortable environment.",
+            "Would you like to learn more about our home-based healthcare services?",
+            "CozyCare offers comprehensive medical care without the need to leave your home.",
+            "Our services include regular check-ups, medication management, and specialized care - all at your location.",
+            "Need medical attention but can't travel? CozyCare is here to help!",
+            "We understand the importance of comfortable, accessible healthcare. How can we assist you?",
+            "Our healthcare team is available to provide professional medical services in your preferred setting.",
+            "Looking for quality healthcare without the hassle of travel? You're in the right place!",
+            "We provide personalized care plans tailored to your specific needs and home environment.",
+            "CozyCare makes healthcare simple - just tell us what you need, and we'll come to you.",
+            "Our mission is to make quality healthcare accessible to everyone, right where they are."
+        ];
+        return responses[Math.floor(Math.random() * responses.length)];
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (message.trim()) {
-            const msg = { 
-                username: 'Guest', 
-                message: message.trim(), 
-                isSent: true, 
-                timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }) 
+            const userMessage = {
+                username: 'Guest',
+                message: message.trim(),
+                isSent: true,
+                timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
             };
-            setMessages((prevMessages) => [...prevMessages, msg]);
+            setMessages((prevMessages) => [...prevMessages, userMessage]);
             setMessage('');
-            // Add send animation effect here
             const sendBtn = document.getElementById('sendBtn');
             sendBtn.classList.add('animate-ping');
             setTimeout(() => sendBtn.classList.remove('animate-ping'), 200);
 
-            // Simulate received message after a short delay
+            setIsTyping(true);
+
             setTimeout(() => {
-                const response = {
+                const botResponse = {
                     username: 'CozyCare',
-                    message: 'Thanks for your message! ',
+                    message: getDefaultResponse(),
                     isSent: false,
                     timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
                 };
-                setMessages(prev => [...prev, response]);
-                new Audio('/message-sound.mp3').play().catch(() => {});
+
+                setMessages(prevMessages => [...prevMessages, botResponse]);
+                setIsTyping(false);
+
+                new Audio('/message-sound.mp3').play().catch((error) => console.error("Audio play error:", error));
             }, 1000);
         }
     };
@@ -40,6 +81,10 @@ const RealTimeChat = () => {
     const toggleChat = () => {
         setIsChatOpen((prev) => !prev);
     };
+
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [messages]);
 
     return (
         <>
@@ -86,6 +131,7 @@ const RealTimeChat = () => {
                                 </div>
                             ))
                         )}
+                        <div ref={messagesEndRef} />
                     </div>
                     <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
                         <div className="relative">
@@ -94,11 +140,7 @@ const RealTimeChat = () => {
                                 placeholder="Type a message"
                                 className="w-full border-2 border-green-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 pr-10"
                                 value={message}
-                                onChange={(e) => {
-                                    setMessage(e.target.value);
-                                    setIsTyping(true);
-                                    setTimeout(() => setIsTyping(false), 1000);
-                                }}
+                                onChange={(e) => setMessage(e.target.value)}
                                 required
                             />
                             <button
