@@ -26,8 +26,8 @@ const RealTimeChat = () => {
             // Simulate received message after a short delay
             setTimeout(() => {
                 const response = {
-                    username: 'Bot',
-                    message: 'Thanks for your message! This is a demo response.',
+                    username: 'CozyCare',
+                    message: 'Thanks for your message! ',
                     isSent: false,
                     timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
                 };
