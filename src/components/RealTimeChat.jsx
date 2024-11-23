@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import { FaComments } from 'react-icons/fa';
+import { FaComments, FaPaperPlane, FaTimes } from 'react-icons/fa';
 
-const socket = io('https://cozycare-backend-g56w.onrender.com'); // Replace with your server URL
+const socket = io('https://cozycare-backend-g56w.onrender.com'); 
 
 const RealTimeChat = () => {
     const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState('');
-    const [isChatOpen, setIsChatOpen] = useState(false); 
+    const [isChatOpen, setIsChatOpen] = useState(false);
+    const [isTyping, setIsTyping] = useState(false);
 
     useEffect(() => {
-        // Clear messages on component mount (reload)
         setMessages([]);
 
-        // Listen for incoming messages
         socket.on('chat message', (msg) => {
             setMessages((prevMessages) => [...prevMessages, { ...msg, isSent: false }]);
+            // Add subtle notification sound
+            new Audio('/message-sound.mp3').play().catch(() => {});
         });
 
-        // Cleanup function to remove the event listener on unmount
         return () => {
             socket.off('chat message');
         };
@@ -27,74 +27,94 @@ const RealTimeChat = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (message.trim()) {
-            const msg = { username: 'Guest', message: message.trim(), isSent: true }; // Mark message as sent
+            const msg = { username: 'Guest', message: message.trim(), isSent: true, timestamp: new Date().toLocaleTimeString() };
             socket.emit('chat message', msg);
-            setMessages((prevMessages) => [...prevMessages, msg]); // Immediately update local state
-            setMessage(''); // Clear the input field after sending the message
+            setMessages((prevMessages) => [...prevMessages, msg]);
+            setMessage('');
+            // Add send animation effect here
+            const sendBtn = document.getElementById('sendBtn');
+            sendBtn.classList.add('animate-ping');
+            setTimeout(() => sendBtn.classList.remove('animate-ping'), 200);
         }
     };
 
     const toggleChat = () => {
-        setIsChatOpen((prev) => !prev); // Toggle chat window visibility
+        setIsChatOpen((prev) => !prev);
     };
 
     return (
         <>
-            {/* Chat Icon */}
             <button
                 onClick={toggleChat}
-                className="fixed bottom-5 right-5 p-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-transform transform hover:scale-110"
+                className="fixed bottom-5 right-5 p-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full shadow-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-110 hover:rotate-12"
                 aria-label="Toggle chat"
             >
-                <FaComments size={24} />
+                <FaComments size={24} className="animate-pulse" />
             </button>
 
-            {/* Chat Window */}
             {isChatOpen && (
                 <div
-                    className="fixed bottom-20 right-5 w-80 max-h-[500px] border border-gray-300 rounded-lg shadow-lg p-4 flex flex-col bg-white"
-                    style={{ zIndex: 1000 }} // Ensure it is on top
+                    className="fixed bottom-20 right-5 w-80 max-h-[500px] border-2 border-green-300 rounded-lg shadow-2xl p-4 flex flex-col bg-gradient-to-b from-[#FFFDD0] to-[#fff] backdrop-blur-sm"
+                    style={{ zIndex: 1000 }}
                 >
-                    <h2 className="text-xl font-semibold mb-2 border-b border-gray-300 pb-2 text-center">Real-Time Chat</h2>
+                    <div className="flex justify-between items-center mb-2 border-b border-green-300 pb-2">
+                        <h2 className="text-xl font-bold text-green-700">CozyCare Chat</h2>
+                        <button onClick={toggleChat} className="text-green-600 hover:text-green-800 transition-colors">
+                            <FaTimes size={20} />
+                        </button>
+                    </div>
                     <div
-                        className="flex-1 overflow-y-auto mb-4 bg-gray-50 p-2 rounded-md border border-gray-300"
-                        aria-live="polite" // Accessibility feature
+                        className="flex-1 overflow-y-auto mb-4 bg-opacity-50 bg-white p-2 rounded-md border border-green-300 shadow-inner"
+                        aria-live="polite"
                     >
                         {messages.length === 0 ? (
-                            <p className="text-gray-500 text-center">No messages yet.</p>
+                            <p className="text-gray-500 text-center italic animate-pulse">Start a conversation...</p>
                         ) : (
                             messages.map((msg, index) => (
                                 <div
                                     key={index}
-                                    className={`mb-2 p-2 rounded-lg ${
+                                    className={`mb-2 p-2 rounded-lg transform transition-all duration-300 hover:scale-102 ${
                                         msg.isSent
-                                            ? 'bg-blue-100 self-end' // Sent messages style
-                                            : 'bg-green-100 self-start' // Received messages style
+                                            ? 'bg-gradient-to-r from-green-100 to-green-200 ml-auto max-w-[80%]'
+                                            : 'bg-gradient-to-r from-gray-100 to-gray-200 mr-auto max-w-[80%]'
                                     }`}
-                                    style={{
-                                        alignSelf: msg.isSent ? 'flex-end' : 'flex-start', // Align based on sender
-                                    }}
                                 >
-                                    <strong className="text-blue-600">{msg.username}:</strong> <span className="text-gray-800">{msg.message}</span>
+                                    <div className="flex justify-between items-baseline mb-1">
+                                        <strong className="text-green-700">{msg.username}</strong>
+                                        <span className="text-xs text-gray-500">{msg.timestamp}</span>
+                                    </div>
+                                    <span className="text-gray-800">{msg.message}</span>
                                 </div>
                             ))
                         )}
                     </div>
                     <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
-                        <input
-                            type="text"
-                            placeholder="Type a message"
-                            className="border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-150 ease-in-out"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="submit"
-                            className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition-transform transform hover:scale-105"
-                        >
-                            Send
-                        </button>
+                        <div className="relative">
+                            <input
+                                type="text"
+                                placeholder="Type a message"
+                                className="w-full border-2 border-green-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 transition-all duration-300 pr-10"
+                                value={message}
+                                onChange={(e) => {
+                                    setMessage(e.target.value);
+                                    setIsTyping(true);
+                                    setTimeout(() => setIsTyping(false), 1000);
+                                }}
+                                required
+                            />
+                            <button
+                                id="sendBtn"
+                                type="submit"
+                                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-green-600 hover:text-green-800 transition-colors"
+                            >
+                                <FaPaperPlane size={20} />
+                            </button>
+                        </div>
+                        {isTyping && (
+                            <span className="text-xs text-gray-500 italic animate-pulse">
+                                Someone is typing...
+                            </span>
+                        )}
                     </form>
                 </div>
             )}
