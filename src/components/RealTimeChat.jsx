@@ -55,7 +55,8 @@ const RealTimeChat = () => {
         "do you offer free trials?": "Yes, we offer a free trial for 30 days. You can sign up and try out our service before committing to a plan.",
         "how do I contact customer service?": "You can contact our customer service team by emailing support@cozycare.com or through our live chat feature. We're always here to help.",
         "is there a mobile version of the website?": "Yes! Our website is fully mobile-friendly, so you can access your account from any device.",
-        "can I share my account with others?": "Your account is for personal use only. However, if you'd like, we can discuss options for additional users under your plan."
+        "can I share my account with others?": "Your account is for personal use only. However, if you'd like, we can discuss options for additional users under your plan.",
+        "what is cozycare?": "CozyCare is a platform designed to offer personalized services and support to help you with various tasks. We're here to make your experience as smooth and convenient as possible. Whether it's billing, subscriptions, or other inquiries, we’ve got you covered!"
     };
 
     // Handle message submission
