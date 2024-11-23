@@ -1,8 +1,10 @@
+
+
 import { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import { FaComments } from 'react-icons/fa';
 
-const socket = io('https://cozycare-backend-g56w.onrender.com'); // Replace with your server URL
+const socket = io('https://cozycare-backend-g56w.onrender.com'); // Ensure the server URL is correct
 
 const RealTimeChat = () => {
     const [messages, setMessages] = useState([]);
@@ -10,10 +12,7 @@ const RealTimeChat = () => {
     const [isChatOpen, setIsChatOpen] = useState(false); 
 
     useEffect(() => {
-        // Clear messages on component mount (reload)
-        setMessages([]);
-
-        // Listen for incoming messages
+        // Listen for incoming messages (from backend)
         socket.on('chat message', (msg) => {
             setMessages((prevMessages) => [...prevMessages, { ...msg, isSent: false }]);
         });
@@ -28,8 +27,8 @@ const RealTimeChat = () => {
         e.preventDefault();
         if (message.trim()) {
             const msg = { username: 'Guest', message: message.trim(), isSent: true }; // Mark message as sent
-            socket.emit('chat message', msg);
-            setMessages((prevMessages) => [...prevMessages, msg]); // Immediately update local state
+            socket.emit('chat message', msg); // Emit to Flask server
+            setMessages((prevMessages) => [...prevMessages, msg]); // Update local state immediately
             setMessage(''); // Clear the input field after sending the message
         }
     };
