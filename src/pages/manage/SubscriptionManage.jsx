@@ -30,7 +30,7 @@ const SubscriptionManage = () => {
         setLoading(true);
         try {
             // Optimistically keep the current subscriptions visible until the fetch is complete
-            const response = await axios.get('https://cozycare-backend-g56w.onrender.com/subscriptions');
+            const response = await axios.get('https://cozycare-backend-g56w.onrender.co/subscriptions');
             const subscriptionData = Array.isArray(response.data) ? response.data : [];
             
             // Update the local state with the latest subscriptions
