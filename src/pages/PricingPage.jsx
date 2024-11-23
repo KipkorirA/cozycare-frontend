@@ -121,8 +121,8 @@ const PricingPage = () => {
 
       {/* Contact Section */}
       <div className="bg-[#a8c2b2] px-4 sm:px-8 md:px-16 lg:px-24 py-12 w-full box-border">
-        <h1 className="text-3xl mb-6">FIND HOME CARE TODAY</h1>
-        <p className="text-lg mb-6 text-[#1d0303]">
+        <h1 className="text-4xl mb-6 text-[#2c5530] font-bold animate-fade-in">FIND HOME CARE TODAY</h1>
+        <p className="text-lg mb-6 text-[#1d0303] leading-relaxed hover:text-[#2c5530] transition-colors duration-300">
           Get Started with Primary Care at Home
           <br />
           <br />
@@ -134,12 +134,12 @@ const PricingPage = () => {
           Don't wait – let us show you how we can support your health and well-being today!
         </p>
 
-        <h6 className="text-base mb-6 text-white">
+        <h6 className="text-base mb-6 text-[#2c5530] font-medium animate-pulse">
           Whether you have questions, need assistance, or want to schedule an appointment, our team is here to help.
         </h6>
 
         {/* Contact Form */}
-        <form className="w-full max-w-2xl mx-auto flex flex-col" onSubmit={handleFormSubmit}>
+        <form className="w-full max-w-2xl mx-auto flex flex-col transform hover:scale-[1.01] transition-transform duration-300" onSubmit={handleFormSubmit}>
           <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
             <input
               type="text"
@@ -148,7 +148,7 @@ const PricingPage = () => {
               value={formData.firstName}
               onChange={handleInputChange}
               required
-              className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md"
+              className="w-full sm:w-[48%] p-3 border border-[#2c5530] rounded-md bg-[#f8f5f0] focus:outline-none focus:ring-2 focus:ring-[#2c5530] transform hover:translate-y-[-2px] transition-transform duration-300"
             />
             <input
               type="text"
@@ -157,7 +157,7 @@ const PricingPage = () => {
               value={formData.lastName}
               onChange={handleInputChange}
               required
-              className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md"
+              className="w-full sm:w-[48%] p-3 border border-[#2c5530] rounded-md bg-[#f8f5f0] focus:outline-none focus:ring-2 focus:ring-[#2c5530] transform hover:translate-y-[-2px] transition-transform duration-300"
             />
           </div>
           <div className="flex flex-col sm:flex-row justify-between mb-4 gap-4">
@@ -168,7 +168,7 @@ const PricingPage = () => {
               value={formData.phone}
               onChange={handleInputChange}
               required
-              className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md"
+              className="w-full sm:w-[48%] p-3 border border-[#2c5530] rounded-md bg-[#f8f5f0] focus:outline-none focus:ring-2 focus:ring-[#2c5530] transform hover:translate-y-[-2px] transition-transform duration-300"
             />
             <input
               type="email"
@@ -177,11 +177,11 @@ const PricingPage = () => {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full sm:w-[48%] p-3 border border-gray-300 rounded-md"
+              className="w-full sm:w-[48%] p-3 border border-[#2c5530] rounded-md bg-[#f8f5f0] focus:outline-none focus:ring-2 focus:ring-[#2c5530] transform hover:translate-y-[-2px] transition-transform duration-300"
             />
           </div>
           <textarea
-            className="message p-3 border border-gray-300 rounded-md mb-4"
+            className="message p-3 border border-[#2c5530] rounded-md mb-4 bg-[#f8f5f0] focus:outline-none focus:ring-2 focus:ring-[#2c5530] transform hover:translate-y-[-2px] transition-transform duration-300"
             name="message"
             placeholder="Message"
             value={formData.message}
@@ -190,20 +190,20 @@ const PricingPage = () => {
             required
           ></textarea>
 
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4 hover:opacity-80 transition-opacity duration-300">
             <div className="w-7 h-7 bg-[url('/images/recaptcha-logo.png')] bg-cover mr-2"></div>
-            <input type="checkbox" id="not-a-robot" />
-            <label htmlFor="not-a-robot" className="text-sm ml-2">I am not a robot</label>
+            <input type="checkbox" id="not-a-robot" className="accent-[#2c5530]" />
+            <label htmlFor="not-a-robot" className="text-sm ml-2 text-[#2c5530]">I am not a robot</label>
           </div>
 
-          <button type="submit" disabled={isSubmitting} className="py-3 px-6 w-full sm:w-80 bg-[#f2f7f2] rounded-md text-lg text-[#6a743e]">
+          <button type="submit" disabled={isSubmitting} className="py-3 px-6 w-full sm:w-80 bg-[#2c5530] hover:bg-[#1a331d] transition-all duration-300 rounded-md text-lg text-[#f8f5f0] font-medium shadow-lg hover:shadow-xl transform hover:translate-y-[-2px]">
             {isSubmitting ? 'Submitting...' : 'Get Started'}
           </button>
-          {submissionStatus && <p className="mt-4 text-center text-lg text-[#8e0000]">{submissionStatus}</p>}
+          {submissionStatus && <p className="mt-4 text-center text-lg text-[#2c5530] animate-bounce">{submissionStatus}</p>}
         </form>
-      </div>
-    </div>
-  );
+      </div>   
+    </div>  
+    );
 };
 
 export default PricingPage;
