@@ -16,15 +16,15 @@ const Home = () => {
                     </Link>
 
                     <div className="flex justify-center gap-6 sm:gap-8 mt-4">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white text-2xl sm:text-3xl hover:text-[#f0a500] transition-all duration-300 hover:transform hover:scale-110">
+                        <a href="https://www.facebook.com/profile.php?id=61568897193439" target="_blank" rel="noopener noreferrer" className="text-white text-2xl sm:text-3xl hover:text-[#f0a500] transition-all duration-300 hover:transform hover:scale-110">
                             <i className="fab fa-facebook-f"></i>
                         </a>
 
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white text-2xl sm:text-3xl hover:text-[#f0a500] transition-all duration-300 hover:transform hover:scale-110">
+                        <a href="https://www.instagram.com/cozycare.world/" target="_blank" rel="noopener noreferrer" className="text-white text-2xl sm:text-3xl hover:text-[#f0a500] transition-all duration-300 hover:transform hover:scale-110">
                             <i className="fab fa-instagram"></i>
                         </a>
 
-                        <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="text-white text-2xl sm:text-3xl hover:text-[#f0a500] transition-all duration-300 hover:transform hover:scale-110">
+                        <a href="https://www.tiktok.com/@cozycare_world" target="_blank" rel="noopener noreferrer" className="text-white text-2xl sm:text-3xl hover:text-[#f0a500] transition-all duration-300 hover:transform hover:scale-110">
                             <i className="fab fa-tiktok"></i>
                         </a>
                     </div>

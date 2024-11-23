@@ -14,9 +14,6 @@ const SubscribePage = () => {
   // Initialize useNavigate
   const navigate = useNavigate();
 
-  // Define the API base URL using environment variable
-  const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://cozycare-backend-g56w.onrender.com';
-
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
@@ -52,15 +49,19 @@ const SubscribePage = () => {
     setLastName('');
     setEmail('');
     setPhoneNumber('');
+    setPreferredContact('email');
     setInterests([]);
+    setErrorMessage('');
   };
 
   const handleSubscription = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setErrorMessage('');
   
     if (validateForm()) {
       try {
-        const response = await fetch(`${API_BASE_URL}/subscriptions`, {
+        const response = await fetch('https://cozycare-backend-g56w.onrender.com/subscriptions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -88,6 +89,8 @@ const SubscribePage = () => {
       } finally {
         setIsLoading(false);
       }
+    } else {
+      setIsLoading(false);
     }
   };
   
@@ -206,7 +209,6 @@ const SubscribePage = () => {
 
       {/* Error Message */}
       {errorMessage && <p className="mt-4 text-red-600 font-bold text-center" aria-live="polite">{errorMessage}</p>}
-      {isLoading && <p className="mt-4 text-blue-600 font-bold text-center">Loading...</p>} {/* Loading Message */}
     </div>
   );
 };
