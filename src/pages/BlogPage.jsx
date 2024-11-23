@@ -1,23 +1,29 @@
+
+
   import { format } from 'date-fns';
   import { useState, useEffect } from 'react';
-
+  
   const BlogPage = () => {
     const [blogPost, setBlogPost] = useState(null);
-
+  
     useEffect(() => {
       const fetchBlogPost = async () => {
         try {
-          const response = await fetch('http://localhost:3000/api/blog-post');
+          const response = await fetch('https://cozycare-backend-g56w.onrender.com/blogs'); // Updated URL
           const data = await response.json();
-          setBlogPost(data);
+          
+          // Assuming the backend returns an array of blogs, we'll pick the first one
+          if (data && data.length > 0) {
+            setBlogPost(data[0]);  // Set the first blog post (adjust based on your needs)
+          }
         } catch (error) {
           console.error('Error fetching blog post:', error);
         }
       };
-
+  
       fetchBlogPost();
     }, []);
-
+  
     if (!blogPost) {
       return (
         <div className="flex justify-center items-center min-h-screen">
@@ -25,28 +31,34 @@
         </div>
       );
     }
-
+  
+    // Construct the absolute URLs for image and video
+    const imageUrl = blogPost.image_url ? `https://cozycare-backend-g56w.onrender.com/${blogPost.image_url}` : null;
+    const videoUrl = blogPost.video_url ? `https://cozycare-backend-g56w.onrender.com/${blogPost.video_url}` : null;
+  
     return (
       <div className="max-w-4xl mx-auto px-4 py-8 min-h-screen bg-gray-50">
         <article className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
           <div className="p-6">
-            <h1 className="text-3xl font-bold mb-4 text-gray-900 hover:text-blue-600 transition-colors duration-200">{blogPost.title}</h1>
+            <h1 className="text-3xl font-bold mb-4 text-gray-900 hover:text-blue-600 transition-colors duration-200">
+              {blogPost.title}
+            </h1>
             <div className="flex items-center mb-4">
               <span className="text-gray-600 mr-4 font-medium">{blogPost.name}</span>
               <span className="text-gray-500 text-sm">
-                {format(new Date(blogPost.timestamp), 'MMMM dd, yyyy')}
+                {format(new Date(blogPost.created_at), 'MMMM dd, yyyy')} {/* Adjusted to use created_at */}
               </span>
             </div>
-            {blogPost.image_url && (
+            {imageUrl && (
               <img
-                src={blogPost.image_url}
+                src={imageUrl}
                 alt={blogPost.title}
                 className="w-full h-64 object-cover mb-6 rounded-lg hover:opacity-90 transition-opacity duration-200"
               />
             )}
-            {blogPost.video_url && (
+            {videoUrl && (
               <video
-                src={blogPost.video_url}
+                src={videoUrl}
                 controls
                 className="w-full mb-6 rounded-lg focus:outline-none"
               />
@@ -59,5 +71,6 @@
       </div>
     );
   };
-
+  
   export default BlogPage;
+  

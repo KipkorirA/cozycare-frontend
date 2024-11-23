@@ -42,19 +42,43 @@ const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {displayedTestimonials.map((testimonial, index) => (
                 <div key={index} className="bg-white border border-green-300 rounded-lg p-4 text-center transition-transform transform hover:scale-105">
-                    <p>{testimonial.text}</p>
-                    {testimonial.image_url && (
-                        <img
-                            src={testimonial.image_url.startsWith('http') ? testimonial.image_url : `https://cozycare-backend-g56w.onrender.com${testimonial.image_url}`}
-                            alt={`Image of ${testimonial.author}`}
-                            className="w-20 h-20 rounded-full mx-auto object-cover mb-2"
-                        />
+                    {/* Display feedback text */}
+                    <p>{testimonial.feedback_text}</p>
+    
+                    {/* Conditionally display image if available */}
+                    {(testimonial.image_url || testimonial.feedback_file) && (
+                        <div className="mb-2">
+                            {/* Show image from feedback_file if available, fallback to image_url if necessary */}
+                            {testimonial.image_url ? (
+                                <img
+                                    src={testimonial.image_url.startsWith('http') ? testimonial.image_url : `https://cozycare-backend-g56w.onrender.com${testimonial.image_url}`}
+                                    alt={`Image of ${testimonial.name}`}
+                                    className="w-20 h-20 rounded-full mx-auto object-cover mb-2"
+                                    onError={(e) => e.target.style.display = 'none'} // Hide image on error
+                                />
+                            ) : (
+                                // If image_url is not available, try using feedback_file
+                                testimonial.feedback_file && (
+                                    <img
+                                        src={`https://cozycare-backend-g56w.onrender.com/${testimonial.feedback_file}`}
+                                        alt={`Feedback file image of ${testimonial.name}`}
+                                        className="w-20 h-20 rounded-full mx-auto object-cover mb-2"
+                                        onError={(e) => e.target.style.display = 'none'} // Hide image on error
+                                    />
+                                )
+                            )}
+                        </div>
                     )}
-                    <p>- {testimonial.author || "Anonymous"}</p>
+    
+                    {/* Display the name */}
+                    <p>- {testimonial.name}</p>
                 </div>
             ))}
         </div>
     );
+    
+    
+    
 };
 
 Testimonials.propTypes = {
@@ -93,22 +117,43 @@ const FeedbackPage = () => {
     };
 
     const fetchTestimonials = useCallback(async () => {
+        setLoading(true); // Ensure loading is set to true at the start
         try {
-            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedback");
-            if (response.ok) {
-                const data = await response.json();
-                setTestimonials(data);
-            } else {
-                setMessage("Failed to load testimonials. Using placeholder data.");
-                setTestimonials(getPlaceholderTestimonials());
+            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedbacks", {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+    
+            if (!response.ok) {
+                // Log status for more detailed debugging
+                console.error(`Failed to load testimonials. Status: ${response.status} - ${response.statusText}`);
+                throw new Error(`Failed to load testimonials. Status: ${response.status}`);
             }
+    
+            const data = await response.json();
+    
+            // Optionally check if the returned data contains the expected fields
+            const updatedData = data.map(testimonial => ({
+                ...testimonial,
+                name: testimonial.name || 'Unknown', // Fallback for missing names
+                avatar: testimonial.avatar || 'default-avatar-url', // Fallback for missing avatars
+                message: testimonial.message || 'No message provided', // Fallback for missing message
+            }));
+    
+            setTestimonials(updatedData);
         } catch (error) {
-            setMessage("Error fetching testimonials. Using placeholder data.");
+            console.error("Error fetching testimonials:", error);  // Log the full error
+            setMessage(`Error: ${error.message}. Using placeholder data.`);
             setTestimonials(getPlaceholderTestimonials());
         } finally {
             setLoading(false);
         }
     }, []);
+    
+    
+    
 
     useEffect(() => {
         fetchTestimonials();
@@ -146,14 +191,14 @@ const FeedbackPage = () => {
         formData.append("name", name);
         formData.append("email", email);
         formData.append("rating", rating);
-        formData.append("feedback", feedback);
+        formData.append("feedback_text", feedback);
 
         if (file) {
             formData.append("file", file);
         }
 
         try {
-            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedback", {
+            const response = await fetch("https://cozycare-backend-g56w.onrender.com/feedbacks", {
                 method: "POST",
                 body: formData,
             });
