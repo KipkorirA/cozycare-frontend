@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -27,19 +28,39 @@ const ApplicationPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('attachment', formData.attachment);
-      formDataToSend.append('created_at', new Date().toISOString());
 
-      await axios.post('https://cozycare-backend-g56w.onrender.com/applications', formDataToSend, {
+    // Check for form validation
+    if (!formData.name || !formData.email) {
+      alert("Name and Email are required.");
+      return;
+    }
+
+    // Assuming you have user_id stored in localStorage or a context
+    const userId = 1;  // Replace with dynamic value for the logged-in user
+
+    // Create a FormData object to handle file and other form data
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('user_id', userId); // Dynamically add user_id
+    formDataToSend.append('career_id', career.id); // Use career ID from fetched career data
+
+    // Ensure formData.attachment is a File object
+    if (formData.attachment) {
+      formDataToSend.append('attachment', formData.attachment);
+    }
+
+    formDataToSend.append('created_at', new Date().toISOString());
+
+    try {
+      // Send the form data to Flask server
+      const response = await axios.post('https://cozycare-backend-g56w.onrender.com/applications', formDataToSend, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          'Content-Type': 'multipart/form-data', // Ensure correct content type for file upload
+        },
       });
-      setShowForm(false);
+
+      setShowForm(false); // Hide form on success
       alert('Application submitted successfully!');
     } catch (error) {
       console.error('Error submitting application:', error);
@@ -143,23 +164,21 @@ const ApplicationPage = () => {
                     name="attachment"
                     onChange={handleInputChange}
                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    accept=".pdf,.doc,.docx"
-                    required
                   />
                 </div>
-                <div className="flex justify-end gap-4">
+                <div className="flex justify-between">
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-green-700 to-green-500 text-white font-bold py-2 px-6 rounded-full hover:opacity-90"
+                  >
+                    Submit
+                  </button>
                   <button
                     type="button"
                     onClick={() => setShowForm(false)}
-                    className="bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded hover:bg-gray-400"
+                    className="text-gray-700 font-bold py-2 px-6 rounded-full"
                   >
                     Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="bg-green-600 text-white font-bold py-2 px-4 rounded hover:bg-green-700"
-                  >
-                    Submit Application
                   </button>
                 </div>
               </form>
