@@ -31,40 +31,45 @@ const Manage = () => {
     };
 
     return (
-        <div className="max-w-2xl mx-auto p-6">
+        <div className="max-w-2xl mx-auto p-6 bg-[#F5F5DC]">
             {loading ? (
                 <p className="text-lg">Loading...</p>
             ) : (
                 <>
                     {error && <p className="text-red-500">{error}</p>}
                     
-                    <h2 className="text-2xl font-bold mb-4">Manage Sections</h2>
+                    <h2 className="text-2xl font-bold mb-4 text-green-700">Manage Sections</h2>
 
-                    <div>
+                    <div className="grid grid-cols-2 gap-4">
                         <button 
                             onClick={() => navigate('/manage/feedback')} 
-                            className="p-2 bg-blue-600 text-white rounded-md mr-2"
+                            className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Feedback
                         </button>
                         <button 
                             onClick={() => navigate('/manage/subscriptions')} 
-                            className="p-2 bg-blue-600 text-white rounded-md mr-2"
+                            className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Subscriptions
                         </button>
                         <button 
                             onClick={() => navigate('/manage/careers')} 
-
-                            className="p-2 bg-blue-600 text-white rounded-md mr-2"
+                            className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Careers
                         </button>
                         <button 
                             onClick={() => navigate('/manage/blog')} 
-                            className="p-2 bg-blue-600 text-white rounded-md"
+                            className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Blog
+                        </button>
+                        <button 
+                            onClick={() => navigate('/manage/contact')} 
+                            className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
+                        >
+                            Manage Contact
                         </button>
                     </div>
                 </>
@@ -72,6 +77,5 @@ const Manage = () => {
         </div>
     );
 };
-
 
 export default Manage;
