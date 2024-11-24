@@ -11,6 +11,7 @@ function SignupPage() {
     date_of_birth: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,6 +25,11 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError(null); // Reset error on each submit
+
+    // Log form data before sending the request
+    console.log("Form Data:", JSON.stringify(formData));
+
     try {
       const response = await fetch('https://cozycare-backend-g56w.onrender.com/users/signup', {
         method: 'POST',
@@ -32,14 +38,25 @@ function SignupPage() {
         },
         body: JSON.stringify(formData)
       });
+
+      const errorData = await response.json();
       
       if (response.ok) {
         navigate('/login');
+      } else if (response.status === 400) {
+        if (errorData.message.includes('username')) {
+          setError('Username already exists');
+        } else if (errorData.message.includes('email')) {
+          setError('Email already exists');
+        } else {
+          setError(errorData.message || 'Signup failed');
+        }
       } else {
-        throw new Error('Signup failed');
+        setError(errorData.message || 'Signup failed');
       }
     } catch (error) {
       console.error('Signup error:', error);
+      setError('An error occurred during signup');
     } finally {
       setIsLoading(false);
     }
@@ -51,91 +68,26 @@ function SignupPage() {
         <h2 className="text-center text-3xl font-bold text-[#006400]">
           Create your account
         </h2>
+        {error && <div className="text-center text-red-500">{error}</div>}
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm space-y-4">
-            <div>
-              <label htmlFor="username" className="sr-only">Username</label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
-                placeholder="Username"
-                value={formData.username}
-                onChange={handleChange}
-                disabled={isLoading}
-              />
-            </div>
-            <div>
-              <label htmlFor="first_name" className="sr-only">First Name</label>
-              <input
-                id="first_name"
-                name="first_name"
-                type="text"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
-                placeholder="First Name"
-                value={formData.first_name}
-                onChange={handleChange}
-                disabled={isLoading}
-              />
-            </div>
-            <div>
-              <label htmlFor="last_name" className="sr-only">Last Name</label>
-              <input
-                id="last_name"
-                name="last_name"
-                type="text"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
-                placeholder="Last Name"
-                value={formData.last_name}
-                onChange={handleChange}
-                disabled={isLoading}
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="sr-only">Email address</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
-                placeholder="Email address"
-                value={formData.email}
-                onChange={handleChange}
-                disabled={isLoading}
-              />
-            </div>
-            <div>
-              <label htmlFor="date_of_birth" className="sr-only">Date of Birth</label>
-              <input
-                id="date_of_birth"
-                name="date_of_birth"
-                type="date"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
-                value={formData.date_of_birth}
-                onChange={handleChange}
-                disabled={isLoading}
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                required
-                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                disabled={isLoading}
-              />
-            </div>
+            {['username', 'first_name', 'last_name', 'email', 'date_of_birth', 'password'].map((field) => (
+              <div key={field}>
+                <label htmlFor={field} className="sr-only">{field.replace('_', ' ').toUpperCase()}</label>
+                <input
+                  id={field}
+                  name={field}
+                  type={field === 'email' ? 'email' : field === 'password' ? 'password' : field === 'date_of_birth' ? 'date' : 'text'}
+                  required
+                  aria-label={field.replace('_', ' ')}
+                  className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
+                  placeholder={field.replace('_', ' ').toUpperCase()}
+                  value={formData[field]}
+                  onChange={handleChange}
+                  disabled={isLoading}
+                />
+              </div>
+            ))}
           </div>
 
           <div>
