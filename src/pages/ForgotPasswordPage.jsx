@@ -22,8 +22,7 @@ const ForgotPasswordPage = () => {
 
       // Send email and dob to backend for validation
       const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/reset', { email, dob });
-      setMessage(response.data.message);
-      setResetToken(response.data.reset_token); // Display the reset token
+      setResetToken(response.data.reset_token); // Store the reset token but don't display it
       setEmail('');
       setDob('');
     } catch (err) {
@@ -61,11 +60,6 @@ const ForgotPasswordPage = () => {
         <h2 className="text-3xl font-bold text-center mb-8 text-green-900">Reset Password</h2>
         {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
         {message && <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">{message}</div>}
-        {resetToken && (
-          <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4">
-            Your reset token: <strong>{resetToken}</strong>
-          </div>
-        )}
         {!resetToken ? (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>

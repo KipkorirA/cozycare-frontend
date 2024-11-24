@@ -25,6 +25,8 @@ import Manage from './pages/manage/Manage'; // Import Manage component
 import BlogPage from './pages/BlogPage'; // Import BlogPage
 import BlogManage from './pages/manage/BlogManage'; // Import BlogManage
 import ContactManage from './pages/manage/ContactManage'; // Import ContactManage
+import LoginManage from './pages/manage/LoginManage'; // Import LoginManage
+import SignupManage from './pages/manage/SignupManage'; // Import SignupManage
 import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Change to HashRouter
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
@@ -78,6 +80,8 @@ const App = () => {
             <Route path="/manage/subscriptions" element={<SubscriptionManage />} />
             <Route path="/manage/blog" element={<BlogManage />} />
             <Route path="/manage/contact" element={<ContactManage />} />
+            <Route path="/manage/login" element={<LoginManage />} />
+            <Route path="/manage/signup" element={<SignupManage />} />
 
             {/* Catch all unmatched routes and render the NotFoundPage */}
             <Route path="*" element={<NotFoundPage />} />
