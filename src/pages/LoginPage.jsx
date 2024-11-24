@@ -26,11 +26,7 @@ const LoginPage = () => {
     try {
       const response = await axios.post('http://127.0.0.1:5000/users/login', formData);
       if (response.data.user) {
-        // Assuming the backend returns user data without a token
-        // You can adjust the backend to return a token if required
         localStorage.setItem('user', JSON.stringify(response.data.user));
-
-        // Redirect to the dashboard after successful login
         navigate('/dashboard');
       }
     } catch (err) {
