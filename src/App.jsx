@@ -25,9 +25,13 @@ import Manage from './pages/manage/Manage'; // Import Manage component
 import BlogPage from './pages/BlogPage'; // Import BlogPage
 import BlogManage from './pages/manage/BlogManage'; // Import BlogManage
 import ContactManage from './pages/manage/ContactManage'; // Import ContactManage
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Change to HashRouter
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
+import SiteMapPage from './pages/SiteMapPage';
+import SignupPage from './pages/SignupPage';
+import LoginPage from './pages/LoginPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
 
 const App = () => {
   return (
@@ -62,6 +66,10 @@ const App = () => {
             <Route path="/subscription-successful" element={<SubscriptionSuccessfulPage />} />
             <Route path="/application/:id" element={<ApplicationPage />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/sitemap" element={<SiteMapPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             
             {/* Management routes */}
             <Route path="/manage" element={<Manage />} />  {/* Added route for Manage component */}

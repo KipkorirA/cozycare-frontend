@@ -23,7 +23,7 @@ const Footer = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/" className="text-white no-underline transition-colors duration-300 hover:text-yellow-400 flex items-center" title="Sitemap">
+                    <Link to="/sitemap" className="text-white no-underline transition-colors duration-300 hover:text-yellow-400 flex items-center" title="Sitemap">
                         <FaSitemap />
                         <span className="inline ml-2">Sitemap</span>
                     </Link>

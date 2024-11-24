@@ -1,29 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import throttle from 'lodash.throttle';
+
 
 const Navbar = () => {
-    const [showNavbar, setShowNavbar] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const location = useLocation(); 
-
-    useEffect(() => {
-        const handleScroll = throttle(() => {
-            if (window.scrollY > lastScrollY) {
-                setShowNavbar(false);
-            } else {
-                setShowNavbar(true);
-            }
-            setLastScrollY(window.scrollY);
-        }, 200);
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollY]);
 
     useEffect(() => {
         setIsMenuOpen(false);
@@ -36,20 +17,20 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`${getNavbarClass()} ${showNavbar ? 'translate-x-0' : '-translate-x-full lg:translate-y-0'} flex items-center justify-between shadow-2xl backdrop-blur-md relative border-b border-[rgba(255,255,255,0.1)]`}>
+        <nav className={`${getNavbarClass()} translate-x-0 flex items-center justify-between shadow-2xl backdrop-blur-md relative border-b border-[rgba(255,255,255,0.1)]`}>
             <div className="absolute inset-0 w-full h-full z-10 bg-gradient-to-r from-[rgba(8,88,70,0.98)] to-[rgba(8,88,70,0.92)] backdrop-filter backdrop-blur-lg" />
             <div className="absolute inset-0 w-full h-full z-[-1] opacity-70 bg-[url('/images/Navbar-background.png')] bg-cover bg-center bg-no-repeat mix-blend-overlay" />
 
             <div className="flex-1 z-20 px-6"> 
-                <Link to="/" className="block hover:opacity-80 transition-all duration-300 transform hover:scale-105 lg:-mb-20 lg:-mt-20">
-                    <img src="/images/logo.png" alt="CozyCare Logo" className="w-[350px] h-auto lg:w-[450px] drop-shadow-lg" />
+                <Link to="/" className="block hover:opacity-80 transition-all duration-300 transform hover:scale-105 lg:-mb-20 lg:-mt-20 -mt-5 -mb-4  -ml-4">
+                    <img src="/images/logo.png" alt="CozyCare Logo" className="w-[100px] h-auto lg:w-[450px] drop-shadow-lg" />
                 </Link>
             </div>
 
             {/* Mobile menu button */}
             <div className="flex items-center z-20">
                 <button 
-                    className="lg:hidden z-20 px-6 text-white text-3xl transition-transform duration-300 hover:scale-110"
+                    className="lg:hidden z-20 px-11 text-white text-3xl transition-transform duration-300 hover:scale-110"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
                     <i className={`fas ${isMenuOpen ? 'fa-times' : 'fa-bars'}`}></i>

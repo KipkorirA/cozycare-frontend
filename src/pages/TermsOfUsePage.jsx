@@ -4,7 +4,7 @@
 
 const TermsOfUse = () => {
     return (
-        <div className="pt-40 px-20 bg-[#a8c2b2] rounded-lg shadow-lg">
+        <div className="pt-4 px-4 bg-[#a8c2b2] rounded-lg shadow-lg">
             <h1 className="text-2xl mb-4 font-[Veteran Typewriter] font-light">Terms of Use</h1>
             <p className="text-base leading-6 mb-4 font-[TT Hoves Pro Trial]">
                 Welcome to the website of Cozycare, one of the regions’ largest home care networks with the most advanced care platform. By accessing and using this website, you agree to be bound by the following terms and conditions. Please read them carefully before you proceed.
@@ -67,10 +67,10 @@ const TermsOfUse = () => {
                 These Terms shall be governed by and construed in accordance with the laws of the country of Kenya, without regard to its conflict of law principles. You agree to submit to the exclusive jurisdiction and venue of the state and courts located in Kenya, for any disputes arising out of or relating to these Terms, the Website, the Services, or your access to or use of the Website or Services.
             </p>
             <h2 className="text-xl mt-6 font-[Veteran Typewriter] font-light">12. Contact Us</h2>
-            <p className="text-base leading-6 mb-4 font-[TT Hoves Pro Trial]">
-                If you have any questions or concerns about these Terms, please contact us at support@CozyCare.com. Thank you for using CozyCare. We hope you enjoy our website and services!
-            </p>
-        </div>
+            <p className="text-base leading-6 mb-4 pb-8 font-[TT Hoves Pro Trial]">
+                If you have any questions or concerns about these Terms, please contact us at <a href="mailto:support@cozycare.world" className="text-blue-600 hover:underline">support@cozycare.world</a>. Thank you for using CozyCare. We hope you enjoy our website and services!
+            </p>        
+            </div>
     );
 };
 

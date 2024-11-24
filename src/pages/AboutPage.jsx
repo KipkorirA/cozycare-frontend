@@ -97,11 +97,11 @@ const AboutPage = () => {
                 </section>
             ))}
 
-            <div className='cozycare-family-contact py-8 bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50 rounded-xl w-full shadow-lg hover:shadow-2xl transition-all duration-500 mt-8 transform hover:scale-105'>
+            <div className='cozycare-family-contact py-8 bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50 rounded-xl w-full shadow-lg transition-all duration-500 mt-8'>
                 <p className="text-base sm:text-lg lg:text-2xl px-6">
                     Join the Cozycare Family<br />
                     If you or a loved one requires home-based care services, we invite you to 
-                    <a href="tel:+1234567890" className="underline text-green-600 hover:text-green-700 transition-colors font-semibold hover:scale-110 inline-block transform"> contact us</a> 
+                    <a href="tel:+254 735 358125" className="underline text-green-600 hover:text-green-700 transition-colors font-semibold mx-2"> contact us </a> 
                     to learn more about how we can help.
                 </p>
             </div>

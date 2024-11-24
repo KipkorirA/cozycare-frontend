@@ -32,12 +32,14 @@ const Feedback = () => {
             <div className="w-full px-6 lg:px-12 py-12 lg:py-20 max-w-[1440px] mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-12 lg:gap-20 mb-16 md:mb-20 lg:mb-28">
                     <div className="w-full md:w-1/2">
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#085846] leading-tight tracking-tighter">
-                            HEAR WHAT<br /> 
-                            <span className="text-[#085846] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#085846] via-[#2c7561] to-[#3c4204]">OUR PATIENTS</span> 
+                        <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-[#085846] leading-tight tracking-tighter">
+                            HEAR WHAT 
+                            <span className="text-[#085846] font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#085846] via-[#2c7561] to-[#3c4204]"> OUR PATIENTS</span> 
                             <br />HAVE TO SAY ABOUT US
                         </h1>
-                        <hr className="w-2/3 my-6 lg:my-8 border-3 border-[#085846] rounded-full shadow-lg opacity-80" />
+
+                        <hr className="w-1/2 my-1 lg:my-8 border-[2px] border-[#e0ae50] rounded-full shadow-lg opacity-80" />
+                        
                     </div>
 
                     <div className="w-full md:w-3/5">
@@ -47,7 +49,7 @@ const Feedback = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16 text-center w-full">
                     {testimonials.slice(0, 3).map((testimonial, index) => (
                         <div className="bg-[#f5f5dc]/90 backdrop-blur-lg rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 p-8 sm:p-9 md:p-10 lg:p-12 transform hover:-translate-y-3 hover:bg-[#f5f5dc] w-full border border-[#085846]/10" key={index}>
                             <p className="text-lg sm:text-xl lg:text-2xl text-[#085846] mb-8 sm:mb-10 lg:mb-12 font-medium italic leading-relaxed">“{testimonial.feedback_text}”</p>
@@ -70,11 +72,12 @@ const Feedback = () => {
                     ))}
                 </div>
 
-                <div className="mt-16 sm:mt-20 md:mt-24 lg:mt-28 text-center w-full">
-                    <Link to="/feedback" className="inline-block px-10 sm:px-12 md:px-16 lg:px-20 py-4 sm:py-5 lg:py-6 bg-[#085846] text-white text-xl sm:text-2xl lg:text-3xl font-bold rounded-full shadow-xl transition-all duration-500 hover:bg-[#2c7561] hover:shadow-2xl transform hover:-translate-y-2 active:translate-y-0 hover:scale-105 border-2 border-transparent hover:border-[#085846]/20">
+                <div className="mt-8 text-center w-full">
+                    <Link to="/feedback" className="inline-block px-6 py-3 bg-[#085846] text-white text-lg font-bold rounded-full shadow-lg transition-all duration-300 hover:bg-[#2c7561] hover:shadow-xl transform hover:-translate-y-1 active:translate-y-0 hover:scale-102 border border-transparent hover:border-[#085846]/20">
                         Leave Your Own Feedback
                     </Link>
                 </div>
+
             </div>
         </section>
     );

@@ -112,33 +112,33 @@ const RealTimeChat = () => {
             {/* Chat Icon */}
             <button
                 onClick={toggleChat}
-                className="fixed bottom-5 right-5 p-4 bg-gradient-to-r from-green-600 via-green-500 to-green-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:from-green-700 hover:via-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-110 hover:rotate-3"
+                className="fixed bottom-5 right-5 p-3 md:p-4 bg-gradient-to-r from-green-600 via-green-500 to-green-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:from-green-700 hover:via-green-600 hover:to-green-800 transition-all duration-300 transform hover:scale-110 hover:rotate-3"
                 aria-label="Toggle chat"
             >
-                <FaComments size={24} className="animate-bounce" />
+                <FaComments size={20} className="md:w-6 md:h-6 animate-bounce" />
             </button>
 
             {/* Chat Window */}
             {isChatOpen && (
                 <div
-                    className="fixed bottom-20 right-5 w-96 max-h-[600px] border-2 border-green-300 rounded-2xl shadow-2xl p-4 flex flex-col bg-[#FFFDD0]/90 backdrop-blur-lg animate-slideIn"
+                    className="fixed bottom-20 right-5 w-[90vw] md:w-96 max-h-[80vh] md:max-h-[600px] border-2 border-green-300 rounded-2xl shadow-2xl p-2 md:p-4 flex flex-col bg-[#FFFDD0]/90 backdrop-blur-lg animate-slideIn"
                     style={{ zIndex: 1000 }}
                 >
-                    <h2 className="text-2xl font-bold mb-3 border-b-2 border-green-200 pb-3 text-center bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-transparent bg-clip-text animate-pulse">Real-Time Chat</h2>
+                    <h2 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 border-b-2 border-green-200 pb-2 md:pb-3 text-center bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-transparent bg-clip-text animate-pulse">Real-Time Chat</h2>
                     <div
-                        className="flex-1 overflow-y-auto mb-4 bg-gradient-to-b from-[#FFFDD0] to-white p-3 rounded-xl border border-green-100 glass-effect"
+                        className="flex-1 overflow-y-auto mb-2 md:mb-4 bg-gradient-to-b from-[#FFFDD0] to-white p-2 md:p-3 rounded-xl border border-green-100 glass-effect"
                         aria-live="polite"
                     >
                         {messages.length === 0 ? (
-                            <p className="text-gray-500 text-center italic animate-float">Start a conversation...</p>
+                            <p className="text-gray-500 text-center text-sm md:text-base italic animate-float">Start a conversation...</p>
                         ) : (
                             messages.map((msg, index) => (
                                 <div
                                     key={index}
-                                    className={`flex ${msg.isSent ? 'justify-end' : 'justify-start'} mb-3 animate-fadeIn`}
+                                    className={`flex ${msg.isSent ? 'justify-end' : 'justify-start'} mb-2 md:mb-3 animate-fadeIn`}
                                 >
                                     <div
-                                        className={`p-3 rounded-2xl max-w-[75%] shadow-md transition-all duration-300 hover:scale-105 ${
+                                        className={`p-2 md:p-3 rounded-2xl max-w-[80%] shadow-md transition-all duration-300 hover:scale-105 text-sm md:text-base ${
                                             msg.isSent 
                                                 ? 'bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white backdrop-blur-sm' 
                                                 : 'bg-gradient-to-r from-[#FFFDD0] to-green-50 text-gray-800 hover:from-[#FFFDD0] hover:to-green-100'
@@ -152,18 +152,18 @@ const RealTimeChat = () => {
                     </div>
 
                     {/* Message Input */}
-                    <form onSubmit={handleSubmit} className="flex items-center gap-2">
+                    <form onSubmit={handleSubmit} className="flex items-center gap-1 md:gap-2">
                         <input
                             type="text"
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}
-                            className="w-full p-3 border-2 border-green-200 rounded-xl focus:ring-2 focus:ring-green-300 focus:border-transparent outline-none transition-all duration-200 bg-white/50 backdrop-blur-sm hover:bg-white/80"
+                            className="w-full p-2 md:p-3 text-sm md:text-base border-2 border-green-200 rounded-xl focus:ring-2 focus:ring-green-300 focus:border-transparent outline-none transition-all duration-200 bg-white/50 backdrop-blur-sm hover:bg-white/80"
                             placeholder="Type a message..."
                             autoFocus
                         />
                         <button
                             type="submit"
-                            className="p-3 bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white rounded-xl hover:from-green-700 hover:via-green-800 hover:to-green-900 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:rotate-2"
+                            className="p-2 md:p-3 text-sm md:text-base bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white rounded-xl hover:from-green-700 hover:via-green-800 hover:to-green-900 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg hover:rotate-2"
                             aria-label="Send message"
                         >
                             Send

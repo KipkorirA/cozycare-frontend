@@ -1,8 +1,17 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const Slide = ({ imageSrc, altText, linkText, linkTo, textPosition, additionalClasses, title, description }) => {
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            // Add autoplay logic here
+        }, 4000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
     return (
         <div className={`relative w-full min-h-[300px] sm:min-h-[400px] md:h-[600px] lg:h-[700px] xl:h-[800px] ${additionalClasses}`}>
 

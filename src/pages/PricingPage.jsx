@@ -106,8 +106,8 @@ const PricingPage = () => {
                 <li>Your location and specific caregiving needs.</li>
               </ul>
               <p className="text-base mb-4">
-                To get a personalized quote, please contact us at <span>[Phone Number]</span> or{' '}
-                <span>support@cozycare.com</span>. We are happy to discuss your specific needs and provide you with a tailored
+                To get a personalized quote, please contact us at <a href="tel:+254 735 358125" className="text-[#2c5530] hover:underline"> our phone number </a> or{' '}
+                <a href="mailto:support@cozycare.world" className="text-[#2c5530] hover:underline">support@cozycare.world</a>. We are happy to discuss your specific needs and provide you with a tailored
                 pricing estimate. <br />
                 <strong>Note:</strong> Prices are subject to change. Please contact us for the most up-to-date pricing
                 information.

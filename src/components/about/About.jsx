@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faPhone } from '@fortawesome/free-solid-svg-icons'; 
+import { faPhone, faLocationDot } from '@fortawesome/free-solid-svg-icons'; 
 import { Swiper, SwiperSlide } from 'swiper/react'; 
 import { useState } from 'react'; 
+import { Autoplay, EffectCoverflow } from 'swiper/modules';
 import 'swiper/swiper-bundle.css'; 
+import 'swiper/css/effect-flip';
+import 'swiper/css/effect-coverflow';
 import Slide from './Slide'; 
  
 
@@ -20,16 +23,43 @@ const AboutUs = () => {
     return (
 
         <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-16 lg:gap-x-11 gap-y-10 items-center sm:items-start py-12 sm:py-24  sm:px-10 shadow-inner bg-[#f4f1ec]">
-            {/* Carousel for displaying slides */}
+            {/* Section for CozyCare heading in mobile */}
+            <div className="w-full px-6 mb-8 md:hidden">
+                <h1 className="text-2xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS <br/> COZYCARE</h1>
+                <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80" />
+                <h2 className="text-lg pt-3 pb-3 text-gray-700 font-bold tracking-wide" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '600' }}>
+                    <FontAwesomeIcon icon={faLocationDot} className="text-[#f0a500] mr-2" /> <i>
+                    Our Location is Your Location</i>
+                </h2>
+            </div>
 
-            <div className="w-full sm:max-w-2xl md:max-w-3xl relative mb-10 md:mb-0 shadow-xl rounded-lg overflow-hidden">
+            {/* Carousel for displaying slides */}
+            <div className="w-full sm:max-w-2xl md:max-w-3xl relative mb-10 md:mb-0 shadow-xl rounded-lg overflow-hidden -mt-11">
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={1}
                     loop={true}
+                    effect={'coverflow'}
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true
+                    }}
                     onSlideChange={updateProgress}
                     pagination={{ clickable: true }}
                     grabCursor={true}
+                    autoplay={{
+                        delay: 4000,
+                        disableOnInteraction: false,
+                        pauseOnMouseEnter: true,
+                        reverseDirection: false,
+                        waitForTransition: true
+                    }}
+                    speed={3000}
+                    modules={[Autoplay, EffectCoverflow]}
+                    className="mySwiper"
                 >
                     <SwiperSlide>
                         <Slide 
@@ -69,36 +99,33 @@ const AboutUs = () => {
                     </SwiperSlide>
                 </Swiper>
 
-                {/* Progress bar to visually indicate slide progress */}
-
-
                 <div className="absolute bottom-0 left-0 w-full h-1.5 bg-gray-300/50 backdrop-blur-sm z-10">
                     <div className="h-full bg-[#f0a500] transition-all duration-500 ease-in-out shadow-lg" style={{ width: `${progress}%` }} />
                 </div>
             </div>
 
-            {/* Section for CozyCare description and contact information */}
-
             <div className="w-full sm:w-4/5 md:w-2/5 lg:w-2/5 max-w-xl mt-8 md:mt-0 px-6 sm:px-0 space-y-4">
-               <div className='lg:pb-60'>
-               <h1 className="text-4xl sm:text-5xl lg:text-6xl  text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS COZYCARE</h1>
-                <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80 lg:pb-11" />
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl lg:pb-11 text-gray-700 font-semibold tracking-wide" style={{ fontFamily: '', fontWeight: '500' }}>Our Location is Your Location</h2>
-                <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed text-gray-600 tracking-wide" style={{ fontFamily: '', fontWeight: '400' }}>
-                At CozyCare, we bring primary care, palliative care, and hospice care to you. Whether you’re at home, in a senior residency community, or in a long-term care facility, we’re here to provide services that are convenient and accessible. With us, there’s no need to worry about transportation or mobility. Our location is your location.
+               <div className='lg:pb-60 -mt-20'>
+               <h1 className="hidden md:block text-2xl md:text-4xl lg:text-6xl pb-1 text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS <br/> COZYCARE</h1>
+                <hr className="hidden md:block border-t-2 border-[#f0a500] w-1/2 opacity-80 lg:pb-11" />
+                <h2 className="hidden md:block text-xl sm:text-3xl pt-3 pb-3 lg:text-4xl lg:pb-11 text-gray-700 font-bold tracking-wide" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
+                    <FontAwesomeIcon icon={faLocationDot} className="text-[#f0a500] mr-2" />
+                    Our Location is Your Location
+                </h2>
+                <p className=" sm:text-xl lg:text-2xl leading-relaxed text-gray-600 tracking-wide" style={{ fontFamily: '', fontWeight: '400' }}>
+                At CozyCare, we bring primary care, palliative care, and hospice care to you. Whether you're at home, in a senior residency community, or in a long-term care facility, we're here to provide services that are convenient and accessible. With us, there's no need to worry about transportation or mobility. Our location is your location.
                 </p>               
                </div>
 
-                <div className="flex items-center mt-22  lg:right-44 ">
-                    <Link to="/contact" className="bg-[#053a09] text-white py-3 pl-10 sm:pl-12 pr-8 sm:pr-10 rounded-full text-base sm:text-lg lg:text-xl mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
-                        Contact Us
+                <div className="flex items-center mt-24 lg:right-44">
+                    <Link to="/contact" className="bg-[#053a09] text-white py-1.5 sm:py-2.5 pl-2 sm:pl-12 pr-6 sm:pr-10 rounded-full text-sm sm:text-lg lg:text-xl mr-3 sm:mr-4 hover:bg-[#e69500] transition-colors duration-300 shadow-lg hover:shadow-xl text-left transform hover:-translate-y-0.5" aria-label="Go to CozyCare contact page" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '900' }}>
+                        CONTACT US
                     </Link>
 
-                    <div className="bg-[#053a09] rounded-full border-4 border-white p-3 flex items-center justify-center -ml-10 sm:-ml-12 shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 z-10">
-                        <FontAwesomeIcon icon={faPhone} className="text-lg sm:text-xl lg:text-2xl text-white" aria-label="Phone icon to contact CozyCare" />
+                    <div className="bg-[#053a09] rounded-full border-4 border-white p-2.5 sm:p-3.5 flex items-center justify-center -ml-8 sm:-ml-12 shadow-md hover:shadow-lg transition-shadow duration-300 hover:scale-105 z-10">
+                        <FontAwesomeIcon icon={faPhone} className="text-base sm:text-xl lg:text-2xl text-white" aria-label="Phone icon to contact CozyCare" />
                     </div>
-                </div>
-            </div>
+                </div>            </div>
         </section>
     );
 };

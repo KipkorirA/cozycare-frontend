@@ -93,27 +93,27 @@ const servicesData = [
 
 const ServiceBlock = ({ title, imgSrc, description, services, index }) => (
   <section 
-    className={`flex flex-wrap mb-8 sm:mb-16 p-6 sm:p-10 hover:bg-gray-50/90 backdrop-blur-lg bg-white/40 transition-all duration-700 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 ${
-      index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+    className={`flex flex-wrap mb-8 sm:mb-12 lg:mb-16 p-4 sm:p-6 lg:p-1 hover:bg-gray-50/90 backdrop-blur-lg bg-white/40 transition-all duration-700 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 ${
+      index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
     }`}
   >
-    <div className="w-full md:w-1/2 flex justify-center items-center p-4 sm:p-6">
+    <div className="w-full lg:w-1/2 flex justify-center items-center p-2 sm:p-4 lg:p-10">
       <img 
         src={imgSrc} 
         alt={`${title} illustration`} 
-        className="max-w-[85%] sm:max-w-full h-auto transform hover:scale-115 transition-transform duration-700 filter hover:brightness-115 hover:drop-shadow-xl"
+        className="max-w-[80%] sm:max-w-[85%] lg:pl-40 lg:max-w-full h-auto transform hover:scale-115 transition-transform duration-700 filter hover:brightness-115 hover:drop-shadow-xl"
         loading="lazy"
       />
     </div>
 
-    <div className="w-full md:w-1/2 px-6 sm:px-10 mt-6 md:mt-0">
-      <h2 className="text-2xl sm:text-4xl font-monospace mb-4 sm:mb-6 text-gray-800 hover:text-gray-900 transition-colors duration-500 transform hover:translate-x-3 font-bold">{title}</h2>
-      <p className="font-bold text-lg sm:text-xl leading-relaxed text-black">{description}</p>
-      <ul className="list-disc pl-6 sm:pl-8 text-gray-700 mt-6 sm:mt-8 space-y-3 sm:space-y-4">
+    <div className="w-full lg:w-1/2 px-4 sm:px-6 lg:px-10 mt-4 lg:mt-0">
+      <h2 className="text-xl sm:text-2xl lg:text-4xl font-monospace mb-3 sm:mb-4 lg:mb-6 text-gray-800 hover:text-gray-900 transition-colors duration-500 transform hover:translate-x-3 font-bold">{title}</h2>
+      <p className="font-bold text-base sm:text-lg lg:text-xl leading-relaxed text-black">{description}</p>
+      <ul className="list-disc pl-4 sm:pl-6 lg:pl-8 text-gray-700 mt-4 sm:mt-6 lg:mt-8 space-y-2 sm:space-y-3 lg:space-y-4">
         {services.map((service, index) => (
           <li 
             key={index} 
-            className="text-lg sm:text-xl hover:text-gray-900 transition-all duration-500 cursor-pointer whitespace-pre-line transform hover:translate-x-2 hover:font-semibold"
+            className="text-base sm:text-lg lg:text-xl hover:text-gray-900 transition-all duration-500 cursor-pointer whitespace-pre-line transform hover:translate-x-2 hover:font-semibold"
           >
             {service}
           </li>
@@ -125,28 +125,31 @@ const ServiceBlock = ({ title, imgSrc, description, services, index }) => (
 
 const ServicesPage = () => {
   return (
-    <div className="bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 font-sans min-h-screen w-full">
-      <div className="relative w-full px-0 max-w-full mx-auto">
+    <div className="bg-[#FFFDD0] font-sans min-h-screen w-full">
+      <div className="relative w-full px-0 mx-auto">
         <img 
           src="/images/1-removebg-preview.png" 
           alt="Care" 
-          className="absolute -right-6 -top-6 w-auto sm:w-100 z-10 animate-pulse hover:animate-bounce"
+          className="absolute -right-2 sm:-right-4 lg:-right-6 -top-2 sm:-top-4 lg:-top-6 w-24 sm:w-32 lg:w-auto z-10 animate-pulse hover:animate-bounce"
           loading="lazy"
         />
         <div className="w-full">
-          <h1 className="text-4xl sm:text-5xl pt-4 pb-6 pr-16 sm:pr-20 text-left font-monospace text-gray-800 font-bold px-6 hover:text-gray-900 transition-colors duration-500">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl pt-2 sm:pt-3 lg:pt-4 pb-4 sm:pb-5 lg:pb-6 pr-12 sm:pr-16 lg:pr-20 text-left font-monospace text-gray-800 font-bold px-4 sm:px-5 lg:px-6 hover:text-gray-900 transition-colors duration-500">
             Our In-Home <br />Care Services
           </h1>
-          <div className="w-56 sm:w-80 h-1.5 bg-yellow-600 rounded-full ml-6 mb-10 sm:mb-16 transform hover:scale-x-110 transition-transform duration-500 hover:bg-yellow-500" />
-          <div className="max-w-full mx-auto mb-10 sm:mb-20 px-6">
-            <p className="text-xl sm:text-2xl leading-relaxed mr-56 pr-56">
-              <strong className="text-2xl sm:text-3xl block mb-4 sm:mb-6 hover:text-yellow-600 transition-colors duration-500">Care Where You Reside</strong>
-              Cozycare offers a wide range of personalized in-home care services designed to meet your unique needs and preferences. Our goal is to help you maintain your independence and quality of life while receiving the support you require.
-            </p>
-            <p className="text-xl sm:text-2xl mt-8 sm:mt-10 text-center font-bold hover:text-gray-900 transition-colors duration-500">Our Services Include:</p>
+          <div className="w-40 sm:w-56 lg:w-80 h-1.5 bg-yellow-600 rounded-full ml-4 sm:ml-5 lg:ml-6 mb-6 sm:mb-8 lg:mb-16 transform hover:scale-x-110 transition-transform duration-500 hover:bg-yellow-500" />
+          
+          <div className="w-full px-4 sm:px-5 lg:px-6 mb-6 sm:mb-10 lg:mb-20">
+            <div className="max-w-full">
+              <strong className="text-xl sm:text-2xl lg:text-3xl block mb-3 sm:mb-4 lg:mb-6 hover:text-yellow-600 transition-colors duration-500">Care Where You Reside</strong>
+              <p className="text-lg sm:text-xl lg:text-2xl leading-relaxed">
+                Cozycare offers a wide range of personalized in-home care services designed to meet your unique needs and preferences. Our goal is to help you maintain your independence and quality of life while receiving the support you require.
+              </p>
+              <p className="text-lg sm:text-xl lg:text-2xl mt-6 sm:mt-8 lg:mt-10 text-center font-bold hover:text-gray-900 transition-colors duration-500">Our Services Include:</p>
+            </div>
           </div>
 
-          <div className="space-y-10 sm:space-y-20 px-6">
+          <div className="space-y-8 sm:space-y-12 lg:space-y-20 px-4 sm:px-5 lg:px-6">
             {servicesData.map((service, index) => (
               <ServiceBlock
                 key={index}
@@ -163,5 +166,4 @@ const ServicesPage = () => {
     </div>
   );
 };
-
 export default ServicesPage;
