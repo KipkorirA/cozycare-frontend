@@ -19,12 +19,14 @@ const LoginManage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData); // Debugging: Check formData before sending it
+  
     try {
       const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/login', {
-        identifier: formData.identifier,
+        email: formData.identifier, // Use 'email' here
         password: formData.password
       });
-
+  
       if (response.data.user.is_admin === true) {
         localStorage.setItem('adminToken', response.data.token);
         localStorage.setItem('adminData', JSON.stringify(response.data.user));
@@ -34,8 +36,12 @@ const LoginManage = () => {
       }
     } catch (error) {
       setError('Invalid credentials or server error');
+      console.log(error); // Log the error for debugging
     }
   };
+  
+  
+  
 
   return (
     <div className="container mx-auto px-4 max-w-md">
@@ -55,7 +61,7 @@ const LoginManage = () => {
                 className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
                 id="identifier"
-                placeholder="Username or Email"
+                placeholder="Email"
                 name="identifier"
                 autoComplete="email"
                 autoFocus
