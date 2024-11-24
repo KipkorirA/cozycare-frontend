@@ -7,8 +7,10 @@ function SignupPage() {
     first_name: '',
     last_name: '',
     email: '',
-    password: ''
+    password: '',
+    date_of_birth: ''
   });
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -21,6 +23,7 @@ function SignupPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const response = await fetch('https://cozycare-backend-g56w.onrender.com/users/signup', {
         method: 'POST',
@@ -37,6 +40,8 @@ function SignupPage() {
       }
     } catch (error) {
       console.error('Signup error:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -59,6 +64,7 @@ function SignupPage() {
                 placeholder="Username"
                 value={formData.username}
                 onChange={handleChange}
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -72,6 +78,7 @@ function SignupPage() {
                 placeholder="First Name"
                 value={formData.first_name}
                 onChange={handleChange}
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -85,6 +92,7 @@ function SignupPage() {
                 placeholder="Last Name"
                 value={formData.last_name}
                 onChange={handleChange}
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -98,6 +106,20 @@ function SignupPage() {
                 placeholder="Email address"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isLoading}
+              />
+            </div>
+            <div>
+              <label htmlFor="date_of_birth" className="sr-only">Date of Birth</label>
+              <input
+                id="date_of_birth"
+                name="date_of_birth"
+                type="date"
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-[#006400] focus:border-[#006400]"
+                value={formData.date_of_birth}
+                onChange={handleChange}
+                disabled={isLoading}
               />
             </div>
             <div>
@@ -111,6 +133,7 @@ function SignupPage() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
+                disabled={isLoading}
               />
             </div>
           </div>
@@ -119,8 +142,9 @@ function SignupPage() {
             <button
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#006400] hover:bg-[#005000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#006400]"
+              disabled={isLoading}
             >
-              Sign up
+              {isLoading ? 'Signing up...' : 'Sign up'}
             </button>
           </div>
         </form>

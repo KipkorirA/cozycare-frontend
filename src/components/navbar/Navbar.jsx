@@ -65,7 +65,7 @@ const Navbar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/subscribe" className="text-white text-[2.2rem] transition-all duration-300 hover:text-[#f0a500] hover:scale-110 px-4">
+                        <Link to="/login" className="text-white text-[2.2rem] transition-all duration-300 hover:text-[#f0a500] hover:scale-110 px-4">
                             <i className="fas fa-user-circle drop-shadow-lg"></i>
                         </Link>
                     </li>
