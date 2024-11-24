@@ -1,12 +1,16 @@
+
+
+
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
-    identifier: '',
+    email: '',
     password: ''
   });
+  
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -20,10 +24,14 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/login', formData);
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        navigate('/careers');
+      const response = await axios.post('http://127.0.0.1:5000/users/login', formData);
+      if (response.data.user) {
+        // Assuming the backend returns user data without a token
+        // You can adjust the backend to return a token if required
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+
+        // Redirect to the dashboard after successful login
+        navigate('/dashboard');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
@@ -37,17 +45,17 @@ const LoginPage = () => {
         {error && <p className="text-red-500 text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
-            <label htmlFor="identifier" className="block text-sm font-medium text-[#006B54]">
-              Username or Email
+            <label htmlFor="email" className="block text-sm font-medium text-[#006B54]">
+              Email
             </label>
             <input
-              id="identifier"
-              name="identifier"
+              id="email"
+              name="email"
               type="text"
               required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#006B54] focus:border-[#006B54]"
-              placeholder="Enter your username or email"
-              value={formData.identifier}
+              placeholder="Enter your email"
+              value={formData.email}
               onChange={handleChange}
             />
           </div>
