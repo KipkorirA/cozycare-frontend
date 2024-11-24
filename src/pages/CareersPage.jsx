@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CareersPage = () => {
   const [careers, setCareers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const user = localStorage.getItem('token');
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
     fetch('https://cozycare-backend-g56w.onrender.com/careers')
       .then((response) => response.json())
       .then((data) => {
@@ -18,7 +25,7 @@ const CareersPage = () => {
         console.error("There was an error fetching the careers!", error);
         setLoading(false);
       });
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen py-20 md:py-40 px-4 md:px-8 bg-green-50">

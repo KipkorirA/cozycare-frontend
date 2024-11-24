@@ -27,7 +27,7 @@ import BlogManage from './pages/manage/BlogManage'; // Import BlogManage
 import ContactManage from './pages/manage/ContactManage'; // Import ContactManage
 import LoginManage from './pages/manage/LoginManage'; // Import LoginManage
 import SignupManage from './pages/manage/SignupManage'; // Import SignupManage
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Change to HashRouter
+import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Added Navigate
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
 import SiteMapPage from './pages/SiteMapPage';
@@ -74,14 +74,17 @@ const App = () => {
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             
             {/* Management routes */}
-            <Route path="/manage" element={<Manage />} />  {/* Added route for Manage component */}
-            <Route path="/manage/careers" element={<CareerManage />} />
-            <Route path="/manage/feedback" element={<FeedbackManage />} />
-            <Route path="/manage/subscriptions" element={<SubscriptionManage />} />
-            <Route path="/manage/blog" element={<BlogManage />} />
-            <Route path="/manage/contact" element={<ContactManage />} />
-            <Route path="/manage/login" element={<LoginManage />} />
-            <Route path="/manage/signup" element={<SignupManage />} />
+            <Route path="/dashboard" element={<Manage />} />  {/* Added route for Manage component */}
+            <Route path="/dashboard/careers" element={<CareerManage />} />
+            <Route path="/dashboard/feedback" element={<FeedbackManage />} />
+            <Route path="/dashboard/subscriptions" element={<SubscriptionManage />} />
+            <Route path="/dashboard/blog" element={<BlogManage />} />
+            <Route path="/dashboard/contact" element={<ContactManage />} />
+            <Route path="/dashboard/login" element={<LoginManage />} />
+            <Route path="/dashboard/signup" element={<SignupManage />} />
+
+            {/* Admin redirect route */}
+            <Route path="/cozy" element={<Navigate to="/dashboard/login" replace />} />
 
             {/* Catch all unmatched routes and render the NotFoundPage */}
             <Route path="*" element={<NotFoundPage />} />

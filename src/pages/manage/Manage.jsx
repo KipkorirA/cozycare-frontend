@@ -42,31 +42,31 @@ const Manage = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                         <button 
-                            onClick={() => navigate('/manage/feedback')} 
+                            onClick={() => navigate('/dashboard/feedback')} 
                             className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Feedback
                         </button>
                         <button 
-                            onClick={() => navigate('/manage/subscriptions')} 
+                            onClick={() => navigate('/dashboard/subscriptions')} 
                             className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Subscriptions
                         </button>
                         <button 
-                            onClick={() => navigate('/manage/careers')} 
+                            onClick={() => navigate('/dashboard/careers')} 
                             className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Careers
                         </button>
                         <button 
-                            onClick={() => navigate('/manage/blog')} 
+                            onClick={() => navigate('/dashboard/blog')} 
                             className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Blog
                         </button>
                         <button 
-                            onClick={() => navigate('/manage/contact')} 
+                            onClick={() => navigate('/dashboard/contact')} 
                             className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
                         >
                             Manage Contact

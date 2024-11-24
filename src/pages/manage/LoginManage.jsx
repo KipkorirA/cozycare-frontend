@@ -19,29 +19,28 @@ const LoginManage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData); // Debugging: Check formData before sending it
+    console.log(formData);
   
     try {
       const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/login', {
-        email: formData.identifier, // Use 'email' here
+        email: formData.identifier,
         password: formData.password
       });
   
-      if (response.data.user.is_admin === true) {
+      if (response.data.user && response.data.user.is_admin) {
+        const expirationTime = new Date().getTime() + 30 * 60 * 1000; // 30 minutes from now
         localStorage.setItem('adminToken', response.data.token);
         localStorage.setItem('adminData', JSON.stringify(response.data.user));
-        navigate('/manage');
+        localStorage.setItem('adminExpiration', expirationTime.toString());
+        navigate('/dashboard');
       } else {
-        setError('Access denied. Admin privileges required.');
+        setError('Access denied. You are not an admin user.');
       }
     } catch (error) {
       setError('Invalid credentials or server error');
-      console.log(error); // Log the error for debugging
+      console.log(error);
     }
   };
-  
-  
-  
 
   return (
     <div className="container mx-auto px-4 max-w-md">

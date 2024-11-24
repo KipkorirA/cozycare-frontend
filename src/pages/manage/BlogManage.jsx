@@ -1,11 +1,8 @@
-
-
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table, Button, Modal, Form, Input, message, Space, Upload } from 'antd';
-import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
-import { UploadOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined, PlusOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const BlogManage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -13,6 +10,7 @@ const BlogManage = () => {
   const [form] = Form.useForm();
   const [editingId, setEditingId] = useState(null);
   const [fileList, setFileList] = useState({ image: [], video: [] });
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchBlogs();
@@ -31,7 +29,7 @@ const BlogManage = () => {
     setEditingId(null);
     form.resetFields();
     setIsModalVisible(true);
-    setFileList({ image: [], video: [] }); // Reset file lists when adding new blog
+    setFileList({ image: [], video: [] });
   };
 
   const handleEdit = (record) => {
@@ -56,19 +54,16 @@ const BlogManage = () => {
 
   const handleSubmit = async (values) => {
     try {
-      // Prepare form data
       const formData = new FormData();
       formData.append('title', values.title);
       formData.append('name', values.name);
       formData.append('description', values.description);
   
-      // Handle image upload
       const { image } = fileList;
       if (image && image[0]) {
         formData.append('image', image[0].originFileObj);
       }
   
-      // Handle video upload
       const { video } = fileList;
       if (video && video[0]) {
         formData.append('video', video[0].originFileObj);
@@ -147,12 +142,14 @@ const BlogManage = () => {
             type="primary"
             icon={<EditOutlined />}
             onClick={() => handleEdit(record)}
+            className="bg-blue-500 hover:bg-blue-600"
           />
           <Button
             type="primary"
             danger
             icon={<DeleteOutlined />}
             onClick={() => handleDelete(record.id)}
+            className="bg-red-500 hover:bg-red-600"
           />
         </Space>
       ),
@@ -160,49 +157,69 @@ const BlogManage = () => {
   ];
 
   return (
-    <div style={{ padding: '24px' }}>
-      <Button
-        type="primary"
-        icon={<PlusOutlined />}
-        onClick={handleAdd}
-        style={{ marginBottom: '16px' }}
-      >
-        Add Blog
-      </Button>
+    <div className="p-4 md:p-6 lg:p-8">
+      <div className="flex items-center mb-4 space-x-4">
+        <Button
+          type="primary"
+          icon={<ArrowLeftOutlined />}
+          onClick={() => navigate(-1)}
+          className="bg-gray-500 hover:bg-gray-600"
+        >
+          Back
+        </Button>
+        <Button
+          type="primary"
+          icon={<PlusOutlined />}
+          onClick={handleAdd}
+          className="bg-green-500 hover:bg-green-600"
+        >
+          Add Blog
+        </Button>
+      </div>
 
-      <Table columns={columns} dataSource={blogs} rowKey="id" />
+      <div className="overflow-x-auto">
+        <Table 
+          columns={columns} 
+          dataSource={blogs} 
+          rowKey="id"
+          className="min-w-full"
+          scroll={{ x: true }}
+        />
+      </div>
 
       <Modal
         title={editingId ? 'Edit Blog' : 'Add Blog'}
         open={isModalVisible}
         onCancel={() => setIsModalVisible(false)}
         footer={null}
+        className="w-full max-w-lg mx-auto"
       >
         <Form
           form={form}
           layout="vertical"
           onFinish={handleSubmit}
+          className="space-y-4"
         >
           <Form.Item
             name="title"
             label="Title"
             rules={[{ required: true, message: 'Please input the title!' }]}
           >
-            <Input />
+            <Input className="w-full rounded-md" />
           </Form.Item>
           <Form.Item
             name="name"
             label="Name"
             rules={[{ required: true, message: 'Please input the name!' }]}
           >
-            <Input />
+            <Input className="w-full rounded-md" />
           </Form.Item>
           <Form.Item
             name="description"
             label="Description"
             rules={[{ required: true, message: 'Please input the description!' }]}
           >
-            <Input.TextArea />
+            <Input.TextArea className="w-full rounded-md" />
           </Form.Item>
           <Form.Item
             name="image_url"
@@ -215,7 +232,8 @@ const BlogManage = () => {
               listType="picture-card"
               fileList={fileList.image}
               onChange={(info) => handleFileChange(info, 'image')}
-              beforeUpload={() => false} // Prevent automatic upload
+              beforeUpload={() => false}
+              className="w-full"
             >
               {fileList.image.length < 1 && '+ Upload Image'}
             </Upload>
@@ -231,13 +249,18 @@ const BlogManage = () => {
               listType="picture-card"
               fileList={fileList.video}
               onChange={(info) => handleFileChange(info, 'video')}
-              beforeUpload={() => false} // Prevent automatic upload
+              beforeUpload={() => false}
+              className="w-full"
             >
               {fileList.video.length < 1 && '+ Upload Video'}
             </Upload>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button 
+              type="primary" 
+              htmlType="submit"
+              className="w-full md:w-auto bg-blue-500 hover:bg-blue-600"
+            >
               {editingId ? 'Update' : 'Submit'}
             </Button>
           </Form.Item>

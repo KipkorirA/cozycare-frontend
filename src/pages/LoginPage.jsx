@@ -23,7 +23,7 @@ const LoginPage = () => {
       const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/login', formData);
       if (response.data.token) {
         localStorage.setItem('token', response.data.token);
-        navigate('/dashboard');
+        navigate('/careers');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
