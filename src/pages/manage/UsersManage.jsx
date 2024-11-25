@@ -29,19 +29,26 @@ const UsersManage = () => {
       setUsers(response.data);
       setLoading(false);
     } catch (err) {
+      console.error('Error fetching users:', err);
       setError('Error fetching users');
       setLoading(false);
     }
   };
 
-  const handleDeleteUser = async (userId) => {
+  const handleDeleteUser = async (user_id) => {
+    console.log("Attempting to delete user with ID:", user_id); // Debug log
     try {
-      await axios.delete(`https://cozycare-backend-g56w.onrender.com/users/${parseInt(userId)}`);
-      setUsers(users.filter(user => user._id !== userId));
-    } catch (err) {
-      setError('Error deleting user');
+      const response = await axios.delete(`https://cozycare-backend-g56w.onrender.com/users/${user_id}`);
+      console.log("Delete response:", response.data);
+      setUsers(users.filter(user => user.id !== user_id)); // Update local state
+    } catch (error) {
+      console.error("Error deleting user:", error);
     }
   };
+  
+  
+  
+  
 
   if (loading) {
     return (
@@ -77,8 +84,8 @@ const UsersManage = () => {
           </TableHead>
           <TableBody>
             {users.map((user) => (
-              <TableRow key={user._id}>
-                <TableCell>{user._id}</TableCell>
+              <TableRow key={user.id}>
+                <TableCell>{user.id}</TableCell>
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.role}</TableCell>
@@ -87,7 +94,7 @@ const UsersManage = () => {
                     variant="contained"
                     color="error"
                     size="small"
-                    onClick={() => handleDeleteUser(user._id)}
+                    onClick={() => handleDeleteUser(user.id)}
                   >
                     Delete
                   </Button>
