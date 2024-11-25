@@ -22,7 +22,14 @@ const ForgotPasswordPage = () => {
 
       // Send email and dob to backend for validation
       const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/reset', { email, dob });
-      setResetToken(response.data.reset_token); // Store the reset token but don't display it
+      setResetToken(response.data.reset_token);
+      
+      // Send recovery token to user's email
+      await axios.post('https://cozycare-backend-g56w.onrender.com/send-email', {
+        email,
+        token: response.data.reset_token
+      });
+      
       setEmail('');
       setDob('');
     } catch (err) {

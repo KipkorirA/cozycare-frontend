@@ -27,6 +27,7 @@ import BlogManage from './pages/manage/BlogManage'; // Import BlogManage
 import ContactManage from './pages/manage/ContactManage'; // Import ContactManage
 import LoginManage from './pages/manage/LoginManage'; // Import LoginManage
 import SignupManage from './pages/manage/SignupManage'; // Import SignupManage
+import UsersManage from './pages/manage/UsersManage'; // Import UsersManage
 import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Added Navigate
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
@@ -82,6 +83,7 @@ const App = () => {
             <Route path="/dashboard/contact" element={<ContactManage />} />
             <Route path="/dashboard/login" element={<LoginManage />} />
             <Route path="/dashboard/signup" element={<SignupManage />} />
+            <Route path="/dashboard/users" element={<UsersManage />} />
 
             {/* Admin redirect route */}
             <Route path="/cozy" element={<Navigate to="/dashboard/login" replace />} />

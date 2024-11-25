@@ -9,7 +9,7 @@ const CareersPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     if (!user) {
       navigate('/login');
       return;

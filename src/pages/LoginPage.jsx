@@ -1,6 +1,3 @@
-
-
-
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -24,10 +21,14 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/users/login', formData);
+      const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/login', formData);
       if (response.data.user) {
         localStorage.setItem('user', JSON.stringify(response.data.user));
-        navigate('/dashboard');
+        if (response.data.user.is_admin === true) {
+          navigate('/cozy/dashboard');
+        } else {
+          navigate('/careers');
+        }
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
