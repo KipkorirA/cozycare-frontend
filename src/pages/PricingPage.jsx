@@ -60,8 +60,8 @@ const PricingPage = () => {
     <div className="w-full bg-[#f4f1ec] ">
       {/* Top Section */}
       <div className="px-4 sm:px-8 md:px-16 lg:px-24  mb-8">
-        <h1 className="pt-4 text-4xl font-bold text-gray-800 mb-6">Our Pricing</h1>
-        <div className="w-full h-0.5 bg-gray-300 shadow-sm"></div>
+        <h1 className="pt-4 text-2xl font-bold text-gray-800 mb-2">Our Pricing</h1>
+        <div className="w-[44px] h-0.5 mb-11 bg-yellow-400 shadow-sm"></div>
 
         {/* Pricing Section */}
         <div className="w-full text-left">
@@ -69,28 +69,28 @@ const PricingPage = () => {
           {/* First Block - Text Left, Image Right */}
           <div className="flex flex-col-reverse md:flex-row items-center justify-between mb-8 gap-4">
             <div className="w-full md:w-1/2">
-              <h3 className="text-2xl mt-6 mb-2">Care Where You Reside</h3>
+              <h3 className="text-lg mt-6 mb-2"><strong>Care Where You Reside</strong></h3>
               <p className="text-base mb-4">
                 CozyCare offers flexible pricing options to suit your budget and needs. Our rates are based on the specific
                 services you require and the frequency of care. Our goal is to help you maintain your independence and
                 quality of life while receiving the support you require.
               </p>
-              <h3 className="text-2xl mb-2">Subscription Plans:</h3>
-              <ul className="list-disc ml-6 text-lg mb-4">
+              <h3 className="text-lg mb-2"><b>Subscription Plans:</b></h3>
+              <ul className="list-disc ml-6 mb-4">
                 <li>Hourly Plans: Pay for care on an hourly basis.</li>
                 <li>Monthly Plans: Enjoy discounted rates with monthly subscriptions.</li>
                 <li>Yearly Plans: Benefit from significant savings with annual subscriptions.</li>
               </ul>
             </div>
-            <img className="w-full md:w-1/4 rounded-lg object-cover" src="/images/pricing1.png" alt="Pricing details for subscription plans" />
+            <img className="w-1/2 md:w-1/4 rounded-lg object-cover" src="/images/pricing1.png" alt="Pricing details for subscription plans" />
           </div>
 
           {/* Second Block - Image Left, Text Right */}
           <div className="flex flex-col md:flex-row items-center justify-between mb-8">
-            <img className="w-full md:w-1/4 rounded-lg object-cover" src="/images/pricing2.png" alt="Pay per service details" />
+            <img className="w-1/2 md:w-1/4 rounded-lg object-cover -mt-6 mb-5" src="/images/pricing2.png" alt="Pay per service details" />
             <div className="w-full md:w-1/2">
-              <h3 className="text-2xl mb-2">Pay-Per-Service</h3>
-              <ul className="list-disc ml-6 text-lg mb-4">
+              <h3 className="text-lg mb-2"><strong>Pay-Per-Service</strong></h3>
+              <ul className="list-disc ml-6 mb-4">
                 <li>One-Time Payments: Pay for specific services as needed, such as occasional respite care or transportation.</li>
               </ul>
             </div>
@@ -99,21 +99,23 @@ const PricingPage = () => {
           {/* Third Block - Text Left, Image Right */}
           <div className="flex flex-col-reverse md:flex-row items-center justify-between mb-8">
             <div className="w-full md:w-1/2">
-              <h3 className="text-2xl mb-2">Factors that may affect our pricing include:</h3>
-              <ul className="list-disc ml-6 text-lg mb-4">
+              <h3 className="text-lg mb-2"><strong>Factors that may affect our pricing include:</strong></h3>
+              <ul className="list-disc ml-6 mb-4">
                 <li>The frequency of care you need.</li>
                 <li>The type of services required (personal care, medical care, etc.).</li>
                 <li>Your location and specific caregiving needs.</li>
               </ul>
+
               <p className="text-base mb-4">
-                To get a personalized quote, please contact us at <a href="tel:+254 735 358125" className="text-[#2c5530] hover:underline"> our phone number </a> or{' '}
+                To get a personalized quote, please contact us at <a href="https://wa.me/254735358125" className="text-[#2c5530] hover:underline"> 0735 358 125 </a> or{' '}
                 <a href="mailto:support@cozycare.world" className="text-[#2c5530] hover:underline">support@cozycare.world</a>. We are happy to discuss your specific needs and provide you with a tailored
-                pricing estimate. <br />
-                <strong>Note:</strong> Prices are subject to change. Please contact us for the most up-to-date pricing
-                information.
+                pricing estimate. <br /> <br />
+                <strong>Note:</strong> <i>Prices are subject to change. Please contact us for the most up-to-date pricing
+                information.</i>
               </p>
+
             </div>
-            <img className="w-full md:w-1/4 rounded-lg object-cover" src="/images/pricing3.png" alt="Factors that affect pricing" />
+            <img className="w-1/2 md:w-1/4 rounded-lg object-cover -mt-6 mb-5" src="/images/pricing3.png" alt="Factors that affect pricing" />
           </div>
 
         </div>
@@ -121,7 +123,7 @@ const PricingPage = () => {
 
       {/* Contact Section */}
       <div className="bg-[#a8c2b2] px-4 sm:px-8 md:px-16 lg:px-24 py-12 w-full box-border">
-        <h1 className="text-4xl mb-6 text-[#2c5530] font-bold animate-fade-in">FIND HOME CARE TODAY</h1>
+        <h1 className="text-lg mb-6 text-[#2c5530] font-bold animate-fade-in"><strong>FIND HOME CARE TODAY</strong></h1>
         <p className="text-lg mb-6 text-[#1d0303] leading-relaxed hover:text-[#2c5530] transition-colors duration-300">
           Get Started with Primary Care at Home
           <br />
