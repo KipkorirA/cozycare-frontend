@@ -110,7 +110,7 @@ const CareerManage = () => {
 
     const handleDeleteCareer = async (id) => {
         try {
-            await axios.delete(`http://127.0.0.1:5000/careers/${id}`);
+            await axios.delete(`https://cozycare-backend-g56w.onrender.com/careers/${id}`);
             const updatedCareers = filteredCareers.filter(career => career.id !== id);
             setFilteredCareers(updatedCareers);
             setSuccessMessage('Career deleted successfully!');
