@@ -58,10 +58,12 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen items-center justify-center bg-gradient-to-b from-[#FDF5E6] to-[#e6dbc7] pt-11 w-full h-full">
       <div className="w-full max-w-7xl px-1 animate-fadeIn mx-auto">
-        <h1 className="text-5xl font-bold mb-4 text-gray-900 hover:text-[#032b03] transition-colors duration-300">WE'D LOVE TO HEAR FROM YOU</h1>
-        <p className="mb-8 text-gray-600 text-lg hover:text-gray-800 transition-colors duration-300">Whether you have questions, need assistance, or want to schedule an appointment, our team is here to help</p>
+        <h1 className="text-2xl font-bold mb-4 text-gray-900 hover:text-[#032b03] transition-colors duration-300 pl-2">WE'D LOVE TO HEAR FROM YOU</h1>
+        <div className="h-1 ml-3 bg-[#FFD700] w-[100px] mb-4"></div>
+        
+        <p className="mb-8 text-gray-600 text-lg hover:text-gray-800 transition-colors duration-300 pl-3">Whether you have questions, need assistance, or want to schedule an appointment, our team is here to help</p>
 
-        <form onSubmit={handleSubmit} className="space-y-20 text-white backdrop-blur-sm bg-opacity-20 p-8 rounded-2xl shadow-2xl">
+        <form onSubmit={handleSubmit} className="space-y-11 text-white backdrop-blur-sm bg-opacity-20 p-8 rounded-2xl shadow-2xl">
           <div className="flex gap-4 flex-wrap">
             <input
               type="text"
@@ -147,9 +149,9 @@ const ContactPage = () => {
       <div className="w-full max-w-7xl mt-20 flex flex-col md:flex-row gap-8 px-4 pb-10 mx-auto">
         <img src="/images/cartoon.png" alt="Contact Support" className="w-auto h-52 object-contain hover:scale-125 transition-transform duration-500 cursor-pointer" />
         <div className="w-full">
-          <h1 className="text-3xl font-bold mb-6 animate-pulse bg-gradient-to-r from-[#032b03] to-[#98FB98] bg-clip-text text-transparent">Any questions or feedback? Call us anytime. We're here for you 24/7.</h1>
+          <h1 className="text-xl font-bold mb-6 animate-pulse bg-gradient-to-r from-[#032b03] to-[#011f01] bg-clip-text text-transparent">Any questions or feedback? Call us anytime. We're here for you 24/7.</h1>
           <div className='bg-white/80 backdrop-blur-md rounded-lg shadow-2xl p-8 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2'>
-            <h2 className="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#032b03] to-[#98FB98] animate-gradient">Questions about care?</h2>
+            <h2 className="text-2xl font-bold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#032b03] to-[#001400] animate-gradient">Questions about care?</h2>
             <p className="text-gray-700 mb-6 hover:text-gray-900 transition-colors duration-300">We're here to help with any questions about our services, scheduling, or the CozyCare App.</p>
             <div className='flex flex-col sm:flex-row gap-4 sm:gap-8'>
               <a href="tel:+254735358125" className='bg-[rgb(3,43,3)] text-white py-3 px-6 rounded-lg hover:bg-[#98FB98] hover:text-[rgb(3,43,3)] transition-all duration-300 transform hover:scale-110 text-center hover:shadow-xl flex items-center justify-center gap-2'>

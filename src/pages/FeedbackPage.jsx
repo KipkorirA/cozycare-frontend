@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import PropTypes from 'prop-types';
 
+// Star Rating Component for submitting ratings
 const StarRating = ({ rating, setRating }) => {
     const stars = [1, 2, 3, 4, 5];
 
@@ -30,6 +31,7 @@ StarRating.propTypes = {
     setRating: PropTypes.func.isRequired
 };
 
+// Separate component for displaying testimonials
 const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage }) => {
     if (loading) return <p className="text-center">Loading testimonials...</p>;
     if (testimonials.length === 0) return <p className="text-center">No testimonials available.</p>;
@@ -37,7 +39,6 @@ const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage 
     const indexOfLastTestimonial = currentPage * testimonialsPerPage;
     const indexOfFirstTestimonial = indexOfLastTestimonial - testimonialsPerPage;
     const displayedTestimonials = testimonials.slice(indexOfFirstTestimonial, indexOfLastTestimonial);
-
     return (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {displayedTestimonials.map((testimonial, index) => (
@@ -76,16 +77,14 @@ const Testimonials = ({ testimonials, loading, currentPage, testimonialsPerPage 
             ))}
         </div>
     );
-    
-    
-    
 };
 
 Testimonials.propTypes = {
     testimonials: PropTypes.arrayOf(PropTypes.shape({
-        text: PropTypes.string,
-        author: PropTypes.string,
-        image_url: PropTypes.string
+        feedback_text: PropTypes.string,
+        name: PropTypes.string,
+        image_url: PropTypes.string,
+        feedback_file: PropTypes.string
     })).isRequired,
     loading: PropTypes.bool.isRequired,
     currentPage: PropTypes.number.isRequired,
@@ -152,9 +151,6 @@ const FeedbackPage = () => {
         }
     }, []);
     
-    
-    
-
     useEffect(() => {
         fetchTestimonials();
     }, [fetchTestimonials]);
@@ -238,18 +234,18 @@ const FeedbackPage = () => {
         <div className="pt-4 sm:pt-4 md:pt-4 mx-auto bg-gradient-to-br from-gray-200 to-gray-100 rounded-lg shadow-2xl transition-all duration-300 hover:shadow-xl">
             <div className="px-4 sm:px-8 md:px-12">
                 <div className="relative">
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-700 tracking-wider">COZYCARE NEWS</h3>
-                    <div className="h-1 w-32 sm:w-48 md:w-60 bg-gradient-to-r from-green-600 to-green-800 mb-4 transform hover:scale-x-110 transition-transform duration-300"></div>
+                    <h3 className="text-2xl sm:text-xl md:text-4xl lg:text-6xl font-bold text-green-700 tracking-wider">COZYCARE NEWS</h3>
+                    <div className="h-1 w-32 mt-3 sm:w-48 md:w-60 bg-gradient-to-r from-yellow-300 to-yellow-500 mb-4 transform hover:scale-x-110 transition-transform duration-300"></div>
                 </div>
                 
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-8 md:mb-12 gap-6">
                     <div className="md:pr-4">
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 text-green-800 uppercase font-extrabold animate-fade-in">
+                        <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-5xl mb-4 text-green-800 uppercase font-extrabold animate-fade-in">
                             “Hear What Our Clients Have to Say”
                         </h1>
                         <p className="text-base sm:text-lg mb-6 transform hover:scale-105 transition-transform duration-300">
                             <span className="font-bold text-green-700">Our Mission:</span> 
-                            <span className="italic">Caring for Your Family, Just Like Our Own</span>
+                            <span className="italic"> Caring for Your Family, Just Like Our Own</span>
                         </p>
                     </div>
                     <div className="transform hover:rotate-6 transition-transform duration-300">

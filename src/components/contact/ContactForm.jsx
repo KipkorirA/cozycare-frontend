@@ -53,7 +53,10 @@ const ContactForm = () => {
 
     return (
         <section className="flex justify-center items-center min-h-screen w-full py-12 px-4 sm:px-6 lg:px-8 xl:px-12 2xl:px-16 bg-[#085846]">
-            <form className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-8xl bg-[#085846] p-8 lg:p-12 rounded-xl shadow-2xl space-y-8" onSubmit={handleSubmit}>
+                    <form className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-8xl bg-[#085846] p-8 lg:p-12 rounded-xl shadow-2xl space-y-8" onSubmit={handleSubmit}>
+                        <h2 className="text-3xl font-bold text-white text-center mb-8">Contact Us</h2>
+                        <div className="w-24 h-1 bg-[#FFD700] mx-auto"></div>
+                
                 {/* First Name and Last Name */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input 

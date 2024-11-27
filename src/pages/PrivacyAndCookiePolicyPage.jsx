@@ -4,7 +4,7 @@
 const PrivacyAndCookiePolicyPage = () => {
     return (
         <div className="w-full p-4 sm:p-8 bg-gradient-to-br from-green-100 to-green-200 text-gray-800 font-sans leading-7">
-            <h1 className="pt-3 text-4xl mb-8 font-serif text-green-800 border-b-2 border-green-300 pb-4">Privacy and Cookie Policy</h1>
+            <h1 className="pt-3 text-3xl mb-8 font-serif text-green-800 border-b-2 border-green-300 pb-4">Privacy and Cookie Policy</h1>
             <p className="text-lg">
                 CozyCare is committed to protecting your privacy and ensuring the security of your personal
                 information. This Privacy and Cookie Policy outlines how we collect, use, and protect your

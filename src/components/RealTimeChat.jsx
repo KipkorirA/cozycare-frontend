@@ -62,7 +62,9 @@ const RealTimeChat = () => {
         "how do I contact customer service": "You can contact our customer service team by emailing support@cozycare.com or through our live chat feature. We're always here to help.",
         "is there a mobile version of the website": "Yes! Our website is fully mobile-friendly, so you can access your account from any device.",
         "can I share my account with others": "Your account is for personal use only. However, if you'd like, we can discuss options for additional users under your plan.",
-        "what is cozycare": "CozyCare is a platform designed to offer personalized services and support to help you with various tasks. We're here to make your experience as smooth and convenient as possible. Whether it's billing, subscriptions, or other inquiries, we've got you covered!"
+        "what is cozycare": "CozyCare is a platform designed to offer personalized services and support to help you with various tasks. We're here to make your experience as smooth and convenient as possible. Whether it's billing, subscriptions, or other inquiries, we've got you covered!",
+        "What sre your pricing range for nursing services": "Our pricing for nursing services varies depending on the type of service and the duration. Please contact our customer support for a personalized quote.",
+        "list of services offered": "We offer a wide range of services, including nursing care, personal care, and more. Check our website for a detailed list of services we provide.",
     };
 
     // Handle message submission
@@ -77,7 +79,7 @@ const RealTimeChat = () => {
         if (results.length > 0) {
             return auto_responses[results[0].item];
         } else {
-            return "Sorry, I didn't understand that. Can you rephrase?";
+            return "I don't have an answer for that. Please email a realtime agent at  support@cozycare.world for assistance.";
         }
     };
 

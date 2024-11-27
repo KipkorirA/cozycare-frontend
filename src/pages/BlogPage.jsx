@@ -28,7 +28,9 @@
       ];
 
       const [blogPosts, setBlogPosts] = useState(fallbackData);
-      const [currentIndex, setCurrentIndex] = useState(0);
+      const [selectedPost, setSelectedPost] = useState(null);
+      const [currentPage, setCurrentPage] = useState(1);
+      const postsPerPage = 6;
   
       useEffect(() => {
         const fetchBlogPosts = async () => {
@@ -45,97 +47,116 @@
   
         fetchBlogPosts();
       }, []);
-  
-      const nextPost = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % blogPosts.length);
-      };
-  
-      const previousPost = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + blogPosts.length) % blogPosts.length);
-      };
-  
-      const blogPost = blogPosts[currentIndex];
-      const imageUrl = blogPost.image_url ? `https://cozycare-backend-g56w.onrender.com/${blogPost.image_url}` : null;
-      const videoUrl = blogPost.video_url ? `https://cozycare-backend-g56w.onrender.com/${blogPost.video_url}` : null;
+
+      const indexOfLastPost = currentPage * postsPerPage;
+      const indexOfFirstPost = indexOfLastPost - postsPerPage;
+      const currentPosts = blogPosts.slice(indexOfFirstPost, indexOfLastPost);
+      const totalPages = Math.ceil(blogPosts.length / postsPerPage);
   
       return (
         <div className="max-w-4xl mx-auto px-4 py-8 min-h-screen bg-gradient-to-b from-[#FFFDD0] to-white">
-          <AnimatePresence mode="wait">
-            <motion.article
-              key={currentIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 mb-8 backdrop-blur-sm bg-opacity-90"
-            >
-              <div className="p-6">
-                <motion.h1
-                  initial={{ scale: 0.95 }}
-                  animate={{ scale: 1 }}
-                  className="text-4xl font-bold mb-4 text-gray-900 hover:text-green-600 transition-colors duration-200"
-                >
-                  {blogPost.title}
-                </motion.h1>
-                <div className="flex items-center mb-4 space-x-4">
-                  <span className="text-green-700 font-medium bg-green-100 px-3 py-1 rounded-full">
-                    {blogPost.name}
-                  </span>
-                  <span className="text-green-600 text-sm bg-green-50 px-3 py-1 rounded-full">
-                    {format(new Date(blogPost.created_at), 'MMMM dd, yyyy')}
-                  </span>
-                </div>
-                {imageUrl && (
-                  <motion.img
+          {!selectedPost ? (
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {currentPosts.map((post, index) => (
+                  <motion.div
+                    key={index}
                     whileHover={{ scale: 1.02 }}
-                    src={imageUrl}
-                    alt={blogPost.title}
-                    className="w-full h-80 object-cover mb-6 rounded-lg shadow-md"
-                  />
-                )}
-                {videoUrl && (
-                  <motion.video
-                    whileHover={{ scale: 1.02 }}
-                    src={videoUrl}
-                    controls
-                    className="w-full mb-6 rounded-lg shadow-md focus:outline-none"
-                  />
-                )}
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="text-green-700 leading-relaxed mb-6 hover:text-green-900 transition-colors duration-200 text-lg"
-                >
-                  {blogPost.description}
-                </motion.p>
+                    className="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
+                    onClick={() => setSelectedPost(post)}
+                  >
+                    {post.image_url && (
+                      <img
+                        src={`https://cozycare-backend-g56w.onrender.com/${post.image_url}`}
+                        alt={post.title}
+                        className="w-full h-48 object-cover"
+                      />
+                    )}
+                    <div className="p-4">
+                      <h2 className="text-xl font-bold text-gray-900 hover:text-green-600">
+                        {post.title}
+                      </h2>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </motion.article>
-          </AnimatePresence>
-          
-          <div className="flex justify-between items-center mt-8">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={previousPost}
-              className="px-6 py-3 rounded-full bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
-            >
-              <span>←</span>
-              <span>Previous</span>
-            </motion.button>
-            <span className="px-4 py-2 bg-green-100 rounded-full font-medium">
-              {currentIndex + 1} of {blogPosts.length}
-            </span>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={nextPost}
-              className="px-6 py-3 rounded-full bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
-            >
-              <span>Next</span>
-              <span>→</span>
-            </motion.button>
-          </div>
+              <div className="flex justify-center mt-8 space-x-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`px-4 py-2 rounded-full ${
+                      currentPage === pageNum
+                        ? 'bg-green-600 text-white'
+                        : 'bg-white text-green-600 hover:bg-green-100'
+                    } transition-colors duration-300`}
+                  >
+                    {pageNum}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.article
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 mb-8 backdrop-blur-sm bg-opacity-90"
+              >
+                <div className="p-6">
+                  <motion.h1
+                    initial={{ scale: 0.95 }}
+                    animate={{ scale: 1 }}
+                    className="text-4xl font-bold mb-4 text-gray-900 hover:text-green-600 transition-colors duration-200"
+                  >
+                    {selectedPost.title}
+                  </motion.h1>
+                  <div className="flex items-center mb-4 space-x-4">
+                    <span className="text-green-700 font-medium bg-green-100 px-3 py-1 rounded-full">
+                      {selectedPost.name}
+                    </span>
+                    <span className="text-green-600 text-sm bg-green-50 px-3 py-1 rounded-full">
+                      {format(new Date(selectedPost.created_at), 'MMMM dd, yyyy')}
+                    </span>
+                  </div>
+                  {selectedPost.image_url && (
+                    <motion.img
+                      whileHover={{ scale: 1.02 }}
+                      src={`https://cozycare-backend-g56w.onrender.com/${selectedPost.image_url}`}
+                      alt={selectedPost.title}
+                      className="w-full h-80 object-cover mb-6 rounded-lg shadow-md"
+                    />
+                  )}
+                  {selectedPost.video_url && (
+                    <motion.video
+                      whileHover={{ scale: 1.02 }}
+                      src={`https://cozycare-backend-g56w.onrender.com/${selectedPost.video_url}`}
+                      controls
+                      className="w-full mb-6 rounded-lg shadow-md focus:outline-none"
+                    />
+                  )}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-green-700 leading-relaxed mb-6 hover:text-green-900 transition-colors duration-200 text-lg"
+                  >
+                    {selectedPost.description}
+                  </motion.p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedPost(null)}
+                    className="px-6 py-3 rounded-full bg-green-600 text-white hover:bg-green-700 shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Back to Posts
+                  </motion.button>
+                </div>
+              </motion.article>
+            </AnimatePresence>
+          )}
         </div>
       );
     };

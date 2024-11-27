@@ -77,6 +77,12 @@ const Manage = () => {
                         >
                             Manage Users
                         </button>
+                        <button 
+                            onClick={() => navigate('/dashboard/applications')} 
+                            className="p-3 bg-green-600 hover:bg-green-700 text-cream rounded-lg transform hover:scale-105 transition-all duration-200 shadow-lg"
+                        >
+                            View Applications
+                        </button>
                     </div>
                 </>
             )}

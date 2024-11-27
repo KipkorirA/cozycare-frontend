@@ -29,7 +29,8 @@ import LoginManage from './pages/manage/LoginManage'; // Import LoginManage
 import SignupManage from './pages/manage/SignupManage'; // Import SignupManage
 import UsersManage from './pages/manage/UsersManage'; // Import UsersManage
 import AdminEmailSender from './pages/manage/AdminEmailSender'; // Import AdminEmailSender
-import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Added Navigate
+import ApplicationsManage from './pages/manage/ApplicationsManage';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Added Navigate
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
 import SiteMapPage from './pages/SiteMapPage';
@@ -86,6 +87,7 @@ const App = () => {
             <Route path="/dashboard/signup" element={<SignupManage />} />
             <Route path="/dashboard/users" element={<UsersManage />} />
             <Route path="/dashboard/email" element={<AdminEmailSender />} />
+            <Route path="/dashboard/applications" element={<ApplicationsManage />} />
 
             {/* Admin redirect route */}
             <Route path="/cozy" element={<Navigate to="/dashboard/login" replace />} />

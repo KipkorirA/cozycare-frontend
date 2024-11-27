@@ -18,9 +18,9 @@ const BlogManage = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get('https://cozycare-backend-g56w.onrender.com/blogs');
-      setBlogs(response.data);
-    } catch (error) {
+      const { data } = await axios.get('https://cozycare-backend-g56w.onrender.com/blogs');
+      setBlogs(data);
+    } catch {
       message.error('Failed to fetch blogs');
     }
   };
@@ -34,10 +34,16 @@ const BlogManage = () => {
 
   const handleEdit = (record) => {
     setEditingId(record.id);
-    form.setFieldsValue(record);
+    form.setFieldsValue({
+      title: record.title,
+      name: record.name,
+      description: record.description,
+      image_url: record.image_url,
+      video_url: record.video_url
+    });
     setFileList({
-      image: record.image_url ? [{ url: record.image_url }] : [],
-      video: record.video_url ? [{ url: record.video_url }] : [],
+      image: record.image_url ? [{ url: record.image_url, uid: '-1', name: 'image.png' }] : [],
+      video: record.video_url ? [{ url: record.video_url, uid: '-1', name: 'video.mp4' }] : [],
     });
     setIsModalVisible(true);
   };
@@ -47,7 +53,7 @@ const BlogManage = () => {
       await axios.delete(`https://cozycare-backend-g56w.onrender.com/blogs/${id}`);
       message.success('Blog deleted successfully');
       fetchBlogs();
-    } catch (error) {
+    } catch {
       message.error('Failed to delete blog');
     }
   };
@@ -75,14 +81,14 @@ const BlogManage = () => {
   
       const method = editingId ? 'put' : 'post';
   
-      const response = await axios[method](url, formData, {
+      await axios[method](url, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
   
       message.success(editingId ? 'Blog updated successfully' : 'Blog added successfully');
       setIsModalVisible(false);
       fetchBlogs();
-    } catch (error) {
+    } catch {
       message.error('Failed to save blog');
     }
   };

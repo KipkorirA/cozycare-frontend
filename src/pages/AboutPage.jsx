@@ -99,7 +99,7 @@ const AboutPage = () => {
 
             <div className='cozycare-family-contact py-8 bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50 rounded-xl w-full shadow-lg transition-all duration-500 mt-8'>
                 <p className="text-base sm:text-lg lg:text-2xl px-6">
-                    Join the Cozycare Family<br />
+                    <strong>Join the Cozycare Family</strong><br />
                     If you or a loved one requires home-based care services, we invite you to 
                     <a href="tel:+254 735 358125" className="underline text-green-600 hover:text-green-700 transition-colors font-semibold mx-2"> contact us </a> 
                     to learn more about how we can help.
@@ -131,11 +131,13 @@ const AboutPage = () => {
                             <h3 className="text-xl sm:text-2xl font-bold text-gray-900"><strong>24/7 Support:</strong></h3>
                             <p className="text-base sm:text-lg text-gray-800 hover:text-gray-900 transition-colors">Our team is available to assist you around the clock.</p>
                         </div>
+                        
                         <div className="flex justify-center">
                             <img 
                                 src="/images/Untitled_design__11_-removebg-preview.png" 
                                 alt="Responsive support" 
-                                className="small-image w-48 h-auto mb-4 sm:mb-5 rounded-xl transform hover:scale-125 hover:rotate-6 transition-all duration-500 shadow-md" 
+                                className="small-image w-32 sm:w-48 h-auto mb-4 sm:mb-5 rounded-xl transform hover:scale-125 hover:rotate-6 transition-all duration-500 shadow-md glow-effect" 
+                                style={{filter: 'drop-shadow(0 0 10px rgba(74, 222, 128, 0.4))'}}
                             />
                         </div>
                         <div className="responsiveness text-center p-4 bg-white bg-opacity-50 rounded-xl hover:bg-opacity-70 hover:shadow-xl transition-all duration-500 transform hover:scale-105">
@@ -151,7 +153,8 @@ const AboutPage = () => {
                             <img 
                                 src="/images/Untitled_design__13_-removebg-preview.png" 
                                 alt="Quality care" 
-                                className="small-image w-48 h-auto mb-4 sm:mb-5 rounded-xl transform hover:scale-125 hover:rotate-6 transition-all duration-500 shadow-md" 
+                                className="small-image w-32 sm:w-48 h-auto mb-4 sm:mb-5 rounded-xl transform hover:scale-125 hover:rotate-6 transition-all duration-500 shadow-md glow-effect" 
+                                style={{filter: 'drop-shadow(0 0 10px rgba(74, 222, 128, 0.4))'}}
                             />
                         </div>
                         <div className="responsiveness text-center p-4 bg-white bg-opacity-50 rounded-xl hover:bg-opacity-70 hover:shadow-xl transition-all duration-500 transform hover:scale-105">
@@ -161,11 +164,12 @@ const AboutPage = () => {
                             </p>
                         </div>
 
-                        <div className="flex justify-center">
+                        <div className="flex justify-center mt-5">
                             <img 
                                 src="/images/Untitled_design__12_-removebg-preview.png" 
                                 alt="Compassionate care" 
-                                className="small-image w-48 h-auto mb-4 sm:mb-5 rounded-xl transform hover:scale-125 hover:rotate-6 transition-all duration-500 shadow-md" 
+                                className="small-image w-32 sm:w-48 h-auto mb-4 sm:mb-5 rounded-xl transform hover:scale-125 hover:rotate-6 transition-all duration-500 shadow-md glow-effect" 
+                                style={{filter: 'drop-shadow(0 0 10px rgba(74, 222, 128, 0.4))'}}
                             />
                         </div>
                         <div className="responsiveness text-center p-4 bg-white bg-opacity-50 rounded-xl hover:bg-opacity-70 hover:shadow-xl transition-all duration-500 transform hover:scale-105">
@@ -174,10 +178,10 @@ const AboutPage = () => {
                                 Prioritizing patients' dignity and quality of life, while offering unwavering support to them and their families.
                             </p>
                         </div>
-
-                        <Link to="/services" className="explore-services bg-gradient-to-r from-green-500 via-emerald-400 to-blue-500 flex items-center justify-center rounded-lg mt-6 sm:mt-8 py-4 cursor-pointer hover:from-blue-500 hover:via-emerald-400 hover:to-green-500 transition-all duration-500 transform hover:scale-110 shadow-md hover:shadow-xl">
+                        
+                        <Link to="/services" className="explore-services bg-gradient-to-r from-green-500 via-emerald-400 to-blue-500 flex items-center justify-center rounded-lg mt-6 sm:mt-8 py-2 px-4 w-52 mx-auto cursor-pointer hover:from-blue-500 hover:via-emerald-400 hover:to-green-500 transition-all duration-500 transform hover:scale-110 shadow-md hover:shadow-xl">
                             <span className="text-xl text-white transform hover:rotate-90 transition-transform duration-500">→</span>
-                            <span className='text ml-2 font-bold text-base sm:text-lg text-white tracking-wide'>EXPLORE SERVICES</span>
+                            <span className='text ml-2 font-bold text-sm sm:text-base text-white tracking-wide'>EXPLORE SERVICES</span>
                         </Link>                    
                     </div>
                 </div>

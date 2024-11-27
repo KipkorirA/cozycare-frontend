@@ -5,7 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const CareersPage = () => {
   const [careers, setCareers] = useState([]);
+  const [filteredCareers, setFilteredCareers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [regions, setRegions] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('');
+  const [selectedDepartment, setSelectedDepartment] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,6 +25,11 @@ const CareersPage = () => {
       .then((response) => response.json())
       .then((data) => {
         setCareers(data);
+        setFilteredCareers(data);
+        const uniqueRegions = [...new Set(data.map(career => career.location))];
+        const uniqueDepartments = [...new Set(data.map(career => career.department))];
+        setRegions(uniqueRegions);
+        setDepartments(uniqueDepartments);
         setLoading(false);
       })
       .catch((error) => {
@@ -26,6 +37,36 @@ const CareersPage = () => {
         setLoading(false);
       });
   }, [navigate]);
+
+  const handleSearch = () => {
+    let results = careers;
+    
+    if (searchTerm) {
+      const searchWords = searchTerm.toLowerCase().split(' ');
+      results = results.filter(career => 
+        searchWords.every(word => 
+          career.title.toLowerCase().split(' ').includes(word)
+        )
+      );
+    }
+
+    if (selectedRegion) {
+      results = results.filter(career => career.location === selectedRegion);
+    }
+
+    if (selectedDepartment) {
+      results = results.filter(career => career.department === selectedDepartment);
+    }
+
+    setFilteredCareers(results);
+  };
+
+  const clearSearch = () => {
+    setSearchTerm('');
+    setSelectedRegion('');
+    setSelectedDepartment('');
+    setFilteredCareers(careers);
+  };
 
   return (
     <div className="min-h-screen py-20 md:py-40 px-4 md:px-8 bg-green-50">
@@ -50,7 +91,13 @@ const CareersPage = () => {
         <div className="mb-6">
           <h3 className="text-xl font-semibold text-gray-800">Keywords</h3>
           <div className="relative mt-2">
-            <input type="text" placeholder="Search..." className="w-full bg-green-500 text-white py-3 pl-6 pr-12 rounded-full border-none focus:outline-none focus:ring-2 focus:ring-green-600 transition duration-200" />
+            <input 
+              type="text" 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search..." 
+              className="w-full bg-green-500 text-white py-3 pl-6 pr-12 rounded-full border-none focus:outline-none focus:ring-2 focus:ring-green-600 transition duration-200" 
+            />
             <FontAwesomeIcon icon={faSearch} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white" />
           </div>
         </div>
@@ -59,39 +106,68 @@ const CareersPage = () => {
           <div className="flex flex-col md:flex-row justify-between gap-6">
             <div className="filter-location w-full md:w-auto">
               <h4 className="underline mb-2 text-gray-700">Location</h4>
-              <select className="w-full p-3 border border-gray-300 rounded-full appearance-none hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 cursor-pointer">
-                <option>Select a region</option>
+              <select 
+                value={selectedRegion}
+                onChange={(e) => setSelectedRegion(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-full appearance-none hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 cursor-pointer"
+              >
+                <option value="">Select a region</option>
+                {regions.map((region, index) => (
+                  <option key={index} value={region}>{region}</option>
+                ))}
               </select>
             </div>
             <div className="filter-department w-full md:w-auto">
               <h4 className="underline mb-2 text-gray-700">Department</h4>
-              <select className="w-full p-3 border border-gray-300 rounded-full appearance-none hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 cursor-pointer">
-                <option>Select a department</option>
+              <select 
+                value={selectedDepartment}
+                onChange={(e) => setSelectedDepartment(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-full appearance-none hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 transition duration-200 cursor-pointer"
+              >
+                <option value="">Select a department</option>
+                {departments.map((department, index) => (
+                  <option key={index} value={department}>{department}</option>
+                ))}
               </select>
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-end gap-4">
-            <button className="bg-transparent border-none text-gray-700 underline cursor-pointer hover:text-gray-900 transition duration-200">Clear Search</button>
-            <button className="bg-green-800 text-white py-2 px-8 rounded-full hover:bg-green-700 transform hover:scale-105 transition duration-200">Search</button>
+            <button 
+              onClick={clearSearch}
+              className="bg-transparent border-none text-gray-700 underline cursor-pointer hover:text-gray-900 transition duration-200"
+            >
+              Clear Search
+            </button>
+            <button 
+              onClick={handleSearch}
+              className="bg-green-800 text-white py-2 px-8 rounded-full hover:bg-green-700 transform hover:scale-105 transition duration-200"
+            >
+              Search
+            </button>
           </div>
         </div>
-      </div>
 
-      <div className="mt-12 px-4 md:px-0">
-        <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">Corporate/HQ</h3>
         {loading ? (
-          <p className="text-gray-600">Loading...</p>
+          <p className="text-gray-600 mt-6">Loading...</p>
         ) : (
-          careers.map(career => (
-            <div key={career.id} className="bg-cream rounded-xl shadow-md p-6 md:p-8 mb-6 flex flex-col md:flex-row justify-between items-start gap-6 hover:shadow-lg transition duration-200">
-              <p className="text-green-600 font-bold">{career.remote ? 'Remote' : career.location}</p>
-              <div className="flex-1">
-                <h4 className="text-xl font-bold mb-2 text-gray-800">{career.title}</h4>
-                <p className="text-gray-600">{career.description.substring(0, 100)}...</p>
+          <div className="mt-6">
+            {filteredCareers.length > 0 ? (
+              filteredCareers.map(career => (
+                <div key={career.id} className="bg-white rounded-xl shadow-md p-6 md:p-8 mb-6 flex flex-col md:flex-row justify-between items-start gap-6 hover:shadow-lg transition duration-200">
+                  <p className="text-green-600 font-bold">{career.remote ? 'Remote' : career.location}</p>
+                  <div className="flex-1">
+                    <h4 className="text-xl font-bold mb-2 text-gray-800">{career.title}</h4>
+                    <p className="text-gray-600">{career.description.substring(0, 100)}...</p>
+                  </div>
+                  <Link to={`/application/${career.id}`} className="w-full md:w-auto text-center bg-green-800 text-white py-3 px-6 rounded-full hover:bg-green-700 transform hover:scale-105 transition duration-200">Apply Now</Link>
+                </div>
+              ))
+            ) : (
+              <div className="text-center py-8">
+                <p className="text-gray-600 text-lg">No matching careers found. Please try different search criteria.</p>
               </div>
-              <Link to={`/application/${career.id}`} className="w-full md:w-auto text-center bg-green-800 text-white py-3 px-6 rounded-full hover:bg-green-700 transform hover:scale-105 transition duration-200">Apply Now</Link>
-            </div>
-          ))
+            )}
+          </div>
         )}
       </div>
 
