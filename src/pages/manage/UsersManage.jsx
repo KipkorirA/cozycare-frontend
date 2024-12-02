@@ -38,7 +38,7 @@ const UsersManage = () => {
   const handleDeleteUser = async (user_id) => {
     console.log("Attempting to delete user with ID:", user_id); // Debug log
     try {
-      const response = await axios.delete(`https://cozycare.world/api/users/${user_id}`);
+      const response = await axios.delete(`https://cozycare-backend-g56w.onrender.com/users/${user_id}`);
       console.log("Delete response:", response.data);
       setUsers(users.filter(user => user.id !== user_id)); // Update local state
     } catch (error) {

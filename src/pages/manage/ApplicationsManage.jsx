@@ -27,7 +27,7 @@ const ApplicationsManage = () => {
       try {
         // Send DELETE request to backend
         await axios.delete(`https://cozycare-backend-g56w.onrender.com/applications/${id}`);
-        // Remove the application from the state
+        
         setApplications((prevApplications) =>
           prevApplications.filter((app) => app.id !== id)
         );
