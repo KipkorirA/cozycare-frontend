@@ -109,19 +109,19 @@ const CareerManage = () => {
     };
 
     const handleDeleteCareer = async (id) => {
-        // Optimistically remove the career from the UI
-        const updatedCareers = filteredCareers.filter(career => career.id !== id);
-        setFilteredCareers(updatedCareers);
-        
         try {
             await axios.delete(`https://cozycare-backend-g56w.onrender.com/careers/${id}`);
+            const updatedCareers = filteredCareers.filter(career => career.id !== id);
+            setFilteredCareers(updatedCareers);
             setSuccessMessage('Career deleted successfully!');
         } catch (error) {
-            setError('Error deleting career');
-            // Rollback the UI change if deletion fails
-            setFilteredCareers(careers);
+            console.error('Error deleting career:', error.response || error.message);
+            setError(error.response?.data?.message || 'Error deleting career. Please check your connection or try again.');
         }
     };
+    
+    
+    
     
 
     const handleSearch = (e) => {

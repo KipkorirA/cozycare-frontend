@@ -62,8 +62,10 @@ const ApplicationsManage = () => {
                 <td className="border px-4 py-2 text-center">
                   {app.attachment ? (
                     <a
-                      href={`https://cozycare-backend-g56w.onrender.com/download/${app.attachment}`}
+                      href={`https://cozycare-backend-g56w.onrender.com/download/${encodeURIComponent(app.attachment)}`}
                       className="text-blue-500 underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Download Attachment
                     </a>
