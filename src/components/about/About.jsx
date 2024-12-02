@@ -22,10 +22,10 @@ const AboutUs = () => {
 
     return (
 
-        <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-16 lg:gap-x-11 gap-y-10 items-center sm:items-start py-12 sm:py-24  sm:px-10 shadow-inner bg-[#f4f1ec]">
+        <section className="flex flex-col md:flex-row mt-0 justify-center md:gap-x-16 lg:gap-x-44 gap-y-10 items-center sm:items-start py-12 sm:py-24  sm:px-10 shadow-inner bg-[#f4f1ec]">
             {/* Section for CozyCare heading in mobile */}
-            <div className="w-full px-6 mb-8 md:hidden">
-                <h1 className="text-2xl text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS <br/> COZYCARE</h1>
+            <div className="w-full px-6-20 mb-8 md:hidden">
+                <h1 className="text-2xl lg:pt-44 text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS <br/> COZYCARE</h1>
                 <hr className="border-t-2 border-[#f0a500] w-1/2 opacity-80" />
                 <h2 className="text-lg pt-3 pb-3 text-gray-700 font-bold tracking-wide" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '600' }}>
                     <FontAwesomeIcon icon={faLocationDot} className="text-[#f0a500] mr-2" /> <i>
@@ -34,7 +34,7 @@ const AboutUs = () => {
             </div>
 
             {/* Carousel for displaying slides */}
-            <div className="w-full sm:max-w-2xl md:max-w-3xl relative mb-10 md:mb-0 shadow-xl rounded-lg overflow-hidden -mt-11">
+            <div className="w-full sm:max-w-2xl md:max-w-3xl relative mb-10 md:mb-0 shadow-xl rounded-lg overflow-hidden  -mt-11 lg:ml-0">
                 <Swiper
                     spaceBetween={30}
                     slidesPerView={1}
@@ -107,7 +107,7 @@ const AboutUs = () => {
             <div className="w-full sm:w-4/5 md:w-2/5 lg:w-2/5 max-w-xl mt-8 md:mt-0 px-6 sm:px-0 space-y-4">
                <div className='lg:pb-60 -mt-20'>
                <h1 className="hidden md:block text-2xl md:text-4xl lg:text-6xl pb-1 text-gray-800 font-bold text-left tracking-tight" style={{ fontFamily: '', fontWeight: '700' }}>WHAT IS <br/> COZYCARE</h1>
-                <hr className="hidden md:block border-t-2 border-[#f0a500] w-1/2 opacity-80 lg:pb-11" />
+                <hr className="hidden md:block border-t-2 border-[#f0a500] w-1/2 opacity-80 lg:pb-9 lg-w-[2px]" />
                 <h2 className="hidden md:block text-xl sm:text-3xl pt-3 pb-3 lg:text-4xl lg:pb-11 text-gray-700 font-bold tracking-wide" style={{ fontFamily: 'TT Hoves Pro', fontWeight: '500' }}>
                     <FontAwesomeIcon icon={faLocationDot} className="text-[#f0a500] mr-2" />
                     Our Location is Your Location

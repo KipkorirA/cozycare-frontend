@@ -54,7 +54,7 @@ const ApplicationPage = () => {
 
     try {
       // Send the form data to Flask server
-      const response = await axios.post('http://127.0.0.1:5000/applications', formDataToSend, {
+      const response = await axios.post('https://cozycare-backend-g56w.onrender.com/applications', formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data', // Ensure correct content type for file upload
         },

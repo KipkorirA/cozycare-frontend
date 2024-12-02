@@ -30,7 +30,7 @@ import SignupManage from './pages/manage/SignupManage'; // Import SignupManage
 import UsersManage from './pages/manage/UsersManage'; // Import UsersManage
 import AdminEmailSender from './pages/manage/AdminEmailSender'; // Import AdminEmailSender
 import ApplicationsManage from './pages/manage/ApplicationsManage';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Added Navigate
+import { HashRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Changed to HashRouter
 import RealTimeChat from './components/RealTimeChat';
 import ApplicationPage from './pages/ApplicationPage';
 import SiteMapPage from './pages/SiteMapPage';

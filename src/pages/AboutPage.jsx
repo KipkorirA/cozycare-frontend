@@ -28,6 +28,8 @@ const AboutPage = () => {
             image: "/images/Untitled_design__6_-removebg-preview.png",
             imageAlt: "Nurse assisting a patient at home",
             reverse: false,
+            href: "/blog",
+            label: "Read our story"
         },
         {
             id: 2,
@@ -59,18 +61,21 @@ const AboutPage = () => {
     return (
         <div className="about-page w-full">
             {slides.map((slide) => (
-                <section key={slide.id} className={`about-section flex flex-col md:flex-row ${slide.reverse ? 'md:flex-row-reverse' : ''} items-center justify-between gap-4 sm:gap-8 py-8 sm:py-12 w-full hover:bg-gray-50 hover:shadow-2xl transition-all duration-500 rounded-xl`}>
+                <section
+                    key={slide.id}
+                    className={`about-section flex flex-col md:flex-row ${slide.reverse ? 'md:flex-row-reverse' : ''} items-center justify-between gap-4 sm:gap-8 py-8 sm:py-12 w-full hover:bg-gray-50 hover:shadow-2xl transition-all duration-500 rounded-xl`}
+                >
                     <div className="relative w-full flex justify-center items-center md:w-1/2 order-1 md:order-none">
-                        <img 
-                            src={slide.image} 
-                            alt={slide.imageAlt} 
-                            className="about-image w-full max-w-md h-auto object-contain transform hover:scale-110 transition-all duration-500 hover:rotate-2" 
+                        <img
+                            src={slide.image}
+                            alt={slide.imageAlt}
+                            className="about-image w-full max-w-md h-auto object-contain transform hover:scale-110 transition-all duration-500 hover:rotate-2"
                         />
-                        <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold p-4">
-                        </div>
                     </div>
                     <div className="about-text flex flex-col space-y-4 sm:space-y-6 w-full md:w-1/2 order-2 md:order-none p-6 hover:backdrop-blur-sm transition-all duration-300">
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-blue-600 hover:from-blue-600 hover:via-emerald-500 hover:to-green-600 transition-all duration-500">{slide.title}</h2>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-blue-600 hover:from-blue-600 hover:via-emerald-500 hover:to-green-600 transition-all duration-500">
+                            {slide.title}
+                        </h2>
                         <div className="divider w-full h-1.5 bg-gradient-to-r from-green-500 via-emerald-400 to-blue-500 rounded-full transform hover:scale-110 hover:rotate-1 transition-all duration-500"></div>
                         <p className="text-base sm:text-lg lg:text-2xl text-gray-800 leading-relaxed hover:text-gray-900 transition-colors">
                             {slide.text}
@@ -81,21 +86,36 @@ const AboutPage = () => {
                             </p>
                         )}
                         {slide.listItems && (
-                            <>
-                                <p className="text-base sm:text-lg lg:text-2xl text-gray-800 leading-relaxed hover:text-gray-900 transition-colors">{slide.text}</p>
-                                <ul className="about-bullets space-y-3 sm:space-y-4 text-gray-800 text-base sm:text-lg lg:text-2xl">
-                                    {slide.listItems.map((item, index) => (
-                                        <li key={index} className="flex items-start hover:translate-x-4 transition-transform duration-500 p-2 hover:bg-white hover:bg-opacity-50 hover:shadow-lg rounded-lg">
-                                            <span className="mr-2 text-green-600">•</span>
-                                            <span><strong className="text-gray-900">{item.split(':')[0]}:</strong> {item.split(':')[1]}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </>
+                            <ul className="about-bullets space-y-3 sm:space-y-4 text-gray-800 text-base sm:text-lg lg:text-2xl">
+                                {slide.listItems.map((item, index) => (
+                                    <li
+                                        key={index}
+                                        className="flex items-start hover:translate-x-4 transition-transform duration-500 p-2 hover:bg-white hover:bg-opacity-50 hover:shadow-lg rounded-lg"
+                                    >
+                                        <span className="mr-2 text-green-600">•</span>
+                                        <span>
+                                            <strong className="text-gray-900">{item.split(':')[0]}:</strong>{' '}
+                                            {item.split(':')[1]}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
                         )}
+                        {slide.href && slide.label && (
+                            <a
+                            href={slide.href}
+                            className="mt-4 inline-block text-lg sm:text-xl font-medium text-white bg-green-900 px-2 py-2 rounded-lg w-40 shadow-lg hover:bg-green-700 hover:shadow-xl transition-all duration-300"
+                                > 
+                            {slide.label}
+                            </a>
+                        )}
+
+
                     </div>
                 </section>
             ))}
+
+    
 
             <div className='cozycare-family-contact py-8 bg-gradient-to-br from-green-50 via-emerald-50 to-blue-50 rounded-xl w-full shadow-lg transition-all duration-500 mt-8'>
                 <p className="text-base sm:text-lg lg:text-2xl px-6">

@@ -31,7 +31,7 @@ function SignupManage() {
     }
 
     try {
-      const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users/signup', formData);
+      const response = await axios.post('https://cozycare-backend-g56w.onrender.com/users', formData);
       if (response.status === 201) {
         alert('User created successfully!');
         navigate('/cozy');

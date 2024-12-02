@@ -158,7 +158,7 @@ const ContactPage = () => {
                 <span>Contact Us</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636a9 9 0 11-12.728 12.728 9 9 0 0112.728-12.728zM9 9l3 3-3 3"></path></svg>
               </a>
-              <a href="mailto:info@cozycare.com" className='bg-[#98FB98] text-[#032b03] py-3 px-6 rounded-lg hover:bg-[#032b03] hover:text-[#98FB98] transition-all duration-300 transform hover:scale-110 text-center hover:shadow-xl flex items-center justify-center gap-2'>
+              <a href="mailto:support@cozycare.world" className='bg-[#98FB98] text-[#032b03] py-3 px-6 rounded-lg hover:bg-[#032b03] hover:text-[#98FB98] transition-all duration-300 transform hover:scale-110 text-center hover:shadow-xl flex items-center justify-center gap-2'>
                 <span>Email Us</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.293 7.293a1 1 0 001.414 0L21 8M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"></path></svg>
               </a>
