@@ -36,9 +36,9 @@ const ApplicationPage = () => {
     }
 
     // Assuming you have user_id stored in localStorage or a context
-    const userId = 1;  // Replace with dynamic value for the logged-in user
+    const userId = localStorage.getItem('user_id'); 
 
-    // Create a FormData object to handle file and other form data
+   // Create a FormData object to handle file and other form data
     const formDataToSend = new FormData();
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
