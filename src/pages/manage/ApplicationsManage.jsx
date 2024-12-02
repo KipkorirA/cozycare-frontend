@@ -22,6 +22,23 @@ const ApplicationsManage = () => {
     fetchApplications();
   }, []);
 
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this application?")) {
+      try {
+        // Send DELETE request to backend
+        await axios.delete(`https://cozycare-backend-g56w.onrender.com/applications/${id}`);
+        
+        setApplications((prevApplications) =>
+          prevApplications.filter((app) => app.id !== id)
+        );
+        alert("Application deleted successfully!");
+      } catch (err) {
+        console.error("Error deleting application:", err);
+        alert("Failed to delete the application. Please try again.");
+      }
+    }
+  };
+
   if (loading) {
     return <div className="text-center py-10">Loading applications...</div>;
   }
@@ -44,6 +61,7 @@ const ApplicationsManage = () => {
               <th className="border px-4 py-2">Email</th>
               <th className="border px-4 py-2">Attachment</th>
               <th className="border px-4 py-2">Created At</th>
+              <th className="border px-4 py-2">Actions</th> {/* Added actions column */}
             </tr>
           </thead>
           <tbody>
@@ -76,6 +94,14 @@ const ApplicationsManage = () => {
                 <td className="border px-4 py-2 text-center">
                   {new Date(app.created_at).toLocaleString()}
                 </td>
+                <td className="border px-4 py-2 text-center">
+                  <button
+                    onClick={() => handleDelete(app.id)}
+                    className="text-red-500 hover:text-red-700 font-bold"
+                  >
+                    Delete
+                  </button>
+                </td> {/* Added Delete button */}
               </tr>
             ))}
           </tbody>
